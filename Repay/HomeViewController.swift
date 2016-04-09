@@ -9,24 +9,39 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    
     @IBOutlet weak var modalView: UIView!
     @IBOutlet weak var companyLabelText: UILabel!
-    
-    @IBAction func handleAppleClicked(sender: UIButton) {
-        companyLabelText.text = "Left for Apple Inc"
-        modalView.hidden = true
-    }
-
 
     @IBOutlet var btnUpload: UIButton!
     @IBOutlet var btnHistory: UIButton!
 
+    
+    //------- MODAL STUFF --------
+    @IBOutlet var btnAirbnb: UIButton!
+    @IBOutlet var btnApple: UIButton!
+    @IBOutlet var btnGoogle: UIButton!
+    
     @IBAction func handleModalClicked(sender: AnyObject) {
         modalView.hidden = false
     }
     
+    
+    @IBAction func handleAppleClicked(sender: AnyObject) { companyLabelText.text = "Left for Apple Inc"
+        modalView.hidden = true
+    }
+    
+    func customizeModal() {
+        btnAirbnb.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue:229/255, alpha: 1);
+        btnApple.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue:229/255, alpha: 1);
+        btnGoogle.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue:229/255, alpha: 1);
+    }
+    
+    // ------ App Stuff -------
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        customizeModal();
         
         // Make navigation bar transparent
         UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
@@ -43,20 +58,10 @@ class HomeViewController: UIViewController {
         btnHistory.backgroundColor = UIColor.whiteColor();
         
         //Gradient
-//        let gradientLayer = CAGradientLayer();
-//        
-//        gradientLayer.frame = self.view.bounds
-//
-//        let color1 = UIColor.yellowColor().CGColor as CGColorRef
-//        let color2 = UIColor(red: 1.0, green: 0, blue: 0, alpha: 1.0).CGColor as CGColorRef
-//        gradientLayer.colors = [color1, color2]
-//        
-//        // 4
-//        gradientLayer.locations = [0.0, 1.0]
-//        
-//        // 5
-//        self.view.layer.addSublayer(gradientLayer)
-
+        let layer = CAGradientLayer()
+        layer.frame = CGRect(x:0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
+        layer.colors = [UIColor.init(red: 175/255, green: 101/255, blue:197/255, alpha: 1).CGColor, UIColor.init(red: 119/255, green: 53/255, blue:147/255, alpha: 1).CGColor]
+        view.layer.insertSublayer(layer, below: btnUpload.layer)
         modalView.hidden = true
     }
 
