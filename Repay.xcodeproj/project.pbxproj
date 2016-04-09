@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0AA720DB1CB8CCB800BC3B47 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA720DA1CB8CCB800BC3B47 /* UploadViewController.swift */; };
 		0AA720DF1CB8CE0D00BC3B47 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA720DE1CB8CE0D00BC3B47 /* HistoryViewController.swift */; };
+		0AA720E11CB95F0E00BC3B47 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA720E01CB95F0E00BC3B47 /* UploadViewController.swift */; };
+		0AA720E31CB96A5400BC3B47 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA720E21CB96A5400BC3B47 /* HomeViewController.swift */; };
 		62C0781D1CB8BB8F0084B1E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C0781C1CB8BB8F0084B1E9 /* AppDelegate.swift */; };
 		62C0781F1CB8BB8F0084B1E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C0781E1CB8BB8F0084B1E9 /* ViewController.swift */; };
 		62C078221CB8BB8F0084B1E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C078201CB8BB8F0084B1E9 /* Main.storyboard */; };
@@ -36,8 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0AA720DA1CB8CCB800BC3B47 /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UploadViewController.swift; path = Views/UploadViewController.swift; sourceTree = "<group>"; };
 		0AA720DE1CB8CE0D00BC3B47 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		0AA720E01CB95F0E00BC3B47 /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
+		0AA720E21CB96A5400BC3B47 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		62C078191CB8BB8F0084B1E9 /* Repay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Repay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C0781C1CB8BB8F0084B1E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62C0781E1CB8BB8F0084B1E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -104,7 +106,8 @@
 				62C0781C1CB8BB8F0084B1E9 /* AppDelegate.swift */,
 				62C0781E1CB8BB8F0084B1E9 /* ViewController.swift */,
 				62C078201CB8BB8F0084B1E9 /* Main.storyboard */,
-				0AA720DA1CB8CCB800BC3B47 /* UploadViewController.swift */,
+				0AA720E21CB96A5400BC3B47 /* HomeViewController.swift */,
+				0AA720E01CB95F0E00BC3B47 /* UploadViewController.swift */,
 				62C078231CB8BB8F0084B1E9 /* Assets.xcassets */,
 				62C078251CB8BB8F0084B1E9 /* LaunchScreen.storyboard */,
 				62C078281CB8BB8F0084B1E9 /* Info.plist */,
@@ -265,8 +268,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AA720E31CB96A5400BC3B47 /* HomeViewController.swift in Sources */,
 				62C0781F1CB8BB8F0084B1E9 /* ViewController.swift in Sources */,
-				0AA720DB1CB8CCB800BC3B47 /* UploadViewController.swift in Sources */,
+				0AA720E11CB95F0E00BC3B47 /* UploadViewController.swift in Sources */,
 				62C0781D1CB8BB8F0084B1E9 /* AppDelegate.swift in Sources */,
 				0AA720DF1CB8CE0D00BC3B47 /* HistoryViewController.swift in Sources */,
 			);
