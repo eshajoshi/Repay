@@ -33,7 +33,7 @@
                             <tableViewSection id="SfJ-qL-LqF">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="100" id="JSS-py-sdV">
-                                        <rect key="frame" x="0.0" y="64" width="600" height="100"/>
+                                        <rect key="frame" x="0.0" y="64" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JSS-py-sdV" id="n4a-Bx-X6m">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
@@ -60,7 +60,7 @@
                                         <inset key="separatorInset" minX="1000" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="101" id="4SC-lz-Ent">
-                                        <rect key="frame" x="0.0" y="164" width="600" height="101"/>
+                                        <rect key="frame" x="0.0" y="164" width="375" height="101"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4SC-lz-Ent" id="opI-xG-dfe">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="100.5"/>
@@ -94,7 +94,7 @@
                                         <inset key="separatorInset" minX="1000" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="203" id="u8Y-fl-PfS">
-                                        <rect key="frame" x="0.0" y="265" width="600" height="203"/>
+                                        <rect key="frame" x="0.0" y="265" width="375" height="203"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u8Y-fl-PfS" id="0yr-uZ-hHA">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="202.5"/>
@@ -135,7 +135,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eZI-oZ-n6w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1586" y="-420"/>
+            <point key="canvasLocation" x="1533.5" y="-295.5"/>
         </scene>
         <!--Select Category-->
         <scene sceneID="3Hx-cB-Fxb">
@@ -312,9 +312,11 @@
                         <barButtonItem key="leftBarButtonItem" title="CANCEL" id="vbg-bX-LHG"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="barBtnCancel" destination="vbg-bX-LHG" id="blG-hk-uzg"/>
                         <outlet property="btnFood" destination="oJN-Vh-pLS" id="sAP-dJ-AWO"/>
                         <outlet property="btnLodging" destination="COk-ym-P0q" id="t7r-IK-gKu"/>
                         <outlet property="btnTransp" destination="Ouv-Jo-61c" id="DZf-et-PDL"/>
+                        <outlet property="navItem" destination="1J7-a8-cmy" id="5ev-N1-SxW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Pi-2L-dYY" userLabel="First Responder" sceneMemberID="firstResponder"/>
