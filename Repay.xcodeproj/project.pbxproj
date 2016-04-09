@@ -97,6 +97,9 @@
 		62C0781B1CB8BB8F0084B1E9 /* Repay */ = {
 			isa = PBXGroup;
 			children = (
+				62C0784C1CB8BD8C0084B1E9 /* Controller */,
+				62C0784B1CB8BD850084B1E9 /* View */,
+				62C0784A1CB8BD770084B1E9 /* Model */,
 				62C0781C1CB8BB8F0084B1E9 /* AppDelegate.swift */,
 				62C0781E1CB8BB8F0084B1E9 /* ViewController.swift */,
 				62C078201CB8BB8F0084B1E9 /* Main.storyboard */,
@@ -123,6 +126,28 @@
 				62C0783E1CB8BB900084B1E9 /* Info.plist */,
 			);
 			path = RepayUITests;
+			sourceTree = "<group>";
+		};
+		62C0784A1CB8BD770084B1E9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		62C0784B1CB8BD850084B1E9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			path = /Users/eshajoshi/Documents/Repay/Repay;
+			sourceTree = "<absolute>";
+		};
+		62C0784C1CB8BD8C0084B1E9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
