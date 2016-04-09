@@ -78,8 +78,17 @@ class HomeViewController: UIViewController {
         modalView.clipsToBounds = true
         
         btnAirbnb.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue:229/255, alpha: 1);
+        btnAirbnb.layer.cornerRadius = 6.0
+        btnAirbnb.layer.borderWidth = 0
+        btnAirbnb.clipsToBounds = true
         btnApple.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue:229/255, alpha: 1);
+        btnApple.layer.cornerRadius = 6.0
+        btnApple.layer.borderWidth = 0
+        btnApple.clipsToBounds = true
         btnGoogle.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue:229/255, alpha: 1);
+        btnGoogle.layer.cornerRadius = 6.0
+        btnGoogle.layer.borderWidth = 0
+        btnGoogle.clipsToBounds = true
     }
     
     // ------ App Stuff -------
