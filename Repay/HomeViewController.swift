@@ -9,7 +9,19 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    var company: UITextField!
+    
+    @IBOutlet weak var modalView: UIView!
+    
+    @IBAction func handleAppleClicked(sender: UIButton) {
+        company.text = "Apple"
+        modalView.hidden = true
+    }
 
+    @IBAction func handleModalClicked(sender: AnyObject) {
+        modalView.hidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -20,7 +32,8 @@ class HomeViewController: UIViewController {
         UINavigationBar.appearance().backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
         // Set translucent. (Default value is already true, so this can be removed if desired.)
         UINavigationBar.appearance().translucent = true
-
+        
+        modalView.hidden = true
     }
 
     override func didReceiveMemoryWarning() {
