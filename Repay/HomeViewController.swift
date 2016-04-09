@@ -36,13 +36,23 @@ class HomeViewController: UIViewController {
     @IBOutlet var btnApple: UIButton!
     @IBOutlet var btnGoogle: UIButton!
     
-    
     @IBAction func showModal(sender: AnyObject) {
         modalView.hidden = false
         showBlur()
     }
     
     @IBAction func handleAppleClicked(sender: AnyObject) { companyLabelText.text = "Apple Inc"
+        modalView.hidden = true
+        hideBlur()
+    }
+    
+    @IBAction func handleGoogleClicked(sender: AnyObject) {
+        companyLabelText.text = "Left for Google, Inc"
+        modalView.hidden = true
+        hideBlur()
+    }
+    
+    @IBAction func handleCancelClicked(sender: AnyObject) {
         modalView.hidden = true
         hideBlur()
     }
@@ -63,6 +73,10 @@ class HomeViewController: UIViewController {
     }
     
     func customizeModal() {
+        modalView.layer.cornerRadius = 10.0
+        modalView.layer.borderWidth = 0
+        modalView.clipsToBounds = true
+        
         btnAirbnb.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue:229/255, alpha: 1);
         btnApple.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue:229/255, alpha: 1);
         btnGoogle.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue:229/255, alpha: 1);
