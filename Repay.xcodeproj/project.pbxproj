@@ -1,0 +1,508 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		62C0781D1CB8BB8F0084B1E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C0781C1CB8BB8F0084B1E9 /* AppDelegate.swift */; };
+		62C0781F1CB8BB8F0084B1E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C0781E1CB8BB8F0084B1E9 /* ViewController.swift */; };
+		62C078221CB8BB8F0084B1E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C078201CB8BB8F0084B1E9 /* Main.storyboard */; };
+		62C078241CB8BB8F0084B1E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62C078231CB8BB8F0084B1E9 /* Assets.xcassets */; };
+		62C078271CB8BB8F0084B1E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C078251CB8BB8F0084B1E9 /* LaunchScreen.storyboard */; };
+		62C078321CB8BB900084B1E9 /* RepayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C078311CB8BB900084B1E9 /* RepayTests.swift */; };
+		62C0783D1CB8BB900084B1E9 /* RepayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C0783C1CB8BB900084B1E9 /* RepayUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		62C0782E1CB8BB900084B1E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 62C078111CB8BB8F0084B1E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 62C078181CB8BB8F0084B1E9;
+			remoteInfo = Repay;
+		};
+		62C078391CB8BB900084B1E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 62C078111CB8BB8F0084B1E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 62C078181CB8BB8F0084B1E9;
+			remoteInfo = Repay;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		62C078191CB8BB8F0084B1E9 /* Repay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Repay.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		62C0781C1CB8BB8F0084B1E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		62C0781E1CB8BB8F0084B1E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		62C078211CB8BB8F0084B1E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		62C078231CB8BB8F0084B1E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		62C078261CB8BB8F0084B1E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		62C078281CB8BB8F0084B1E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62C0782D1CB8BB900084B1E9 /* RepayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RepayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		62C078311CB8BB900084B1E9 /* RepayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepayTests.swift; sourceTree = "<group>"; };
+		62C078331CB8BB900084B1E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62C078381CB8BB900084B1E9 /* RepayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RepayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		62C0783C1CB8BB900084B1E9 /* RepayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepayUITests.swift; sourceTree = "<group>"; };
+		62C0783E1CB8BB900084B1E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		62C078161CB8BB8F0084B1E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62C0782A1CB8BB900084B1E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62C078351CB8BB900084B1E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		62C078101CB8BB8F0084B1E9 = {
+			isa = PBXGroup;
+			children = (
+				62C0781B1CB8BB8F0084B1E9 /* Repay */,
+				62C078301CB8BB900084B1E9 /* RepayTests */,
+				62C0783B1CB8BB900084B1E9 /* RepayUITests */,
+				62C0781A1CB8BB8F0084B1E9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		62C0781A1CB8BB8F0084B1E9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				62C078191CB8BB8F0084B1E9 /* Repay.app */,
+				62C0782D1CB8BB900084B1E9 /* RepayTests.xctest */,
+				62C078381CB8BB900084B1E9 /* RepayUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		62C0781B1CB8BB8F0084B1E9 /* Repay */ = {
+			isa = PBXGroup;
+			children = (
+				62C0781C1CB8BB8F0084B1E9 /* AppDelegate.swift */,
+				62C0781E1CB8BB8F0084B1E9 /* ViewController.swift */,
+				62C078201CB8BB8F0084B1E9 /* Main.storyboard */,
+				62C078231CB8BB8F0084B1E9 /* Assets.xcassets */,
+				62C078251CB8BB8F0084B1E9 /* LaunchScreen.storyboard */,
+				62C078281CB8BB8F0084B1E9 /* Info.plist */,
+			);
+			path = Repay;
+			sourceTree = "<group>";
+		};
+		62C078301CB8BB900084B1E9 /* RepayTests */ = {
+			isa = PBXGroup;
+			children = (
+				62C078311CB8BB900084B1E9 /* RepayTests.swift */,
+				62C078331CB8BB900084B1E9 /* Info.plist */,
+			);
+			path = RepayTests;
+			sourceTree = "<group>";
+		};
+		62C0783B1CB8BB900084B1E9 /* RepayUITests */ = {
+			isa = PBXGroup;
+			children = (
+				62C0783C1CB8BB900084B1E9 /* RepayUITests.swift */,
+				62C0783E1CB8BB900084B1E9 /* Info.plist */,
+			);
+			path = RepayUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		62C078181CB8BB8F0084B1E9 /* Repay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 62C078411CB8BB900084B1E9 /* Build configuration list for PBXNativeTarget "Repay" */;
+			buildPhases = (
+				62C078151CB8BB8F0084B1E9 /* Sources */,
+				62C078161CB8BB8F0084B1E9 /* Frameworks */,
+				62C078171CB8BB8F0084B1E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Repay;
+			productName = Repay;
+			productReference = 62C078191CB8BB8F0084B1E9 /* Repay.app */;
+			productType = "com.apple.product-type.application";
+		};
+		62C0782C1CB8BB900084B1E9 /* RepayTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 62C078441CB8BB900084B1E9 /* Build configuration list for PBXNativeTarget "RepayTests" */;
+			buildPhases = (
+				62C078291CB8BB900084B1E9 /* Sources */,
+				62C0782A1CB8BB900084B1E9 /* Frameworks */,
+				62C0782B1CB8BB900084B1E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				62C0782F1CB8BB900084B1E9 /* PBXTargetDependency */,
+			);
+			name = RepayTests;
+			productName = RepayTests;
+			productReference = 62C0782D1CB8BB900084B1E9 /* RepayTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		62C078371CB8BB900084B1E9 /* RepayUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 62C078471CB8BB900084B1E9 /* Build configuration list for PBXNativeTarget "RepayUITests" */;
+			buildPhases = (
+				62C078341CB8BB900084B1E9 /* Sources */,
+				62C078351CB8BB900084B1E9 /* Frameworks */,
+				62C078361CB8BB900084B1E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				62C0783A1CB8BB900084B1E9 /* PBXTargetDependency */,
+			);
+			name = RepayUITests;
+			productName = RepayUITests;
+			productReference = 62C078381CB8BB900084B1E9 /* RepayUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		62C078111CB8BB8F0084B1E9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Esha Joshi";
+				TargetAttributes = {
+					62C078181CB8BB8F0084B1E9 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = V6SSATY838;
+					};
+					62C0782C1CB8BB900084B1E9 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = V6SSATY838;
+						TestTargetID = 62C078181CB8BB8F0084B1E9;
+					};
+					62C078371CB8BB900084B1E9 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = V6SSATY838;
+						TestTargetID = 62C078181CB8BB8F0084B1E9;
+					};
+				};
+			};
+			buildConfigurationList = 62C078141CB8BB8F0084B1E9 /* Build configuration list for PBXProject "Repay" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 62C078101CB8BB8F0084B1E9;
+			productRefGroup = 62C0781A1CB8BB8F0084B1E9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				62C078181CB8BB8F0084B1E9 /* Repay */,
+				62C0782C1CB8BB900084B1E9 /* RepayTests */,
+				62C078371CB8BB900084B1E9 /* RepayUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		62C078171CB8BB8F0084B1E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62C078271CB8BB8F0084B1E9 /* LaunchScreen.storyboard in Resources */,
+				62C078241CB8BB8F0084B1E9 /* Assets.xcassets in Resources */,
+				62C078221CB8BB8F0084B1E9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62C0782B1CB8BB900084B1E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62C078361CB8BB900084B1E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		62C078151CB8BB8F0084B1E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62C0781F1CB8BB8F0084B1E9 /* ViewController.swift in Sources */,
+				62C0781D1CB8BB8F0084B1E9 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62C078291CB8BB900084B1E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62C078321CB8BB900084B1E9 /* RepayTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62C078341CB8BB900084B1E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62C0783D1CB8BB900084B1E9 /* RepayUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		62C0782F1CB8BB900084B1E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 62C078181CB8BB8F0084B1E9 /* Repay */;
+			targetProxy = 62C0782E1CB8BB900084B1E9 /* PBXContainerItemProxy */;
+		};
+		62C0783A1CB8BB900084B1E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 62C078181CB8BB8F0084B1E9 /* Repay */;
+			targetProxy = 62C078391CB8BB900084B1E9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		62C078201CB8BB8F0084B1E9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				62C078211CB8BB8F0084B1E9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		62C078251CB8BB8F0084B1E9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				62C078261CB8BB8F0084B1E9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		62C0783F1CB8BB900084B1E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		62C078401CB8BB900084B1E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		62C078421CB8BB900084B1E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Repay/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.Repay;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		62C078431CB8BB900084B1E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Repay/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.Repay;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		62C078451CB8BB900084B1E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = RepayTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.RepayTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Repay.app/Repay";
+			};
+			name = Debug;
+		};
+		62C078461CB8BB900084B1E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = RepayTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.RepayTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Repay.app/Repay";
+			};
+			name = Release;
+		};
+		62C078481CB8BB900084B1E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = RepayUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.RepayUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Repay;
+			};
+			name = Debug;
+		};
+		62C078491CB8BB900084B1E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = RepayUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.RepayUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Repay;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		62C078141CB8BB8F0084B1E9 /* Build configuration list for PBXProject "Repay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62C0783F1CB8BB900084B1E9 /* Debug */,
+				62C078401CB8BB900084B1E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		62C078411CB8BB900084B1E9 /* Build configuration list for PBXNativeTarget "Repay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62C078421CB8BB900084B1E9 /* Debug */,
+				62C078431CB8BB900084B1E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		62C078441CB8BB900084B1E9 /* Build configuration list for PBXNativeTarget "RepayTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62C078451CB8BB900084B1E9 /* Debug */,
+				62C078461CB8BB900084B1E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		62C078471CB8BB900084B1E9 /* Build configuration list for PBXNativeTarget "RepayUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62C078481CB8BB900084B1E9 /* Debug */,
+				62C078491CB8BB900084B1E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 62C078111CB8BB8F0084B1E9 /* Project object */;
+}
