@@ -50,7 +50,7 @@
             </objects>
             <point key="canvasLocation" x="-1029.5" y="-447.5"/>
         </scene>
-        <!--Repay-->
+        <!--Title-->
         <scene sceneID="chw-MT-VWH">
             <objects>
                 <viewController id="KUO-Qh-pfq" customClass="HomeViewController" customModule="Repay" customModuleProvider="target" sceneMemberID="viewController">
@@ -91,20 +91,57 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Left for Apple Inc" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oe-WI-vN6">
-                                <rect key="frame" x="0.0" y="266" width="375" height="86"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HCt-MC-SyI">
+                                <rect key="frame" x="66" y="219" width="250" height="203"/>
+                                <subviews>
+                                    <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oso-WJ-7fb">
+                                        <rect key="frame" x="0.0" y="1" width="250" height="44"/>
+                                        <items>
+                                            <navigationItem title="Choose Company" id="v9h-jC-Lkp"/>
+                                        </items>
+                                    </navigationBar>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Af-Kz-aNY">
+                                        <rect key="frame" x="0.0" y="55" width="250" height="30"/>
+                                        <state key="normal" title="Airbnb"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rul-GZ-qfm">
+                                        <rect key="frame" x="0.0" y="154" width="250" height="30"/>
+                                        <state key="normal" title="Google"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JjO-PH-0Ty">
+                                        <rect key="frame" x="0.0" y="105" width="250" height="30"/>
+                                        <state key="normal" title="Apple"/>
+                                        <connections>
+                                            <action selector="handleAppleClicked:" destination="KUO-Qh-pfq" eventType="touchUpInside" id="4K2-0Z-yHV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Left for Airbnb Inc" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oe-WI-vN6">
+                                <rect key="frame" x="0.0" y="273" width="375" height="86"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.46666666666666667" green="0.20784313725490194" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Repay" id="s2P-xz-NUe"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="dwK-rT-03G">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="8zW-u8-3AG">
+                            <connections>
+                                <action selector="handleModalClicked:" destination="KUO-Qh-pfq" id="r4y-qP-tz1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="btnHistory" destination="TF5-U2-zXE" id="wEi-Aa-iDm"/>
-                        <outlet property="btnUpload" destination="ktM-Oh-BIP" id="cam-f8-71g"/>
+                        <outlet property="btnHistory" destination="TF5-U2-zXE" id="ie0-eg-7Ea"/>
+                        <outlet property="btnUpload" destination="ktM-Oh-BIP" id="KW8-Dq-jPe"/>
+                        <outlet property="companyLabelText" destination="8oe-WI-vN6" id="nHE-Go-4Cu"/>
+                        <outlet property="modalView" destination="HCt-MC-SyI" id="C2Q-oi-OMC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l0E-ZN-gwf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -286,8 +323,8 @@
             <objects>
                 <viewController id="fdD-Oi-Cgn" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Gao-ar-1Ro"/>
-                        <viewControllerLayoutGuide type="bottom" id="A7x-fB-oUu"/>
+                        <viewControllerLayoutGuide type="top" id="ONB-60-XqI"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Pq-hY-wLv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ANR-nF-EH1">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
