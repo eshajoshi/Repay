@@ -10,16 +10,40 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet var btnUpload: UIButton!
+    @IBOutlet var btnHistory: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        // Make navigation bar transparent
         UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        // Sets shadow (line below the bar) to a blank image
         UINavigationBar.appearance().shadowImage = UIImage()
-        // Sets the translucent background color
         UINavigationBar.appearance().backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
-        // Set translucent. (Default value is already true, so this can be removed if desired.)
         UINavigationBar.appearance().translucent = true
+        
+        //Change color
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        
+        //Customize buttons
+        btnUpload.backgroundColor = UIColor.whiteColor();
+        btnHistory.backgroundColor = UIColor.whiteColor();
+        
+        //Gradient
+        let gradientLayer = CAGradientLayer();
+        
+        gradientLayer.frame = self.view.bounds
+
+        let color1 = UIColor.yellowColor().CGColor as CGColorRef
+        let color2 = UIColor(red: 1.0, green: 0, blue: 0, alpha: 1.0).CGColor as CGColorRef
+        gradientLayer.colors = [color1, color2]
+        
+        // 4
+        gradientLayer.locations = [0.0, 1.0]
+        
+        // 5
+        self.view.layer.addSublayer(gradientLayer)
 
     }
 
