@@ -17,15 +17,15 @@ class CategoryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        btnFood.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
+        btnFood.backgroundColor = UIColor.groupTableViewBackgroundColor();
         btnFood.layer.cornerRadius = 5
         btnFood.layer.borderWidth = 0
         
-        btnLodging.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
+        btnLodging.backgroundColor = UIColor.groupTableViewBackgroundColor();
         btnLodging.layer.cornerRadius = 5
         btnLodging.layer.borderWidth = 0
         
-        btnTransp.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
+        btnTransp.backgroundColor = UIColor.groupTableViewBackgroundColor();
         btnTransp.layer.cornerRadius = 5
         btnTransp.layer.borderWidth = 0
 
