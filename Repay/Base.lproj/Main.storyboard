@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A278b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -160,14 +160,6 @@
                                         <color key="textColor" red="0.46666666670000001" green="0.20784313730000001" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Af-Kz-aNY">
-                                        <rect key="frame" x="8" y="68" width="280" height="60"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
-                                        <inset key="contentEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Airbnb">
-                                            <color key="titleColor" red="0.46666666670000001" green="0.20784313730000001" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rul-GZ-qfm">
                                         <rect key="frame" x="8" y="212" width="284" height="60"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
@@ -175,6 +167,19 @@
                                         <state key="normal" title="Google">
                                             <color key="titleColor" red="0.46666666670000001" green="0.20784313730000001" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="handleGoogleClicked:" destination="KUO-Qh-pfq" eventType="touchUpInside" id="jR3-f7-bNC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5WH-ba-ULT">
+                                        <rect key="frame" x="6" y="269" width="284" height="60"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="0.46666666670000001" green="0.20784313730000001" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="handleCancelClicked:" destination="KUO-Qh-pfq" eventType="touchUpInside" id="TDz-xa-tfH"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JjO-PH-0Ty">
                                         <rect key="frame" x="8" y="138" width="280" height="60"/>
@@ -185,6 +190,17 @@
                                         </state>
                                         <connections>
                                             <action selector="handleAppleClicked:" destination="KUO-Qh-pfq" eventType="touchUpInside" id="yuN-dq-WRi"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Af-Kz-aNY">
+                                        <rect key="frame" x="8" y="70" width="280" height="60"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                                        <inset key="contentEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Airbnb">
+                                            <color key="titleColor" red="0.46666666670000001" green="0.20784313730000001" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="handleAirbnbClicked:" destination="KUO-Qh-pfq" eventType="touchUpInside" id="9kH-Hf-YMC"/>
                                         </connections>
                                     </button>
                                 </subviews>
