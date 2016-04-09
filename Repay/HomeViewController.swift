@@ -39,22 +39,51 @@ class HomeViewController: UIViewController {
     @IBAction func showModal(sender: AnyObject) {
         modalView.hidden = false
         showBlur()
+        showModal()
     }
     
-    @IBAction func handleAppleClicked(sender: AnyObject) { companyLabelText.text = "Apple Inc"
-        modalView.hidden = true
+    @IBAction func handleAppleClicked(sender: AnyObject) {
+        companyLabelText.text = "Apple"
+        setLogo("apple_large");
+        hideModal()
         hideBlur()
     }
     
     @IBAction func handleGoogleClicked(sender: AnyObject) {
-        companyLabelText.text = "Left for Google, Inc"
-        modalView.hidden = true
+        companyLabelText.text = "Google"
+        hideModal()
         hideBlur()
     }
     
     @IBAction func handleCancelClicked(sender: AnyObject) {
-        modalView.hidden = true
+
+        hideModal()
         hideBlur()
+    }
+    
+    func showModal() {
+        self.modalView.hidden = false;
+        UIView.animateWithDuration(0.4,
+                                   delay: 0.0,
+                                   options: .CurveEaseInOut,
+                                   animations: {
+                                    self.modalView.alpha = 1
+            },
+                                   completion: { finished in
+                                    print("Bug moved left!")
+        })
+    }
+    
+    func hideModal() {
+        UIView.animateWithDuration(0.1,
+                                   delay: 0.0,
+                                   options: .CurveEaseInOut,
+                                   animations: {
+                                    self.modalView.alpha = 0
+            },
+                                   completion: { finished in
+                                    self.modalView.hidden = true;
+        })
     }
     
     func hideBlur() {
@@ -104,24 +133,14 @@ class HomeViewController: UIViewController {
     
     func setLogo(id: String) {
         let image: UIImage = UIImage(named: id)!
-        companyImage.layer.borderWidth = 1.0
-        companyImage.layer.masksToBounds = true
-        companyImage.layer.borderColor = UIColor.whiteColor().CGColor
-        companyImage.layer.cornerRadius = companyImage.frame.size.width/2
-        companyImage.clipsToBounds = true
         companyImage.image = image;
-        
-//        let shadowView = UIView()
-//        shadowView.layer.shadowColor = UIColor.blackColor().CGColor
-//        shadowView.layer.shadowRadius = 5.0;
-//        shadowView.layer.shadowOffset = CGSizeMake(3.0, 3.0);
-//        shadowView.layer.shadowOpacity = 1.0;
-//        shadowView.addSubview(companyImage);
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         customizeModal();
+        
+        navigationController!.setNavigationBarHidden(true,animated: false);
 
         //Customize buttons
         btnUpload.backgroundColor = UIColor.init(red: 249/255, green: 249/255, blue: 249/255, alpha: 1);
@@ -137,10 +156,11 @@ class HomeViewController: UIViewController {
         loadBalance()
         
         //Customize company logo
-        setLogo("logo-apple");
+        setLogo("airbnb_large");
         
-        modalView.hidden = true
+        self.modalView.hidden = true;
         hideBlur()
+        hideModal()
     }
 
     override func didReceiveMemoryWarning() {
