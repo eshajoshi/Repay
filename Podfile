@@ -5,7 +5,6 @@ use_frameworks!
 
 target 'Repay' do
     pod 'Firebase', '>= 2.5.1'
-    pod "SACountingLabel"
 end
 
 target 'RepayTests' do

@@ -156,7 +156,7 @@
                                             <color key="titleColor" red="0.46666666670000001" green="0.20784313730000001" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="handleAirbnbClicked:" destination="KUO-Qh-pfq" eventType="touchUpInside" id="9kH-Hf-YMC"/>
+                                            <action selector="handleAirbnbClicked:" destination="KUO-Qh-pfq" eventType="touchUpInside" id="oEL-bl-F1s"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="airbnb_small" translatesAutoresizingMaskIntoConstraints="NO" id="IL6-rL-btb">
