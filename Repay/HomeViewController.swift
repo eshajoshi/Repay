@@ -1,19 +1,26 @@
 //
-//  UploadViewController.swift
+//  HomeViewController.swift
 //  Repay
 //
-//  Created by Kevin Vincent on 4/8/16.
+//  Created by Kevin Vincent on 4/9/16.
 //  Copyright © 2016 Esha Joshi. All rights reserved.
 //
 
 import UIKit
 
-class UploadViewController: UIViewController {
+class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        // Sets shadow (line below the bar) to a blank image
+        UINavigationBar.appearance().shadowImage = UIImage()
+        // Sets the translucent background color
+        UINavigationBar.appearance().backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+        // Set translucent. (Default value is already true, so this can be removed if desired.)
+        UINavigationBar.appearance().translucent = true
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,9 +28,6 @@ class UploadViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func cancel(sender: AnyObject) {
-    self.dismissViewControllerAnimated(true, completion: {});
-    }
 
     /*
     // MARK: - Navigation
