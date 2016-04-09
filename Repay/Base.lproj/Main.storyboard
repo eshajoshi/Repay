@@ -86,7 +86,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HCt-MC-SyI">
-                                <rect key="frame" x="66" y="357" width="250" height="203"/>
+                                <rect key="frame" x="66" y="219" width="250" height="203"/>
                                 <subviews>
                                     <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oso-WJ-7fb">
                                         <rect key="frame" x="0.0" y="1" width="250" height="44"/>
@@ -132,6 +132,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="companyLabelText" destination="8oe-WI-vN6" id="nHE-Go-4Cu"/>
                         <outlet property="modalView" destination="HCt-MC-SyI" id="C2Q-oi-OMC"/>
                     </connections>
                 </viewController>

@@ -9,12 +9,11 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    var company: UITextField!
-    
     @IBOutlet weak var modalView: UIView!
+    @IBOutlet weak var companyLabelText: UILabel!
     
     @IBAction func handleAppleClicked(sender: UIButton) {
-        company.text = "Apple"
+        companyLabelText.text = "Left for Apple Inc"
         modalView.hidden = true
     }
 
