@@ -1,0 +1,6 @@
+framework module Pods_Repay {
+  umbrella header "Pods-Repay-umbrella.h"
+
+  export *
+  module * { export * }
+}
