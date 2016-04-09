@@ -36,25 +36,29 @@ class HomeViewController: UIViewController {
     @IBOutlet var btnApple: UIButton!
     @IBOutlet var btnGoogle: UIButton!
     
-    @IBAction func handleModalClicked(sender: AnyObject) {
+    
+    @IBAction func showModal(sender: AnyObject) {
         modalView.hidden = false
         showBlur()
     }
     
-    @IBAction func handleAppleClicked(sender: AnyObject) { companyLabelText.text = "Left for Apple Inc"
+    @IBAction func handleAppleClicked(sender: AnyObject) { companyLabelText.text = "Apple Inc"
         modalView.hidden = true
         hideBlur()
     }
     
     func hideBlur() {
-        UIView.animateWithDuration(0.2) {
-             self.blur.alpha = 0.0
-        }
+        UIView.animateWithDuration(0.2, animations:{
+            self.blur.effect = nil
+        }, completion: { (value: Bool) in
+            self.blur.hidden = true
+        })
     }
     
     func showBlur() {
+        self.blur.hidden = false;
         UIView.animateWithDuration(0.2) {
-            self.blur.alpha = 1.0
+            self.blur.effect = UIBlurEffect(style: .Dark)
         }
     }
     
@@ -95,20 +99,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         customizeModal();
-        
-        // Make navigation bar transparent
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        UINavigationBar.appearance().shadowImage = UIImage()
-        UINavigationBar.appearance().backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
-        UINavigationBar.appearance().translucent = true
-        navigationController!.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Avenir Next", size: 17)!]
 
-        
-        
-        //Change color
-        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-        
         //Customize buttons
         btnUpload.backgroundColor = UIColor.init(red: 249/255, green: 249/255, blue: 249/255, alpha: 1);
         btnHistory.backgroundColor = UIColor.init(red: 249/255, green: 249/255, blue: 249/255, alpha: 1);
@@ -126,7 +117,7 @@ class HomeViewController: UIViewController {
         setLogo("logo-apple");
         
         modalView.hidden = true
-        self.blur.alpha = 0.0;
+        hideBlur()
     }
 
     override func didReceiveMemoryWarning() {
