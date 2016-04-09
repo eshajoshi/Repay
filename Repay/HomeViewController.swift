@@ -42,6 +42,13 @@ class HomeViewController: UIViewController {
         showModal()
     }
     
+
+    @IBAction func handleAirbnbClicked(sender: AnyObject) {
+        companyLabelText.text = "Airbnb"
+        setLogo("airbnb_large");
+        hideModal()
+        hideBlur()
+    }
     @IBAction func handleAppleClicked(sender: AnyObject) {
         companyLabelText.text = "Apple"
         setLogo("apple_large");
@@ -51,6 +58,7 @@ class HomeViewController: UIViewController {
     
     @IBAction func handleGoogleClicked(sender: AnyObject) {
         companyLabelText.text = "Google"
+        setLogo("google_large");
         hideModal()
         hideBlur()
     }
