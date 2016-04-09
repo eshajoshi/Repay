@@ -174,6 +174,9 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJN-Vh-pLS">
                                                     <rect key="frame" x="14" y="0.0" width="335" height="75"/>
+                                                    <connections>
+                                                        <segue destination="RM0-n3-tfc" kind="presentation" identifier="Request Reimbursement" id="bdy-TK-oed"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Food" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IsT-1t-DdD">
                                                     <rect key="frame" x="40" y="28" width="41" height="24"/>
@@ -193,8 +196,8 @@
                                                     <color key="textColor" red="0.31764705879999999" green="0.078431372550000003" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m1O-Sz-hJj">
-                                                    <rect key="frame" x="301" y="-19" width="240" height="128"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="apple_large" translatesAutoresizingMaskIntoConstraints="NO" id="m1O-Sz-hJj">
+                                                    <rect key="frame" x="328" y="38" width="7.5" height="14"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -228,6 +231,9 @@
                                                     <color key="textColor" red="0.31764705879999999" green="0.078431372550000003" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="apple_large" translatesAutoresizingMaskIntoConstraints="NO" id="eap-sM-vU0">
+                                                    <rect key="frame" x="328" y="39" width="7.5" height="13"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="1000" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -260,6 +266,9 @@
                                                     <color key="textColor" red="0.31764705879999999" green="0.078431372550000003" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="apple_large" translatesAutoresizingMaskIntoConstraints="NO" id="3a7-9X-Div">
+                                                    <rect key="frame" x="328" y="38" width="7.5" height="13"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="1000" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -313,4 +322,7 @@
             <point key="canvasLocation" x="825" y="-295"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="apple_large" width="100" height="100"/>
+    </resources>
 </document>
