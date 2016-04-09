@@ -8,27 +8,54 @@
 
 import UIKit
 
+extension String {
+    public func indexOfCharacter(char: Character) -> Int? {
+        if let idx = self.characters.indexOf(char) {
+            return self.startIndex.distanceTo(idx)
+        }
+        return nil
+    }
+}
+
 class HomeViewController: UIViewController {
     
-    @IBOutlet weak var modalView: UIView!
+    
+    @IBOutlet var companyImage: UIImageView!
+    @IBOutlet var balanceLabelText: UILabel!
     @IBOutlet weak var companyLabelText: UILabel!
 
     @IBOutlet var btnUpload: UIButton!
     @IBOutlet var btnHistory: UIButton!
 
-    
+
     //------- MODAL STUFF --------
+
+    @IBOutlet var blur: UIVisualEffectView!
+    @IBOutlet var modalView: UIView!
     @IBOutlet var btnAirbnb: UIButton!
     @IBOutlet var btnApple: UIButton!
     @IBOutlet var btnGoogle: UIButton!
     
     @IBAction func handleModalClicked(sender: AnyObject) {
         modalView.hidden = false
+        showBlur()
     }
-    
     
     @IBAction func handleAppleClicked(sender: AnyObject) { companyLabelText.text = "Left for Apple Inc"
         modalView.hidden = true
+        hideBlur()
+    }
+    
+    func hideBlur() {
+        UIView.animateWithDuration(0.2) {
+             self.blur.alpha = 0.0
+        }
+    }
+    
+    func showBlur() {
+        UIView.animateWithDuration(0.2) {
+            self.blur.alpha = 1.0
+        }
     }
     
     func customizeModal() {
@@ -38,6 +65,32 @@ class HomeViewController: UIViewController {
     }
     
     // ------ App Stuff -------
+    func loadBalance() {
+        let longString = "$400.00"
+        
+        let attributedString = NSMutableAttributedString(string: longString, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(80)])
+        
+        attributedString.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir Next", size: 48.0)!, range: NSRange(location:longString.indexOfCharacter(".")!+1,length:2))
+        
+        balanceLabelText.attributedText = attributedString
+    }
+    
+    func setLogo(id: String) {
+        let image: UIImage = UIImage(named: id)!
+        companyImage.layer.borderWidth = 1.0
+        companyImage.layer.masksToBounds = true
+        companyImage.layer.borderColor = UIColor.whiteColor().CGColor
+        companyImage.layer.cornerRadius = companyImage.frame.size.width/2
+        companyImage.clipsToBounds = true
+        companyImage.image = image;
+        
+//        let shadowView = UIView()
+//        shadowView.layer.shadowColor = UIColor.blackColor().CGColor
+//        shadowView.layer.shadowRadius = 5.0;
+//        shadowView.layer.shadowOffset = CGSizeMake(3.0, 3.0);
+//        shadowView.layer.shadowOpacity = 1.0;
+//        shadowView.addSubview(companyImage);
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,21 +101,32 @@ class HomeViewController: UIViewController {
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
         UINavigationBar.appearance().translucent = true
+        navigationController!.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Avenir Next", size: 17)!]
+
+        
         
         //Change color
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         
         //Customize buttons
-        btnUpload.backgroundColor = UIColor.whiteColor();
-        btnHistory.backgroundColor = UIColor.whiteColor();
+        btnUpload.backgroundColor = UIColor.init(red: 249/255, green: 249/255, blue: 249/255, alpha: 1);
+        btnHistory.backgroundColor = UIColor.init(red: 249/255, green: 249/255, blue: 249/255, alpha: 1);
         
         //Gradient
         let layer = CAGradientLayer()
         layer.frame = CGRect(x:0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
         layer.colors = [UIColor.init(red: 175/255, green: 101/255, blue:197/255, alpha: 1).CGColor, UIColor.init(red: 119/255, green: 53/255, blue:147/255, alpha: 1).CGColor]
         view.layer.insertSublayer(layer, below: btnUpload.layer)
+        
+        //Balance Customization
+        loadBalance()
+        
+        //Customize company logo
+        setLogo("logo-apple");
+        
         modalView.hidden = true
+        self.blur.alpha = 0.0;
     }
 
     override func didReceiveMemoryWarning() {
