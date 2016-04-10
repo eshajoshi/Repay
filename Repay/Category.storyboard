@@ -154,6 +154,7 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="amountInput" destination="De8-YZ-fs9" id="2rX-wt-9aT"/>
                         <outlet property="barBtnBack" destination="pKu-o7-DrV" id="UJ4-Ul-yFX"/>
                         <outlet property="btnRequest" destination="WV7-Eb-jCH" id="1oJ-4D-3WE"/>
                         <outlet property="imagePreview" destination="iVY-v2-zP5" id="783-fc-urG"/>

@@ -128,6 +128,14 @@ class HomeViewController: UIViewController {
     
     // ------ App Stuff -------
     func loadBalance() {
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let amt = defaults.stringForKey("balanceFood")
+        {
+           // amount.text = amt
+        }
+
+        
         let longString = "$400.00"
         
         let attributedString = NSMutableAttributedString(string: longString, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(80)])

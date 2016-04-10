@@ -11,6 +11,7 @@ import UIKit
 class UploadViewController:
     UITableViewController,UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    @IBOutlet var amountInput: UITextField!
     @IBOutlet var barBtnBack: UIBarButtonItem!
     @IBOutlet var btnRequest: UIButton!
     @IBOutlet var imagePreview: UIImageView!
@@ -27,6 +28,8 @@ class UploadViewController:
         //base64 it
         let imageData = UIImagePNGRepresentation(imagePreview.image!)
         let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+        let prefs = NSUserDefaults.standardUserDefaults()
+        prefs.setValue(amountInput.text, forKey: "amount")
         
     }
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {

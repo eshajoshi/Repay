@@ -31,6 +31,13 @@ class ConfirmViewController: UIViewController {
         view.layer.insertSublayer(layer, below: amount.layer)
         
         yaybtn.backgroundColor = UIColor.init(red: 249/255, green: 249/255, blue: 249/255, alpha: 1);
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let amt = defaults.stringForKey("amount")
+        {
+            amount.text = amt
+        }
+
 
     }
 
