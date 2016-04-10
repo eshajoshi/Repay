@@ -31,13 +31,6 @@ class UploadViewController:
         imagePreview.contentMode = UIViewContentMode.ScaleAspectFit;
         imagePreview.image = image;
         
-        
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController!.navigationBar.barStyle = UIBarStyle.Black
-        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
-        btnRequest.backgroundColor = UIColor.groupTableViewBackgroundColor();
     }
 
     override func viewDidLoad() {
@@ -48,6 +41,8 @@ class UploadViewController:
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        btnRequest.backgroundColor = UIColor.groupTableViewBackgroundColor();
 
     }
 
