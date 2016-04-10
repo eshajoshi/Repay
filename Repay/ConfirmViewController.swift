@@ -12,6 +12,12 @@ class ConfirmViewController: UIViewController {
 
     @IBOutlet var amount: UILabel!
     
+    @IBOutlet var yaybtn: UIButton!
+    @IBAction func yay(sender: AnyObject) {
+        navigationController!.dismissViewControllerAnimated(true) { 
+            
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,6 +29,9 @@ class ConfirmViewController: UIViewController {
         layer.frame = CGRect(x:0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
         layer.colors = [UIColor.init(red: 42/255, green: 183/255, blue:133/255, alpha: 1).CGColor, UIColor.init(red: 0/255, green: 94/255, blue:43/255, alpha: 1).CGColor]
         view.layer.insertSublayer(layer, below: amount.layer)
+        
+        yaybtn.backgroundColor = UIColor.init(red: 249/255, green: 249/255, blue: 249/255, alpha: 1);
+
     }
 
     override func didReceiveMemoryWarning() {
