@@ -7,15 +7,22 @@
 //
 
 import UIKit
+import Firebase
+
+let repayFirebaseUrl = "https://repay.firebaseio.com/receipts"
 
 class UploadViewController:
-    UITableViewController,UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    UITableViewController,UINavigationControllerDelegate,
+        UIImagePickerControllerDelegate {
+    
+    var ref = Firebase(url: repayFirebaseUrl)
     
     @IBOutlet var amountInput: UITextField!
     @IBOutlet var barBtnBack: UIBarButtonItem!
     @IBOutlet var btnRequest: UIButton!
     @IBOutlet var imagePreview: UIImageView!
     var imagePicker: UIImagePickerController!
+
     
     @IBAction func onCamera(sender: AnyObject) {
         imagePicker = UIImagePickerController()
@@ -30,6 +37,17 @@ class UploadViewController:
         let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
         let prefs = NSUserDefaults.standardUserDefaults()
         prefs.setValue(amountInput.text, forKey: "amount")
+        
+        let receipts = ["first_name": "Jared",
+                        "id": 765,
+                        "image": base64String,
+                        "last_name": "Hirata",
+                        "position": "UI/UX Designer",
+                        "requested_amt": "7.24",
+                        "status": "todo",
+                        "timestamp": NSDate().timeIntervalSince1970 * 1000]
+        
+        ref.setValue(receipts)
         
     }
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
