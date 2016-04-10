@@ -1,541 +1,1275 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		0AA720DF1CB8CE0D00BC3B47 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA720DE1CB8CE0D00BC3B47 /* HistoryViewController.swift */; };
-		0AA720E11CB95F0E00BC3B47 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA720E01CB95F0E00BC3B47 /* UploadViewController.swift */; };
-		0AA720E31CB96A5400BC3B47 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA720E21CB96A5400BC3B47 /* HomeViewController.swift */; };
-		0ABC837A1CB9D6BA00E8A199 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABC83791CB9D6BA00E8A199 /* ConfirmViewController.swift */; };
-		62B197C41CB9A3F200421FB9 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62B197C31CB9A3F200421FB9 /* Category.storyboard */; };
-		62B197C61CB9A68500421FB9 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B197C51CB9A68500421FB9 /* CategoryTableViewController.swift */; };
-		62C0781D1CB8BB8F0084B1E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C0781C1CB8BB8F0084B1E9 /* AppDelegate.swift */; };
-		62C0781F1CB8BB8F0084B1E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C0781E1CB8BB8F0084B1E9 /* ViewController.swift */; };
-		62C078221CB8BB8F0084B1E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C078201CB8BB8F0084B1E9 /* Main.storyboard */; };
-		62C078241CB8BB8F0084B1E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62C078231CB8BB8F0084B1E9 /* Assets.xcassets */; };
-		62C078271CB8BB8F0084B1E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C078251CB8BB8F0084B1E9 /* LaunchScreen.storyboard */; };
-		62C078321CB8BB900084B1E9 /* RepayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C078311CB8BB900084B1E9 /* RepayTests.swift */; };
-		62C0783D1CB8BB900084B1E9 /* RepayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C0783C1CB8BB900084B1E9 /* RepayUITests.swift */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		62C0782E1CB8BB900084B1E9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 62C078111CB8BB8F0084B1E9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 62C078181CB8BB8F0084B1E9;
-			remoteInfo = Repay;
-		};
-		62C078391CB8BB900084B1E9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 62C078111CB8BB8F0084B1E9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 62C078181CB8BB8F0084B1E9;
-			remoteInfo = Repay;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXFileReference section */
-		0AA720DE1CB8CE0D00BC3B47 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
-		0AA720E01CB95F0E00BC3B47 /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
-		0AA720E21CB96A5400BC3B47 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		0ABC83791CB9D6BA00E8A199 /* ConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
-		62B197C31CB9A3F200421FB9 /* Category.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Category.storyboard; sourceTree = "<group>"; };
-		62B197C51CB9A68500421FB9 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
-		62C078191CB8BB8F0084B1E9 /* Repay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Repay.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		62C0781C1CB8BB8F0084B1E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		62C0781E1CB8BB8F0084B1E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		62C078211CB8BB8F0084B1E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		62C078231CB8BB8F0084B1E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		62C078261CB8BB8F0084B1E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		62C078281CB8BB8F0084B1E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		62C0782D1CB8BB900084B1E9 /* RepayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RepayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		62C078311CB8BB900084B1E9 /* RepayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepayTests.swift; sourceTree = "<group>"; };
-		62C078331CB8BB900084B1E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		62C078381CB8BB900084B1E9 /* RepayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RepayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		62C0783C1CB8BB900084B1E9 /* RepayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepayUITests.swift; sourceTree = "<group>"; };
-		62C0783E1CB8BB900084B1E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		62C078161CB8BB8F0084B1E9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		62C0782A1CB8BB900084B1E9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		62C078351CB8BB900084B1E9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		62C078101CB8BB8F0084B1E9 = {
-			isa = PBXGroup;
-			children = (
-				62C0781B1CB8BB8F0084B1E9 /* Repay */,
-				62C078301CB8BB900084B1E9 /* RepayTests */,
-				62C0783B1CB8BB900084B1E9 /* RepayUITests */,
-				62C0781A1CB8BB8F0084B1E9 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		62C0781A1CB8BB8F0084B1E9 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				62C078191CB8BB8F0084B1E9 /* Repay.app */,
-				62C0782D1CB8BB900084B1E9 /* RepayTests.xctest */,
-				62C078381CB8BB900084B1E9 /* RepayUITests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		62C0781B1CB8BB8F0084B1E9 /* Repay */ = {
-			isa = PBXGroup;
-			children = (
-				62C0781C1CB8BB8F0084B1E9 /* AppDelegate.swift */,
-				62C0781E1CB8BB8F0084B1E9 /* ViewController.swift */,
-				62C078201CB8BB8F0084B1E9 /* Main.storyboard */,
-				62B197C31CB9A3F200421FB9 /* Category.storyboard */,
-				62B197C51CB9A68500421FB9 /* CategoryTableViewController.swift */,
-				0AA720E21CB96A5400BC3B47 /* HomeViewController.swift */,
-				0AA720E01CB95F0E00BC3B47 /* UploadViewController.swift */,
-				0ABC83791CB9D6BA00E8A199 /* ConfirmViewController.swift */,
-				62C078231CB8BB8F0084B1E9 /* Assets.xcassets */,
-				62C078251CB8BB8F0084B1E9 /* LaunchScreen.storyboard */,
-				62C078281CB8BB8F0084B1E9 /* Info.plist */,
-				0AA720DE1CB8CE0D00BC3B47 /* HistoryViewController.swift */,
-			);
-			path = Repay;
-			sourceTree = "<group>";
-		};
-		62C078301CB8BB900084B1E9 /* RepayTests */ = {
-			isa = PBXGroup;
-			children = (
-				62C078311CB8BB900084B1E9 /* RepayTests.swift */,
-				62C078331CB8BB900084B1E9 /* Info.plist */,
-			);
-			path = RepayTests;
-			sourceTree = "<group>";
-		};
-		62C0783B1CB8BB900084B1E9 /* RepayUITests */ = {
-			isa = PBXGroup;
-			children = (
-				62C0783C1CB8BB900084B1E9 /* RepayUITests.swift */,
-				62C0783E1CB8BB900084B1E9 /* Info.plist */,
-			);
-			path = RepayUITests;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		62C078181CB8BB8F0084B1E9 /* Repay */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 62C078411CB8BB900084B1E9 /* Build configuration list for PBXNativeTarget "Repay" */;
-			buildPhases = (
-				62C078151CB8BB8F0084B1E9 /* Sources */,
-				62C078161CB8BB8F0084B1E9 /* Frameworks */,
-				62C078171CB8BB8F0084B1E9 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Repay;
-			productName = Repay;
-			productReference = 62C078191CB8BB8F0084B1E9 /* Repay.app */;
-			productType = "com.apple.product-type.application";
-		};
-		62C0782C1CB8BB900084B1E9 /* RepayTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 62C078441CB8BB900084B1E9 /* Build configuration list for PBXNativeTarget "RepayTests" */;
-			buildPhases = (
-				62C078291CB8BB900084B1E9 /* Sources */,
-				62C0782A1CB8BB900084B1E9 /* Frameworks */,
-				62C0782B1CB8BB900084B1E9 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				62C0782F1CB8BB900084B1E9 /* PBXTargetDependency */,
-			);
-			name = RepayTests;
-			productName = RepayTests;
-			productReference = 62C0782D1CB8BB900084B1E9 /* RepayTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		62C078371CB8BB900084B1E9 /* RepayUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 62C078471CB8BB900084B1E9 /* Build configuration list for PBXNativeTarget "RepayUITests" */;
-			buildPhases = (
-				62C078341CB8BB900084B1E9 /* Sources */,
-				62C078351CB8BB900084B1E9 /* Frameworks */,
-				62C078361CB8BB900084B1E9 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				62C0783A1CB8BB900084B1E9 /* PBXTargetDependency */,
-			);
-			name = RepayUITests;
-			productName = RepayUITests;
-			productReference = 62C078381CB8BB900084B1E9 /* RepayUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		62C078111CB8BB8F0084B1E9 /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = "Esha Joshi";
-				TargetAttributes = {
-					62C078181CB8BB8F0084B1E9 = {
-						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 94825R2VUN;
-					};
-					62C0782C1CB8BB900084B1E9 = {
-						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = V6SSATY838;
-						TestTargetID = 62C078181CB8BB8F0084B1E9;
-					};
-					62C078371CB8BB900084B1E9 = {
-						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = V6SSATY838;
-						TestTargetID = 62C078181CB8BB8F0084B1E9;
-					};
-				};
-			};
-			buildConfigurationList = 62C078141CB8BB8F0084B1E9 /* Build configuration list for PBXProject "Repay" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-				Base,
-			);
-			mainGroup = 62C078101CB8BB8F0084B1E9;
-			productRefGroup = 62C0781A1CB8BB8F0084B1E9 /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				62C078181CB8BB8F0084B1E9 /* Repay */,
-				62C0782C1CB8BB900084B1E9 /* RepayTests */,
-				62C078371CB8BB900084B1E9 /* RepayUITests */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		62C078171CB8BB8F0084B1E9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				62B197C41CB9A3F200421FB9 /* Category.storyboard in Resources */,
-				62C078271CB8BB8F0084B1E9 /* LaunchScreen.storyboard in Resources */,
-				62C078241CB8BB8F0084B1E9 /* Assets.xcassets in Resources */,
-				62C078221CB8BB8F0084B1E9 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		62C0782B1CB8BB900084B1E9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		62C078361CB8BB900084B1E9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		62C078151CB8BB8F0084B1E9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0AA720E31CB96A5400BC3B47 /* HomeViewController.swift in Sources */,
-				62C0781F1CB8BB8F0084B1E9 /* ViewController.swift in Sources */,
-				0AA720E11CB95F0E00BC3B47 /* UploadViewController.swift in Sources */,
-				62C0781D1CB8BB8F0084B1E9 /* AppDelegate.swift in Sources */,
-				0AA720DF1CB8CE0D00BC3B47 /* HistoryViewController.swift in Sources */,
-				0ABC837A1CB9D6BA00E8A199 /* ConfirmViewController.swift in Sources */,
-				62B197C61CB9A68500421FB9 /* CategoryTableViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		62C078291CB8BB900084B1E9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				62C078321CB8BB900084B1E9 /* RepayTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		62C078341CB8BB900084B1E9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				62C0783D1CB8BB900084B1E9 /* RepayUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		62C0782F1CB8BB900084B1E9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 62C078181CB8BB8F0084B1E9 /* Repay */;
-			targetProxy = 62C0782E1CB8BB900084B1E9 /* PBXContainerItemProxy */;
-		};
-		62C0783A1CB8BB900084B1E9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 62C078181CB8BB8F0084B1E9 /* Repay */;
-			targetProxy = 62C078391CB8BB900084B1E9 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		62C078201CB8BB8F0084B1E9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				62C078211CB8BB8F0084B1E9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		62C078251CB8BB8F0084B1E9 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				62C078261CB8BB8F0084B1E9 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
-/* Begin XCBuildConfiguration section */
-		62C0783F1CB8BB900084B1E9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		62C078401CB8BB900084B1E9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		62C078421CB8BB900084B1E9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = Repay/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.repay.Repay;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-			};
-			name = Debug;
-		};
-		62C078431CB8BB900084B1E9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = Repay/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.repay.Repay;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-			};
-			name = Release;
-		};
-		62C078451CB8BB900084B1E9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = RepayTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.RepayTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Repay.app/Repay";
-			};
-			name = Debug;
-		};
-		62C078461CB8BB900084B1E9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = RepayTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.RepayTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Repay.app/Repay";
-			};
-			name = Release;
-		};
-		62C078481CB8BB900084B1E9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = RepayUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.RepayUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = Repay;
-			};
-			name = Debug;
-		};
-		62C078491CB8BB900084B1E9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = RepayUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.RepayUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = Repay;
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		62C078141CB8BB8F0084B1E9 /* Build configuration list for PBXProject "Repay" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				62C0783F1CB8BB900084B1E9 /* Debug */,
-				62C078401CB8BB900084B1E9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		62C078411CB8BB900084B1E9 /* Build configuration list for PBXNativeTarget "Repay" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				62C078421CB8BB900084B1E9 /* Debug */,
-				62C078431CB8BB900084B1E9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		62C078441CB8BB900084B1E9 /* Build configuration list for PBXNativeTarget "RepayTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				62C078451CB8BB900084B1E9 /* Debug */,
-				62C078461CB8BB900084B1E9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		62C078471CB8BB900084B1E9 /* Build configuration list for PBXNativeTarget "RepayUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				62C078481CB8BB900084B1E9 /* Debug */,
-				62C078491CB8BB900084B1E9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = 62C078111CB8BB8F0084B1E9 /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>46</string>
+	<key>objects</key>
+	<dict>
+		<key>0438AACFDA68C6287623C2E8</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-Repay.release.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-Repay/Pods-Repay.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0AA720DE1CB8CE0D00BC3B47</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>HistoryViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0AA720DF1CB8CE0D00BC3B47</key>
+		<dict>
+			<key>fileRef</key>
+			<string>0AA720DE1CB8CE0D00BC3B47</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>0AA720E01CB95F0E00BC3B47</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>UploadViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0AA720E11CB95F0E00BC3B47</key>
+		<dict>
+			<key>fileRef</key>
+			<string>0AA720E01CB95F0E00BC3B47</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>0AA720E21CB96A5400BC3B47</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>HomeViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0AA720E31CB96A5400BC3B47</key>
+		<dict>
+			<key>fileRef</key>
+			<string>0AA720E21CB96A5400BC3B47</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>0ABC83791CB9D6BA00E8A199</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>ConfirmViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0ABC837A1CB9D6BA00E8A199</key>
+		<dict>
+			<key>fileRef</key>
+			<string>0ABC83791CB9D6BA00E8A199</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>3668257FA0535E66BC8CBBE1</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Pods_Repay.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>4A472E3C5BEEDE18904CD7FB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>C86091C732AD7277A457C561</string>
+				<string>0438AACFDA68C6287623C2E8</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62B197C31CB9A3F200421FB9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>path</key>
+			<string>Category.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62B197C41CB9A3F200421FB9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>62B197C31CB9A3F200421FB9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>62B197C51CB9A68500421FB9</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>CategoryTableViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62B197C61CB9A68500421FB9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>62B197C51CB9A68500421FB9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>62C078101CB8BB8F0084B1E9</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>62C0781B1CB8BB8F0084B1E9</string>
+				<string>62C078301CB8BB900084B1E9</string>
+				<string>62C0783B1CB8BB900084B1E9</string>
+				<string>62C0781A1CB8BB8F0084B1E9</string>
+				<string>4A472E3C5BEEDE18904CD7FB</string>
+				<string>DDB6CDE3676429C2B6EE5BA9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C078111CB8BB8F0084B1E9</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>LastSwiftUpdateCheck</key>
+				<string>0730</string>
+				<key>LastUpgradeCheck</key>
+				<string>0730</string>
+				<key>ORGANIZATIONNAME</key>
+				<string>Esha Joshi</string>
+				<key>TargetAttributes</key>
+				<dict>
+					<key>62C078181CB8BB8F0084B1E9</key>
+					<dict>
+						<key>CreatedOnToolsVersion</key>
+						<string>7.3</string>
+						<key>DevelopmentTeam</key>
+						<string>94825R2VUN</string>
+					</dict>
+					<key>62C0782C1CB8BB900084B1E9</key>
+					<dict>
+						<key>CreatedOnToolsVersion</key>
+						<string>7.3</string>
+						<key>DevelopmentTeam</key>
+						<string>V6SSATY838</string>
+						<key>TestTargetID</key>
+						<string>62C078181CB8BB8F0084B1E9</string>
+					</dict>
+					<key>62C078371CB8BB900084B1E9</key>
+					<dict>
+						<key>CreatedOnToolsVersion</key>
+						<string>7.3</string>
+						<key>DevelopmentTeam</key>
+						<string>V6SSATY838</string>
+						<key>TestTargetID</key>
+						<string>62C078181CB8BB8F0084B1E9</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>62C078141CB8BB8F0084B1E9</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+				<string>Base</string>
+			</array>
+			<key>mainGroup</key>
+			<string>62C078101CB8BB8F0084B1E9</string>
+			<key>productRefGroup</key>
+			<string>62C0781A1CB8BB8F0084B1E9</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array/>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>62C078181CB8BB8F0084B1E9</string>
+				<string>62C0782C1CB8BB900084B1E9</string>
+				<string>62C078371CB8BB900084B1E9</string>
+			</array>
+		</dict>
+		<key>62C078141CB8BB8F0084B1E9</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>62C0783F1CB8BB900084B1E9</string>
+				<string>62C078401CB8BB900084B1E9</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>62C078151CB8BB8F0084B1E9</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>0AA720E31CB96A5400BC3B47</string>
+				<string>62C0781F1CB8BB8F0084B1E9</string>
+				<string>0AA720E11CB95F0E00BC3B47</string>
+				<string>62C0781D1CB8BB8F0084B1E9</string>
+				<string>0AA720DF1CB8CE0D00BC3B47</string>
+				<string>0ABC837A1CB9D6BA00E8A199</string>
+				<string>62B197C61CB9A68500421FB9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>62C078161CB8BB8F0084B1E9</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>D2923C5229BD5C92A8D594E4</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>62C078171CB8BB8F0084B1E9</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>62B197C41CB9A3F200421FB9</string>
+				<string>62C078271CB8BB8F0084B1E9</string>
+				<string>62C078241CB8BB8F0084B1E9</string>
+				<string>62C078221CB8BB8F0084B1E9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>62C078181CB8BB8F0084B1E9</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>62C078411CB8BB900084B1E9</string>
+			<key>buildPhases</key>
+			<array>
+				<string>8817F45B1F110CCC6943786B</string>
+				<string>62C078151CB8BB8F0084B1E9</string>
+				<string>62C078161CB8BB8F0084B1E9</string>
+				<string>62C078171CB8BB8F0084B1E9</string>
+				<string>AC5D0BAAD659E9048B014C36</string>
+				<string>CE1FB1D488D2444CB5B374B4</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Repay</string>
+			<key>productName</key>
+			<string>Repay</string>
+			<key>productReference</key>
+			<string>62C078191CB8BB8F0084B1E9</string>
+			<key>productType</key>
+			<string>com.apple.product-type.application</string>
+		</dict>
+		<key>62C078191CB8BB8F0084B1E9</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.application</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>Repay.app</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>62C0781A1CB8BB8F0084B1E9</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>62C078191CB8BB8F0084B1E9</string>
+				<string>62C0782D1CB8BB900084B1E9</string>
+				<string>62C078381CB8BB900084B1E9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C0781B1CB8BB8F0084B1E9</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>62C0781C1CB8BB8F0084B1E9</string>
+				<string>62C0781E1CB8BB8F0084B1E9</string>
+				<string>62C078201CB8BB8F0084B1E9</string>
+				<string>62B197C31CB9A3F200421FB9</string>
+				<string>62B197C51CB9A68500421FB9</string>
+				<string>0AA720E21CB96A5400BC3B47</string>
+				<string>0AA720E01CB95F0E00BC3B47</string>
+				<string>0ABC83791CB9D6BA00E8A199</string>
+				<string>62C078231CB8BB8F0084B1E9</string>
+				<string>62C078251CB8BB8F0084B1E9</string>
+				<string>62C078281CB8BB8F0084B1E9</string>
+				<string>0AA720DE1CB8CE0D00BC3B47</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Repay</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C0781C1CB8BB8F0084B1E9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>AppDelegate.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C0781D1CB8BB8F0084B1E9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>62C0781C1CB8BB8F0084B1E9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>62C0781E1CB8BB8F0084B1E9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>ViewController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C0781F1CB8BB8F0084B1E9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>62C0781E1CB8BB8F0084B1E9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>62C078201CB8BB8F0084B1E9</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>62C078211CB8BB8F0084B1E9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>Main.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C078211CB8BB8F0084B1E9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>name</key>
+			<string>Base</string>
+			<key>path</key>
+			<string>Base.lproj/Main.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C078221CB8BB8F0084B1E9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>62C078201CB8BB8F0084B1E9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>62C078231CB8BB8F0084B1E9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>folder.assetcatalog</string>
+			<key>path</key>
+			<string>Assets.xcassets</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C078241CB8BB8F0084B1E9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>62C078231CB8BB8F0084B1E9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>62C078251CB8BB8F0084B1E9</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>62C078261CB8BB8F0084B1E9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>LaunchScreen.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C078261CB8BB8F0084B1E9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>name</key>
+			<string>Base</string>
+			<key>path</key>
+			<string>Base.lproj/LaunchScreen.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C078271CB8BB8F0084B1E9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>62C078251CB8BB8F0084B1E9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>62C078281CB8BB8F0084B1E9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C078291CB8BB900084B1E9</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>62C078321CB8BB900084B1E9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>62C0782A1CB8BB900084B1E9</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>62C0782B1CB8BB900084B1E9</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>62C0782C1CB8BB900084B1E9</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>62C078441CB8BB900084B1E9</string>
+			<key>buildPhases</key>
+			<array>
+				<string>62C078291CB8BB900084B1E9</string>
+				<string>62C0782A1CB8BB900084B1E9</string>
+				<string>62C0782B1CB8BB900084B1E9</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>62C0782F1CB8BB900084B1E9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>RepayTests</string>
+			<key>productName</key>
+			<string>RepayTests</string>
+			<key>productReference</key>
+			<string>62C0782D1CB8BB900084B1E9</string>
+			<key>productType</key>
+			<string>com.apple.product-type.bundle.unit-test</string>
+		</dict>
+		<key>62C0782D1CB8BB900084B1E9</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.cfbundle</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>RepayTests.xctest</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>62C0782E1CB8BB900084B1E9</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>62C078111CB8BB8F0084B1E9</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>62C078181CB8BB8F0084B1E9</string>
+			<key>remoteInfo</key>
+			<string>Repay</string>
+		</dict>
+		<key>62C0782F1CB8BB900084B1E9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>target</key>
+			<string>62C078181CB8BB8F0084B1E9</string>
+			<key>targetProxy</key>
+			<string>62C0782E1CB8BB900084B1E9</string>
+		</dict>
+		<key>62C078301CB8BB900084B1E9</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>62C078311CB8BB900084B1E9</string>
+				<string>62C078331CB8BB900084B1E9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>RepayTests</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C078311CB8BB900084B1E9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>RepayTests.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C078321CB8BB900084B1E9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>62C078311CB8BB900084B1E9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>62C078331CB8BB900084B1E9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C078341CB8BB900084B1E9</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>62C0783D1CB8BB900084B1E9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>62C078351CB8BB900084B1E9</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>62C078361CB8BB900084B1E9</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>62C078371CB8BB900084B1E9</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>62C078471CB8BB900084B1E9</string>
+			<key>buildPhases</key>
+			<array>
+				<string>62C078341CB8BB900084B1E9</string>
+				<string>62C078351CB8BB900084B1E9</string>
+				<string>62C078361CB8BB900084B1E9</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>62C0783A1CB8BB900084B1E9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>RepayUITests</string>
+			<key>productName</key>
+			<string>RepayUITests</string>
+			<key>productReference</key>
+			<string>62C078381CB8BB900084B1E9</string>
+			<key>productType</key>
+			<string>com.apple.product-type.bundle.ui-testing</string>
+		</dict>
+		<key>62C078381CB8BB900084B1E9</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.cfbundle</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>RepayUITests.xctest</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>62C078391CB8BB900084B1E9</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>62C078111CB8BB8F0084B1E9</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>62C078181CB8BB8F0084B1E9</string>
+			<key>remoteInfo</key>
+			<string>Repay</string>
+		</dict>
+		<key>62C0783A1CB8BB900084B1E9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>target</key>
+			<string>62C078181CB8BB8F0084B1E9</string>
+			<key>targetProxy</key>
+			<string>62C078391CB8BB900084B1E9</string>
+		</dict>
+		<key>62C0783B1CB8BB900084B1E9</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>62C0783C1CB8BB900084B1E9</string>
+				<string>62C0783E1CB8BB900084B1E9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>RepayUITests</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C0783C1CB8BB900084B1E9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>RepayUITests.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C0783D1CB8BB900084B1E9</key>
+		<dict>
+			<key>fileRef</key>
+			<string>62C0783C1CB8BB900084B1E9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>62C0783E1CB8BB900084B1E9</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62C0783F1CB8BB900084B1E9</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_ANALYZER_NONNULL</key>
+				<string>YES</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>ENABLE_TESTABILITY</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>9.3</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>YES</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SWIFT_OPTIMIZATION_LEVEL</key>
+				<string>-Onone</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>62C078401CB8BB900084B1E9</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_ANALYZER_NONNULL</key>
+				<string>YES</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>ENABLE_NS_ASSERTIONS</key>
+				<string>NO</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>9.3</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>62C078411CB8BB900084B1E9</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>62C078421CB8BB900084B1E9</string>
+				<string>62C078431CB8BB900084B1E9</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>62C078421CB8BB900084B1E9</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>C86091C732AD7277A457C561</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string>iPhone Developer</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Repay/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>com.repay.Repay</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PROVISIONING_PROFILE</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>62C078431CB8BB900084B1E9</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>0438AACFDA68C6287623C2E8</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string>iPhone Developer</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>FRAMEWORK_SEARCH_PATHS[arch=*]</key>
+				<string>$(SRCROOT)/**</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Repay/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>com.repay.Repay</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PROVISIONING_PROFILE</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>62C078441CB8BB900084B1E9</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>62C078451CB8BB900084B1E9</string>
+				<string>62C078461CB8BB900084B1E9</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>62C078451CB8BB900084B1E9</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_LOADER</key>
+				<string>$(TEST_HOST)</string>
+				<key>INFOPLIST_FILE</key>
+				<string>RepayTests/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>com.example.RepayTests</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_HOST</key>
+				<string>$(BUILT_PRODUCTS_DIR)/Repay.app/Repay</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>62C078461CB8BB900084B1E9</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_LOADER</key>
+				<string>$(TEST_HOST)</string>
+				<key>INFOPLIST_FILE</key>
+				<string>RepayTests/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>com.example.RepayTests</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_HOST</key>
+				<string>$(BUILT_PRODUCTS_DIR)/Repay.app/Repay</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>62C078471CB8BB900084B1E9</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>62C078481CB8BB900084B1E9</string>
+				<string>62C078491CB8BB900084B1E9</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>62C078481CB8BB900084B1E9</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>INFOPLIST_FILE</key>
+				<string>RepayUITests/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>com.example.RepayUITests</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_TARGET_NAME</key>
+				<string>Repay</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>62C078491CB8BB900084B1E9</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>INFOPLIST_FILE</key>
+				<string>RepayUITests/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
+				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
+				<string>com.example.RepayUITests</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_TARGET_NAME</key>
+				<string>Repay</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>8817F45B1F110CCC6943786B</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>AC5D0BAAD659E9048B014C36</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Embed Pods Frameworks</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-Repay/Pods-Repay-frameworks.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>C86091C732AD7277A457C561</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-Repay.debug.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-Repay/Pods-Repay.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CE1FB1D488D2444CB5B374B4</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-Repay/Pods-Repay-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>D2923C5229BD5C92A8D594E4</key>
+		<dict>
+			<key>fileRef</key>
+			<string>3668257FA0535E66BC8CBBE1</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DDB6CDE3676429C2B6EE5BA9</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>3668257FA0535E66BC8CBBE1</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>62C078111CB8BB8F0084B1E9</string>
+</dict>
+</plist>

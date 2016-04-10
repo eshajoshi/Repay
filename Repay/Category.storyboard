@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A278b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xad-hw-yrZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xad-hw-yrZ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -129,6 +129,7 @@
                                                         <color key="titleColor" red="0.0" green="0.36862745098039218" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
+                                                        <action selector="handleRequest:" destination="RM0-n3-tfc" eventType="touchUpInside" id="A17-Yw-JqG"/>
                                                         <action selector="onRequest:" destination="RM0-n3-tfc" eventType="touchUpInside" id="NDZ-Zd-E46"/>
                                                         <segue destination="Kvo-wZ-SEp" kind="show" id="3Gy-aa-YgC"/>
                                                     </connections>

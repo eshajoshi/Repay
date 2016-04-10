@@ -7,14 +7,24 @@
 //
 
 import UIKit
+import Firebase
+
+let repayFirebaseUrl = "https://repay.firebaseio.com/receipts"
 
 class UploadViewController:
-    UITableViewController,UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    UITableViewController,UINavigationControllerDelegate,
+        UIImagePickerControllerDelegate {
+    
+    var ref = Firebase(url: repayFirebaseUrl)
     
     @IBOutlet var barBtnBack: UIBarButtonItem!
     @IBOutlet var btnRequest: UIButton!
     @IBOutlet var imagePreview: UIImageView!
     var imagePicker: UIImagePickerController!
+    
+    @IBAction func handleRequest(sender: AnyObject) {
+        
+    }
     
     @IBAction func onCamera(sender: AnyObject) {
         imagePicker =  UIImagePickerController()
