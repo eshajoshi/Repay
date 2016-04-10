@@ -27,21 +27,23 @@ class UploadViewController:
     }
     
     @IBAction func onCamera(sender: AnyObject) {
-        imagePicker =  UIImagePickerController()
+        imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .Camera
-        
         presentViewController(imagePicker, animated: true, completion: nil)
     }
     
     @IBAction func onRequest(sender: AnyObject) {
+        //base64 it
+        let imageData = UIImagePNGRepresentation(imagePreview.image!)
+        let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+        
     }
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         imagePicker.dismissViewControllerAnimated(true, completion: nil)
         let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         imagePreview.contentMode = UIViewContentMode.ScaleAspectFit;
         imagePreview.image = image;
-        
     }
 
     override func viewDidLoad() {
