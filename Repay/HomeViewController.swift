@@ -39,7 +39,6 @@ class HomeViewController: UIViewController {
     @IBAction func showModal(sender: AnyObject) {
         modalView.hidden = false
         showBlur()
-        showModal()
     }
     
 
@@ -70,7 +69,7 @@ class HomeViewController: UIViewController {
     }
     
     func showModal() {
-        self.modalView.hidden = false;
+        modalView.hidden = false;
         UIView.animateWithDuration(0.4,
                                    delay: 0.0,
                                    options: .CurveEaseInOut,
@@ -83,6 +82,7 @@ class HomeViewController: UIViewController {
     }
     
     func hideModal() {
+        modalView.hidden = true;
         UIView.animateWithDuration(0.1,
                                    delay: 0.0,
                                    options: .CurveEaseInOut,
@@ -157,7 +157,7 @@ class HomeViewController: UIViewController {
         //Gradient
         let layer = CAGradientLayer()
         layer.frame = CGRect(x:0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
-        layer.colors = [UIColor.init(red: 175/255, green: 101/255, blue:197/255, alpha: 1).CGColor, UIColor.init(red: 119/255, green: 53/255, blue:147/255, alpha: 1).CGColor]
+        layer.colors = [UIColor.init(red: 42/255, green: 183/255, blue:133/255, alpha: 1).CGColor, UIColor.init(red: 0/255, green: 94/255, blue:43/255, alpha: 1).CGColor]
         view.layer.insertSublayer(layer, below: btnUpload.layer)
         
         //Balance Customization

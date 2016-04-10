@@ -20,8 +20,9 @@ class CategoryTableViewController: UITableViewController {
         super.viewDidLoad()
         
         // 'Select Category' Navigation Bar
-        self.navigationController!.navigationBar.tintColor = UIColor.init(red: 119/255, green: 53/255, blue: 147/255, alpha: 1)
-
+        UINavigationBar.appearance().barTintColor = UIColor.init(red: 0/255, green: 94/255, blue: 43/255, alpha: 1)
+        UINavigationBar.appearance().titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Avenir Next", size: 17)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
+        
         // 'Cancel' Bar Button Item
         barBtnCancel.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Avenir Next", size: 12)!], forState: UIControlState.Normal)
         barBtnCancel.tintColor = UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
