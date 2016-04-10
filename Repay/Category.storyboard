@@ -410,6 +410,7 @@
                         <outlet property="btnFood" destination="oJN-Vh-pLS" id="sAP-dJ-AWO"/>
                         <outlet property="btnLodging" destination="COk-ym-P0q" id="t7r-IK-gKu"/>
                         <outlet property="btnTransp" destination="Ouv-Jo-61c" id="DZf-et-PDL"/>
+                        <outlet property="foodAmt" destination="mCg-6w-wdR" id="F5L-fY-vjB"/>
                         <outlet property="navItem" destination="1J7-a8-cmy" id="5ev-N1-SxW"/>
                     </connections>
                 </tableViewController>

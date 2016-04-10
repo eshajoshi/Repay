@@ -11,6 +11,29 @@ import Firebase
 
 let repayFirebaseUrl = "https://repay.firebaseio.com/receipts"
 
+extension UIImage {
+    func resize(scale:CGFloat)-> UIImage {
+        let imageView = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: size.width*scale, height: size.height*scale)))
+        imageView.contentMode = UIViewContentMode.ScaleAspectFit
+        imageView.image = self
+        UIGraphicsBeginImageContext(imageView.bounds.size)
+        imageView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return result
+    }
+    func resizeToWidth(width:CGFloat)-> UIImage {
+        let imageView = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))))
+        imageView.contentMode = UIViewContentMode.ScaleAspectFit
+        imageView.image = self
+        UIGraphicsBeginImageContext(imageView.bounds.size)
+        imageView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return result
+    }
+}
+
 class UploadViewController:
     UITableViewController,UINavigationControllerDelegate,
         UIImagePickerControllerDelegate {
@@ -33,7 +56,7 @@ class UploadViewController:
     
     @IBAction func onRequest(sender: AnyObject) {
         //base64 it
-        let imageData = UIImagePNGRepresentation(imagePreview.image!)
+        let imageData = UIImagePNGRepresentation(imagePreview.image!.resize(0.5))
         let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
         let prefs = NSUserDefaults.standardUserDefaults()
         prefs.setValue(amountInput.text, forKey: "amount")
@@ -43,13 +66,14 @@ class UploadViewController:
                         "image": base64String,
                         "last_name": "Hirata",
                         "position": "UI/UX Designer",
-                        "requested_amt": "7.24",
+                        "requested_amt": String(amountInput.text),
                         "status": "todo",
-                        "timestamp": NSDate().timeIntervalSince1970 * 1000]
+                        "timestamp": "2016-04-09"]
         
-        ref.setValue(receipts)
-        
+        var post1Ref = ref.childByAutoId()
+        post1Ref.setValue(receipts)
     }
+    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         imagePicker.dismissViewControllerAnimated(true, completion: nil)
         let image = info[UIImagePickerControllerOriginalImage] as? UIImage

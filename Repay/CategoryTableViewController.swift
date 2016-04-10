@@ -16,6 +16,7 @@ class CategoryTableViewController: UITableViewController {
     @IBOutlet weak var barBtnCancel: UIBarButtonItem!
     @IBOutlet weak var navItem: UINavigationItem!
     
+    @IBOutlet var foodAmt: UILabel!
     @IBAction func cancel(sender: AnyObject) {
         navigationController?.dismissViewControllerAnimated(true, completion: {
             
@@ -23,6 +24,21 @@ class CategoryTableViewController: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var foodBalance = 100.00;
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let amt = defaults.stringForKey("amount")
+        {
+
+            if(Double(amt) != nil) {
+                foodBalance = foodBalance - Double(amt)!;
+            }
+        }
+        
+        let s2 = NSString(format: "%.2f", foodBalance)
+        let longString2 = "$"+(s2 as String);
+        foodAmt.text = longString2;
         
         // 'Select Category' Navigation Bar
         UINavigationBar.appearance().barTintColor = UIColor.init(red: 0/255, green: 94/255, blue: 43/255, alpha: 1)

@@ -35,9 +35,8 @@ class ConfirmViewController: UIViewController {
         let defaults = NSUserDefaults.standardUserDefaults()
         if let amt = defaults.stringForKey("amount")
         {
-            amount.text = amt
+            amount.text = "$"+amt
         }
-
 
     }
 

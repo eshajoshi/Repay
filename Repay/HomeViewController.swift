@@ -27,6 +27,7 @@ class HomeViewController: UIViewController {
     @IBOutlet var btnUpload: UIButton!
     @IBOutlet var btnHistory: UIButton!
 
+    @IBOutlet var foodAmt: UILabel!
 
     //------- MODAL STUFF --------
 
@@ -129,14 +130,27 @@ class HomeViewController: UIViewController {
     // ------ App Stuff -------
     func loadBalance() {
         
-        let defaults = NSUserDefaults.standardUserDefaults()
-        if let amt = defaults.stringForKey("balanceFood")
-        {
-           // amount.text = amt
-        }
-
+        var totalBalance = 400.00;
+        var foodBalance = 100.00;
         
-        let longString = "$400.00"
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let amt = defaults.stringForKey("amount")
+        {
+            if(Double(amt) != nil) {
+                totalBalance = totalBalance - Double(amt)!;
+            }
+            if(Double(amt) != nil) {
+                foodBalance = foodBalance - Double(amt)!;
+            }
+        }
+        
+        let s = NSString(format: "%.2f", totalBalance)
+        
+        let longString = "$"+(s as String);
+        
+        let s2 = NSString(format: "%.2f", foodBalance)
+        let longString2 = "$"+(s2 as String);
+        foodAmt.text = longString2;
         
         let attributedString = NSMutableAttributedString(string: longString, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(80)])
         
@@ -149,6 +163,11 @@ class HomeViewController: UIViewController {
         let image: UIImage = UIImage(named: id)!
         companyImage.image = image;
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        loadBalance();
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
