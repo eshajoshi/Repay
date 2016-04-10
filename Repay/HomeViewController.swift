@@ -37,7 +37,7 @@ class HomeViewController: UIViewController {
     @IBOutlet var btnGoogle: UIButton!
     
     @IBAction func showModal(sender: AnyObject) {
-        modalView.hidden = false
+        self.modalView.hidden = false
         showBlur()
     }
     
@@ -81,7 +81,6 @@ class HomeViewController: UIViewController {
     }
     
     func hideModal() {
-        self.modalView.hidden = true;
         UIView.animateWithDuration(0.1,
                                    delay: 0.0,
                                    options: .CurveEaseInOut,
@@ -165,9 +164,8 @@ class HomeViewController: UIViewController {
         //Customize company logo
         setLogo("airbnb_large");
         
-        self.modalView.hidden = true;
         hideBlur()
-        hideModal()
+        self.modalView.hidden = true;
     }
 
     override func didReceiveMemoryWarning() {
