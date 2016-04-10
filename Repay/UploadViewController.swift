@@ -11,6 +11,7 @@ import UIKit
 class UploadViewController:
     UITableViewController,UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
+    @IBOutlet var barBtnBack: UIBarButtonItem!
     @IBOutlet var btnRequest: UIButton!
     @IBOutlet var imagePreview: UIImageView!
     var imagePicker: UIImagePickerController!
@@ -43,6 +44,14 @@ class UploadViewController:
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         btnRequest.backgroundColor = UIColor.groupTableViewBackgroundColor();
+        
+        // 'Select Category' Navigation Bar
+        UINavigationBar.appearance().barTintColor = UIColor.init(red: 0/255, green: 94/255, blue: 43/255, alpha: 1)
+        UINavigationBar.appearance().titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Avenir Next", size: 17)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
+        
+        // 'Cancel' Bar Button Item
+        barBtnBack.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Avenir Next", size: 12)!], forState: UIControlState.Normal)
+        barBtnBack.tintColor = UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
 
     }
 
@@ -52,9 +61,9 @@ class UploadViewController:
     }
 
     @IBAction func cancel(sender: AnyObject) {
-        navigationController?.dismissViewControllerAnimated(true, completion: {
-            
-        })
+        if let navController = self.navigationController {
+            navController.popViewControllerAnimated(true)
+        }
     }
 
 }

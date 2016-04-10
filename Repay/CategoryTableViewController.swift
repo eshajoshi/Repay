@@ -16,6 +16,11 @@ class CategoryTableViewController: UITableViewController {
     @IBOutlet weak var barBtnCancel: UIBarButtonItem!
     @IBOutlet weak var navItem: UINavigationItem!
     
+    @IBAction func cancel(sender: AnyObject) {
+        navigationController?.dismissViewControllerAnimated(true, completion: {
+            
+        })
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,17 +33,17 @@ class CategoryTableViewController: UITableViewController {
         barBtnCancel.tintColor = UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
         
         // 'Food' Category
-        btnFood.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
+        btnFood.backgroundColor = UIColor.groupTableViewBackgroundColor()
         btnFood.layer.cornerRadius = 5
         btnFood.layer.borderWidth = 0
         
         // 'Lodging' Category
-        btnLodging.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
+        btnLodging.backgroundColor = UIColor.groupTableViewBackgroundColor()
         btnLodging.layer.cornerRadius = 5
         btnLodging.layer.borderWidth = 0
         
         // 'Transportation' Category
-        btnTransp.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
+        btnTransp.backgroundColor = UIColor.groupTableViewBackgroundColor()
         btnTransp.layer.cornerRadius = 5
         btnTransp.layer.borderWidth = 0
 
