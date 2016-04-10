@@ -129,7 +129,6 @@
                                                         <color key="titleColor" red="0.0" green="0.36862745098039218" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="handleRequest:" destination="RM0-n3-tfc" eventType="touchUpInside" id="A17-Yw-JqG"/>
                                                         <action selector="onRequest:" destination="RM0-n3-tfc" eventType="touchUpInside" id="NDZ-Zd-E46"/>
                                                         <segue destination="Kvo-wZ-SEp" kind="show" id="3Gy-aa-YgC"/>
                                                     </connections>

@@ -21,10 +21,7 @@ class UploadViewController:
     @IBOutlet var btnRequest: UIButton!
     @IBOutlet var imagePreview: UIImageView!
     var imagePicker: UIImagePickerController!
-    
-    @IBAction func handleRequest(sender: AnyObject) {
-        
-    }
+
     
     @IBAction func onCamera(sender: AnyObject) {
         imagePicker = UIImagePickerController()
@@ -37,6 +34,17 @@ class UploadViewController:
         //base64 it
         let imageData = UIImagePNGRepresentation(imagePreview.image!)
         let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+        
+        let receipts = ["first_name": "Jared",
+                        "id": 765,
+                        "image": base64String,
+                        "last_name": "Hirata",
+                        "position": "UI/UX Designer",
+                        "requested_amt": "7.24",
+                        "status": "todo",
+                        "timestamp": NSDate().timeIntervalSince1970 * 1000]
+        
+        ref.setValue(receipts)
         
     }
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
