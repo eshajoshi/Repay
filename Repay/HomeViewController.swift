@@ -2,7 +2,7 @@
 //  HomeViewController.swift
 //  Repay
 //
-//  Created by Kevin Vincent on 4/9/16.
+//  Created by Esha Joshi on 4/9/16.
 //  Copyright © 2016 Esha Joshi. All rights reserved.
 //
 
@@ -18,19 +18,14 @@ extension String {
 }
 
 class HomeViewController: UIViewController {
-    
-    
     @IBOutlet var companyImage: UIImageView!
     @IBOutlet var balanceLabelText: UILabel!
     @IBOutlet weak var companyLabelText: UILabel!
-
     @IBOutlet var btnUpload: UIButton!
     @IBOutlet var btnHistory: UIButton!
-
     @IBOutlet var foodAmt: UILabel!
 
-    //------- MODAL STUFF --------
-
+    // MODAL VARS
     @IBOutlet var blur: UIVisualEffectView!
     @IBOutlet var modalView: UIView!
     @IBOutlet var btnAirbnb: UIButton!
@@ -38,10 +33,19 @@ class HomeViewController: UIViewController {
     @IBOutlet var btnGoogle: UIButton!
     
     @IBAction func showModal(sender: AnyObject) {
+        print("IBAction: Clicked on modal...")
         self.modalView.hidden = false
+        UIView.animateWithDuration(0.4,
+                                   delay: 0.0,
+                                   options: .CurveEaseInOut,
+                                   animations: {
+                                    self.modalView.alpha = 1
+            },
+                                   completion: { finished in
+                                    print("Bug moved left!")
+        })
         showBlur()
     }
-    
 
     @IBAction func handleAirbnbClicked(sender: AnyObject) {
         companyLabelText.text = "Airbnb"
@@ -49,6 +53,7 @@ class HomeViewController: UIViewController {
         hideModal()
         hideBlur()
     }
+    
     @IBAction func handleAppleClicked(sender: AnyObject) {
         companyLabelText.text = "Apple"
         setLogo("apple_large");
@@ -68,29 +73,16 @@ class HomeViewController: UIViewController {
         hideBlur()
     }
     
-    func showModal() {
-        self.modalView.hidden = false;
-        UIView.animateWithDuration(0.4,
-                                   delay: 0.0,
-                                   options: .CurveEaseInOut,
-                                   animations: {
-                                    self.modalView.alpha = 1
-            },
-                                   completion: { finished in
-                                    print("Bug moved left!")
-        })
-    }
-    
     func hideModal() {
         UIView.animateWithDuration(0.1,
                                    delay: 0.0,
                                    options: .CurveEaseInOut,
                                    animations: {
-                                    self.modalView.alpha = 0
-            },
+                                        self.modalView.alpha = 0
+                                    },
                                    completion: { finished in
-                                    self.modalView.hidden = true;
-        })
+                                        self.modalView.hidden = true;
+                                    })
     }
     
     func hideBlur() {
@@ -168,6 +160,7 @@ class HomeViewController: UIViewController {
         loadBalance();
     }
     
+    // Initial view of Main storyboard
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -175,20 +168,20 @@ class HomeViewController: UIViewController {
         
         navigationController!.setNavigationBarHidden(true,animated: false);
 
-        //Customize buttons
+        // Customize buttons
         btnUpload.backgroundColor = UIColor.init(red: 249/255, green: 249/255, blue: 249/255, alpha: 1);
         btnHistory.backgroundColor = UIColor.init(red: 249/255, green: 249/255, blue: 249/255, alpha: 1);
         
-        //Gradient
+        // Gradient
         let layer = CAGradientLayer()
         layer.frame = CGRect(x:0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
         layer.colors = [UIColor.init(red: 42/255, green: 183/255, blue:133/255, alpha: 1).CGColor, UIColor.init(red: 0/255, green: 94/255, blue:43/255, alpha: 1).CGColor]
         view.layer.insertSublayer(layer, below: btnUpload.layer)
         
-        //Balance Customization
+        // Balance Customization
         loadBalance()
         
-        //Customize company logo
+        // Customize company logo
         setLogo("airbnb_large");
         
         hideBlur()
