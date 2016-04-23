@@ -13,6 +13,7 @@ extension String {
         if let idx = self.characters.indexOf(char) {
             return self.startIndex.distanceTo(idx)
         }
+        
         return nil
     }
 }
@@ -46,31 +47,29 @@ class HomeViewController: UIViewController {
         })
         showBlur()
     }
+    
+    @IBAction func handleCompanyButtonClicked(sender: AnyObject) {
+        let button = sender as! UIButton
+        let btnText = button.currentTitle! as String
+        
+        if btnText != "Cancel" {
+            print("Company set to \(btnText).")
+            companyLabelText.text = btnText
+            setLogo(getCompanyImageLogo(companyLabelText.text!))
+        }    
 
-    @IBAction func handleAirbnbClicked(sender: AnyObject) {
-        companyLabelText.text = "Airbnb"
-        setLogo("airbnb_large");
         hideModal()
         hideBlur()
     }
     
-    @IBAction func handleAppleClicked(sender: AnyObject) {
-        companyLabelText.text = "Apple"
-        setLogo("apple_large");
-        hideModal()
-        hideBlur()
-    }
-    
-    @IBAction func handleGoogleClicked(sender: AnyObject) {
-        companyLabelText.text = "Google"
-        setLogo("google_large");
-        hideModal()
-        hideBlur()
-    }
-    
-    @IBAction func handleCancelClicked(sender: AnyObject) {
-        hideModal()
-        hideBlur()
+    func getCompanyImageLogo(company: String) -> String {
+        if company == "Airbnb" {
+            return "airbnb_large"
+        } else if company == "Apple" {
+            return "apple_large"
+        }
+        
+        return "google_large"
     }
     
     func hideModal() {

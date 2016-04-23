@@ -150,7 +150,7 @@
                                             <color key="titleColor" red="0.0" green="0.36862745099999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="handleAirbnbClicked:" destination="KUO-Qh-pfq" eventType="touchUpInside" id="oEL-bl-F1s"/>
+                                            <action selector="handleCompanyButtonClicked:" destination="KUO-Qh-pfq" eventType="touchUpInside" id="nLI-JF-T6I"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="airbnb_small" translatesAutoresizingMaskIntoConstraints="NO" id="IL6-rL-btb">
@@ -164,7 +164,7 @@
                                             <color key="titleColor" red="0.0" green="0.36862745099999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="handleAppleClicked:" destination="KUO-Qh-pfq" eventType="touchUpInside" id="yuN-dq-WRi"/>
+                                            <action selector="handleCompanyButtonClicked:" destination="KUO-Qh-pfq" eventType="touchUpInside" id="RZl-Yj-mHz"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="apple_small" translatesAutoresizingMaskIntoConstraints="NO" id="Xlf-Uh-800" userLabel="apple_small">
@@ -178,7 +178,7 @@
                                             <color key="titleColor" red="0.0" green="0.36862745099999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="handleGoogleClicked:" destination="KUO-Qh-pfq" eventType="touchUpInside" id="jR3-f7-bNC"/>
+                                            <action selector="handleCompanyButtonClicked:" destination="KUO-Qh-pfq" eventType="touchUpInside" id="53z-Tg-ICP"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4H1-He-fVR" userLabel="Divider">
@@ -192,7 +192,7 @@
                                             <color key="titleColor" red="0.0" green="0.36862745099999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="handleCancelClicked:" destination="KUO-Qh-pfq" eventType="touchUpInside" id="TDz-xa-tfH"/>
+                                            <action selector="handleCompanyButtonClicked:" destination="KUO-Qh-pfq" eventType="touchUpInside" id="V0q-xv-iu7"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="google_small" translatesAutoresizingMaskIntoConstraints="NO" id="p7j-YS-uiL" userLabel="google_small">
