@@ -26,7 +26,7 @@ class HomeViewController: UIViewController {
     @IBOutlet var btnHistory: UIButton!
     @IBOutlet var foodAmt: UILabel!
 
-    // MODAL VARS
+    // ------ Modal vars -------
     @IBOutlet var blur: UIVisualEffectView!
     @IBOutlet var modalView: UIView!
     @IBOutlet var btnAirbnb: UIButton!
@@ -56,7 +56,7 @@ class HomeViewController: UIViewController {
             print("Company set to \(btnText).")
             companyLabelText.text = btnText
             setLogo(getCompanyImageLogo(companyLabelText.text!))
-        }    
+        }
 
         hideModal()
         hideBlur()
