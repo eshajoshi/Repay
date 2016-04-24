@@ -61,16 +61,18 @@ class UploadViewController:
         let prefs = NSUserDefaults.standardUserDefaults()
         prefs.setValue(amountInput.text, forKey: "amount")
         
-        let receipts = ["first_name": "Jared",
+        let receipts = ["first_name": "Esha",
                         "id": 765,
                         "image": base64String,
-                        "last_name": "Hirata",
-                        "position": "UI/UX Designer",
+                        "last_name": "Joshi",
+                        "position": "Software Engineer",
                         "requested_amt": String(amountInput.text),
                         "status": "todo",
-                        "timestamp": "2016-04-09"]
-        
-        var post1Ref = ref.childByAutoId()
+                        "timestamp": NSDate().timeIntervalSince1970
+                        //"timestamp": "2016-04-09"
+                        ]
+                
+        let post1Ref = ref.childByAutoId()
         post1Ref.setValue(receipts)
     }
     

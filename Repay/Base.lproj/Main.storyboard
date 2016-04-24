@@ -225,7 +225,9 @@
                         <outlet property="companyImage" destination="C00-yA-BJ1" id="TVh-Y8-BmQ"/>
                         <outlet property="companyLabelText" destination="8oe-WI-vN6" id="nHE-Go-4Cu"/>
                         <outlet property="foodAmt" destination="uDL-bt-E1d" id="7Ix-My-aeR"/>
+                        <outlet property="lodgingAmt" destination="hqv-kG-lLV" id="vRV-e2-OiV"/>
                         <outlet property="modalView" destination="HCt-MC-SyI" id="H0C-5F-0HH"/>
+                        <outlet property="transportationAmt" destination="iNp-hw-1ed" id="7Jv-8f-xJO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l0E-ZN-gwf" userLabel="First Responder" sceneMemberID="firstResponder"/>

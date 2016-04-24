@@ -19,13 +19,6 @@ extension String {
 }
 
 class HomeViewController: UIViewController {
-    @IBOutlet var companyImage: UIImageView!
-    @IBOutlet var balanceLabelText: UILabel!
-    @IBOutlet weak var companyLabelText: UILabel!
-    @IBOutlet var btnUpload: UIButton!
-    @IBOutlet var btnHistory: UIButton!
-    @IBOutlet var foodAmt: UILabel!
-
     // ------ Modal vars -------
     @IBOutlet var blur: UIVisualEffectView!
     @IBOutlet var modalView: UIView!
@@ -33,6 +26,17 @@ class HomeViewController: UIViewController {
     @IBOutlet var btnApple: UIButton!
     @IBOutlet var btnGoogle: UIButton!
     
+    // ------ App vars -------
+    @IBOutlet var companyImage: UIImageView!
+    @IBOutlet var balanceLabelText: UILabel!
+    @IBOutlet weak var companyLabelText: UILabel!
+    @IBOutlet var btnUpload: UIButton!
+    @IBOutlet var btnHistory: UIButton!
+    @IBOutlet var foodAmt: UILabel!
+    @IBOutlet var lodgingAmt: UILabel!
+    @IBOutlet var transportationAmt: UILabel!
+    
+    // ------ Modal functionality -------
     @IBAction func showModal(sender: AnyObject) {
         print("IBAction: Clicked on modal...")
         self.modalView.hidden = false
@@ -118,36 +122,36 @@ class HomeViewController: UIViewController {
         btnGoogle.clipsToBounds = true
     }
     
-    // ------ App Stuff -------
+    // ------ App Functionality -------
     func loadBalance() {
         
-        var totalBalance = 400.00;
-        var foodBalance = 100.00;
+        var totalBalance = 400.00
+        var foodBalance = 100.00
         
         let defaults = NSUserDefaults.standardUserDefaults()
-        if let amt = defaults.stringForKey("amount")
-        {
+        
+        if let amt = defaults.stringForKey("amount") {
             if(Double(amt) != nil) {
                 totalBalance = totalBalance - Double(amt)!;
             }
+            
             if(Double(amt) != nil) {
                 foodBalance = foodBalance - Double(amt)!;
             }
         }
         
         let s = NSString(format: "%.2f", totalBalance)
-        
         let longString = "$"+(s as String);
-        
-        let s2 = NSString(format: "%.2f", foodBalance)
-        let longString2 = "$"+(s2 as String);
-        foodAmt.text = longString2;
         
         let attributedString = NSMutableAttributedString(string: longString, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(80)])
         
         attributedString.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir Next", size: 48.0)!, range: NSRange(location:longString.indexOfCharacter(".")!+1,length:2))
         
         balanceLabelText.attributedText = attributedString
+        
+        let s2 = NSString(format: "%.2f", foodBalance)
+        let longString2 = "$"+(s2 as String);
+        foodAmt.text = longString2;
     }
     
     func setLogo(id: String) {
@@ -162,8 +166,6 @@ class HomeViewController: UIViewController {
     // Initial view of Main storyboard
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        customizeModal();
         
         navigationController!.setNavigationBarHidden(true,animated: false);
 
@@ -183,6 +185,8 @@ class HomeViewController: UIViewController {
         // Customize company logo
         setLogo("airbnb_large");
         
+        // Modal
+        customizeModal();
         hideBlur()
         self.modalView.hidden = true;
     }
@@ -191,16 +195,5 @@ class HomeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
