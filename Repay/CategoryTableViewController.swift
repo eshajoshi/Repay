@@ -26,15 +26,27 @@ class CategoryTableViewController: UITableViewController {
         })
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let prefs = NSUserDefaults.standardUserDefaults()
+
+        if (segue.identifier! == "Food Request Reimbursement") {
+            prefs.setValue("Food", forKey: "requestedCategory")
+        } else if (segue.identifier! == "Lodging Request Reimbursement") {
+            prefs.setValue("Lodging", forKey: "requestedCategory")
+        } else {
+            prefs.setValue("Transportation", forKey: "requestedCategory")
+        }
+        
+        print("Repay app recognizing a... ", segue.identifier!)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let defaults = NSUserDefaults.standardUserDefaults()
+
         var foodBalance = 100.00;
         
-        let defaults = NSUserDefaults.standardUserDefaults()
-        if let amt = defaults.stringForKey("amount")
-        {
-
+        if let amt = defaults.stringForKey("amount") {
             if(Double(amt) != nil) {
                 foodBalance = foodBalance - Double(amt)!;
             }
