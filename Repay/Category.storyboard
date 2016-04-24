@@ -301,6 +301,9 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="COk-ym-P0q">
                                                     <rect key="frame" x="8" y="0.0" width="359" height="75"/>
+                                                    <connections>
+                                                        <segue destination="RM0-n3-tfc" kind="show" identifier="Lodging Request Reimbursement" id="5iR-Kp-Vtf"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lodging" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lky-6p-leL">
                                                     <rect key="frame" x="40" y="28" width="66" height="24"/>
@@ -336,6 +339,9 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ouv-Jo-61c">
                                                     <rect key="frame" x="8" y="0.0" width="359" height="75"/>
+                                                    <connections>
+                                                        <segue destination="RM0-n3-tfc" kind="show" identifier="Transportation Request Reimbursement" id="4su-7M-AL9"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Transportation" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJo-5D-Qta">
                                                     <rect key="frame" x="40" y="28" width="114" height="24"/>
@@ -411,7 +417,9 @@
                         <outlet property="btnLodging" destination="COk-ym-P0q" id="t7r-IK-gKu"/>
                         <outlet property="btnTransp" destination="Ouv-Jo-61c" id="DZf-et-PDL"/>
                         <outlet property="foodAmt" destination="mCg-6w-wdR" id="F5L-fY-vjB"/>
+                        <outlet property="logdingAmt" destination="3AP-9G-Ol2" id="fmr-go-jx7"/>
                         <outlet property="navItem" destination="1J7-a8-cmy" id="5ev-N1-SxW"/>
+                        <outlet property="transportationAmt" destination="3qc-lG-GLe" id="NYB-KP-pCp"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Pi-2L-dYY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -424,4 +432,7 @@
         <image name="forward_arrow" width="8" height="13"/>
         <image name="thank_you_check" width="200" height="200"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="4su-7M-AL9"/>
+    </inferredMetricsTieBreakers>
 </document>

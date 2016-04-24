@@ -17,11 +17,15 @@ class CategoryTableViewController: UITableViewController {
     @IBOutlet weak var navItem: UINavigationItem!
     
     @IBOutlet var foodAmt: UILabel!
+    @IBOutlet var logdingAmt: UILabel!
+    @IBOutlet var transportationAmt: UILabel!
+    
     @IBAction func cancel(sender: AnyObject) {
         navigationController?.dismissViewControllerAnimated(true, completion: {
             
         })
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
