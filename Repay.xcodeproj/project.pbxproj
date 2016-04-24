@@ -100,6 +100,37 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		62AEBD3F1CCD55D4000925AE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		62AEBD411CCD55EC000925AE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				62C078201CB8BB8F0084B1E9 /* Main.storyboard */,
+				62B197C31CB9A3F200421FB9 /* Category.storyboard */,
+				62C078251CB8BB8F0084B1E9 /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		62AEBD421CCD55F9000925AE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				62C0781C1CB8BB8F0084B1E9 /* AppDelegate.swift */,
+				62C0781E1CB8BB8F0084B1E9 /* ViewController.swift */,
+				62B197C51CB9A68500421FB9 /* CategoryTableViewController.swift */,
+				0AA720E01CB95F0E00BC3B47 /* UploadViewController.swift */,
+				0ABC83791CB9D6BA00E8A199 /* ConfirmViewController.swift */,
+				0AA720E21CB96A5400BC3B47 /* HomeViewController.swift */,
+				0AA720DE1CB8CE0D00BC3B47 /* HistoryViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		62C078101CB8BB8F0084B1E9 = {
 			isa = PBXGroup;
 			children = (
@@ -125,18 +156,11 @@
 		62C0781B1CB8BB8F0084B1E9 /* Repay */ = {
 			isa = PBXGroup;
 			children = (
-				62C0781C1CB8BB8F0084B1E9 /* AppDelegate.swift */,
-				62C0781E1CB8BB8F0084B1E9 /* ViewController.swift */,
-				62C078201CB8BB8F0084B1E9 /* Main.storyboard */,
-				62B197C31CB9A3F200421FB9 /* Category.storyboard */,
-				62B197C51CB9A68500421FB9 /* CategoryTableViewController.swift */,
-				0AA720E21CB96A5400BC3B47 /* HomeViewController.swift */,
-				0AA720E01CB95F0E00BC3B47 /* UploadViewController.swift */,
-				0ABC83791CB9D6BA00E8A199 /* ConfirmViewController.swift */,
+				62AEBD421CCD55F9000925AE /* Controller */,
+				62AEBD411CCD55EC000925AE /* View */,
+				62AEBD3F1CCD55D4000925AE /* Model */,
 				62C078231CB8BB8F0084B1E9 /* Assets.xcassets */,
-				62C078251CB8BB8F0084B1E9 /* LaunchScreen.storyboard */,
 				62C078281CB8BB8F0084B1E9 /* Info.plist */,
-				0AA720DE1CB8CE0D00BC3B47 /* HistoryViewController.swift */,
 			);
 			path = Repay;
 			sourceTree = "<group>";
