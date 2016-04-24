@@ -49,6 +49,7 @@ class HomeViewController: UIViewController {
                                    completion: { finished in
                                     print("Bug moved left!")
         })
+        
         showBlur()
     }
     

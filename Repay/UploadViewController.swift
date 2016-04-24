@@ -55,23 +55,25 @@ class UploadViewController:
     }
     
     @IBAction func onRequest(sender: AnyObject) {
-        //base64 it
-        let imageData = UIImagePNGRepresentation(imagePreview.image!.resize(0.5))
-        let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
         let prefs = NSUserDefaults.standardUserDefaults()
         prefs.setValue(amountInput.text, forKey: "amount")
         
+        // Image converted to base64 string for storage on Firebase
+        let imageData = UIImagePNGRepresentation(imagePreview.image!.resize(0.5))
+        let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
+        
+        // TODO: Need to read the user information from Firebase and write it back
+        // to Firebase with the individual receipt information
         let receipts = ["first_name": "Esha",
                         "id": 765,
                         "image": base64String,
                         "last_name": "Joshi",
                         "position": "Software Engineer",
-                        "requested_amt": String(amountInput.text),
+                        "requested_amt": String(amountInput.text!),
                         "status": "todo",
                         "timestamp": NSDate().timeIntervalSince1970
-                        //"timestamp": "2016-04-09"
-                        ]
-                
+                    ]
+        
         let post1Ref = ref.childByAutoId()
         post1Ref.setValue(receipts)
     }
