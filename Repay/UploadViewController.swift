@@ -49,9 +49,11 @@ class UploadViewController:
     @IBAction func inputReimbursementAmt(sender: UITextField) {
         let reimbursementAmt = sender.text
         
-        if amountInput.text?.rangeOfString("$") == nil {
-            amountInput.text = "$" + reimbursementAmt!
-        }
+//        if amountInput.text?.rangeOfString("$") == nil {
+//            amountInput.text = "$" + reimbursementAmt!
+//        }
+        
+        amountInput.text = reimbursementAmt!
     }
     
     @IBAction func onCamera(sender: AnyObject) {

@@ -27,6 +27,10 @@ class HomeViewController: UIViewController {
     @IBOutlet var btnGoogle: UIButton!
     
     // ------ App vars -------
+    var totalBalance = 400.00
+    var foodBalance = 100.00
+    var lodgingBalance = 200.00
+    var transportationBalance = 100.00
     @IBOutlet var companyImage: UIImageView!
     @IBOutlet var balanceLabelText: UILabel!
     @IBOutlet weak var companyLabelText: UILabel!
@@ -125,20 +129,34 @@ class HomeViewController: UIViewController {
     
     // ------ App Functionality -------
     func loadBalance() {
-        
-        var totalBalance = 400.00
-        var foodBalance = 100.00
-        
         let defaults = NSUserDefaults.standardUserDefaults()
         
-        if let amt = defaults.stringForKey("amount") {
-            if(Double(amt) != nil) {
-                totalBalance = totalBalance - Double(amt)!;
+        let amt = defaults.stringForKey("amount")!
+        let category = defaults.stringForKey("requestedCategory")!
+        
+//        print("Amount: ", amt)
+//        print("Category view: ", category)
+        
+        // Update balance totals
+        if (Double(amt) != nil && String(category) != nil) {
+            if (category == "Food") {
+                foodBalance -= Double(amt)!
+                let amtString = NSString(format: "%.2f", foodBalance)
+                let amtString2 = "$" + (amtString as String);
+                foodAmt.text = amtString2
+            } else if (category == "Lodging") {
+                lodgingBalance -= Double(amt)!
+                let amtString = NSString(format: "%.2f", lodgingBalance)
+                let amtString2 = "$" + (amtString as String);
+                lodgingAmt.text = amtString2
+            } else if (category == "Transportation") {
+                transportationBalance -= Double(amt)!
+                let amtString = NSString(format: "%.2f", transportationBalance)
+                let amtString2 = "$" + (amtString as String);
+                transportationAmt.text = amtString2
             }
             
-            if(Double(amt) != nil) {
-                foodBalance = foodBalance - Double(amt)!;
-            }
+            totalBalance -= totalBalance - Double(amt)!
         }
         
         let s = NSString(format: "%.2f", totalBalance)
@@ -149,10 +167,6 @@ class HomeViewController: UIViewController {
         attributedString.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir Next", size: 48.0)!, range: NSRange(location:longString.indexOfCharacter(".")!+1,length:2))
         
         balanceLabelText.attributedText = attributedString
-        
-        let s2 = NSString(format: "%.2f", foodBalance)
-        let longString2 = "$"+(s2 as String);
-        foodAmt.text = longString2;
     }
     
     func setLogo(id: String) {

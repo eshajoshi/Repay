@@ -10,6 +10,9 @@ import UIKit
 
 class CategoryTableViewController: UITableViewController {
 
+    var foodBalance = 100.00
+    var lodgingBalance = 200.00
+    var transportationBalance = 100.00
     @IBOutlet weak var btnFood: UIButton!
     @IBOutlet weak var btnLodging: UIButton!
     @IBOutlet weak var btnTransp: UIButton!
@@ -17,7 +20,7 @@ class CategoryTableViewController: UITableViewController {
     @IBOutlet weak var navItem: UINavigationItem!
     
     @IBOutlet var foodAmt: UILabel!
-    @IBOutlet var logdingAmt: UILabel!
+    @IBOutlet var lodgingAmt: UILabel!
     @IBOutlet var transportationAmt: UILabel!
     
     @IBAction func cancel(sender: AnyObject) {
@@ -43,20 +46,32 @@ class CategoryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let defaults = NSUserDefaults.standardUserDefaults()
-
-        var foodBalance = 100.00
-//        var lodgingBalance = 200.00
-//        var transportationBalance = 100.00
         
-        if let amt = defaults.stringForKey("amount") {
-            if(Double(amt) != nil) {
-                foodBalance = foodBalance - Double(amt)!;
+        let amt = defaults.stringForKey("amount")!
+        let category = defaults.stringForKey("requestedCategory")!
+        
+        print("Amount: ", amt)
+        print("Category view: ", category)
+        
+        // Update balance totals
+        if (Double(amt) != nil && String(category) != nil) {
+            if (category == "Food") {
+                foodBalance -= Double(amt)!
+                let amtString = NSString(format: "%.2f", foodBalance)
+                let amtString2 = "$" + (amtString as String);
+                foodAmt.text = amtString2
+            } else if (category == "Lodging") {
+                lodgingBalance -= Double(amt)!
+                let amtString = NSString(format: "%.2f", lodgingBalance)
+                let amtString2 = "$" + (amtString as String);
+                lodgingAmt.text = amtString2
+            } else if (category == "Transportation") {
+                transportationBalance -= Double(amt)!
+                let amtString = NSString(format: "%.2f", transportationBalance)
+                let amtString2 = "$" + (amtString as String);
+                transportationAmt.text = amtString2
             }
         }
-        
-        let s2 = NSString(format: "%.2f", foodBalance)
-        let longString2 = "$"+(s2 as String);
-        foodAmt.text = longString2;
         
         // 'Select Category' Navigation Bar
         UINavigationBar.appearance().barTintColor = UIColor.init(red: 0/255, green: 94/255, blue: 43/255, alpha: 1)
