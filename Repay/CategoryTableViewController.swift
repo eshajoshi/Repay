@@ -33,7 +33,7 @@ class CategoryTableViewController: UITableViewController {
             prefs.setValue("Food", forKey: "requestedCategory")
         } else if (segue.identifier! == "Lodging Request Reimbursement") {
             prefs.setValue("Lodging", forKey: "requestedCategory")
-        } else {
+        } else if (segue.identifier! == "Transportation Request Reimbursement"){
             prefs.setValue("Transportation", forKey: "requestedCategory")
         }
         
@@ -44,7 +44,9 @@ class CategoryTableViewController: UITableViewController {
         super.viewDidLoad()
         let defaults = NSUserDefaults.standardUserDefaults()
 
-        var foodBalance = 100.00;
+        var foodBalance = 100.00
+//        var lodgingBalance = 200.00
+//        var transportationBalance = 100.00
         
         if let amt = defaults.stringForKey("amount") {
             if(Double(amt) != nil) {

@@ -2,7 +2,7 @@
 //  UploadViewController.swift
 //  Repay
 //
-//  Created by Kevin Vincent on 4/9/16.
+//  Created by Esha Joshi on 4/9/16.
 //  Copyright © 2016 Esha Joshi. All rights reserved.
 //
 
@@ -45,7 +45,14 @@ class UploadViewController:
     @IBOutlet var btnRequest: UIButton!
     @IBOutlet var imagePreview: UIImageView!
     var imagePicker: UIImagePickerController!
-
+    
+    @IBAction func inputReimbursementAmt(sender: UITextField) {
+        let reimbursementAmt = sender.text
+        
+        if amountInput.text?.rangeOfString("$") == nil {
+            amountInput.text = "$" + reimbursementAmt!
+        }
+    }
     
     @IBAction func onCamera(sender: AnyObject) {
         imagePicker = UIImagePickerController()
@@ -57,6 +64,7 @@ class UploadViewController:
     @IBAction func onRequest(sender: AnyObject) {
         let prefs = NSUserDefaults.standardUserDefaults()
         prefs.setValue(amountInput.text, forKey: "amount")
+        let category = prefs.stringForKey("requestedCategory")!
         
         // Image converted to base64 string for storage on Firebase
         let imageData = UIImagePNGRepresentation(imagePreview.image!.resize(0.5))
@@ -69,6 +77,7 @@ class UploadViewController:
                         "image": base64String,
                         "last_name": "Joshi",
                         "position": "Software Engineer",
+                        "category": category,
                         "requested_amt": String(amountInput.text!),
                         "status": "todo",
                         "timestamp": NSDate().timeIntervalSince1970
