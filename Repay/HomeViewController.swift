@@ -160,11 +160,11 @@ class HomeViewController: UIViewController {
         }
         
         let s = NSString(format: "%.2f", totalBalance)
-        let longString = "$"+(s as String);
+        let longString = "$" + (s as String);
         
         let attributedString = NSMutableAttributedString(string: longString, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(80)])
         
-        attributedString.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir Next", size: 48.0)!, range: NSRange(location:longString.indexOfCharacter(".")!+1,length:2))
+        attributedString.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir Next", size: 48.0)!, range: NSRange(location: longString.indexOfCharacter(".")! + 1,length:2))
         
         balanceLabelText.attributedText = attributedString
     }
