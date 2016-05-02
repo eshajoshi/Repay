@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-let repayFirebaseUrl = "https://repay.firebaseio.com/receipts"
+let repayReceiptsFirebase = "https://repay.firebaseio.com/receipts"
 
 extension UIImage {
     func resize(scale:CGFloat)-> UIImage {
@@ -38,7 +38,7 @@ class UploadViewController:
     UITableViewController,UINavigationControllerDelegate,
         UIImagePickerControllerDelegate {
     
-    var ref = Firebase(url: repayFirebaseUrl)
+    var ref = Firebase(url: repayReceiptsFirebase)
     
     @IBOutlet var amountInput: UITextField!
     @IBOutlet var barBtnBack: UIBarButtonItem!
