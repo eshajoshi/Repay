@@ -9,6 +9,7 @@
         <scene sceneID="PbH-Su-Jxe">
             <objects>
                 <navigationController storyboardIdentifier="StartCategoryNav" id="xad-hw-yrZ" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="G50-LB-7WC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

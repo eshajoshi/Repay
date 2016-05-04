@@ -18,15 +18,25 @@ class LoginViewController: UIViewController {
     
     var ref = Firebase(url: repayRef)
     var users = RegisteredAppUsers()
+    var loginStatus = false
     
     /* Validate user email and temporary password with database */
     @IBAction func handleLogin(sender: AnyObject) {
+        loginStatus = false
+        
         if (emailTextField.hasText() && tempPasswordField.hasText()) {
             print("Trying to validate user with email: \(emailTextField.text!)\n")
             
-            // Value of 'userStatus' changes
+            // Value of 'loginStatus' changes
             findUserFromFirebase()
-
+            
+            // Verify correct log in
+            if (loginStatus) {
+                // Create segue to 'ConfirmPassword' view
+                performSegueWithIdentifier("changePasswordSegue", sender: nil)
+            } else {
+                // TODO: Modal for incorrect username/password
+            }
         } else {
             print("User has not entered in email or temp. password...")
         }
@@ -69,17 +79,16 @@ class LoginViewController: UIViewController {
                         self.users.users.append(newUser)
                         self.users.lastAdded = newUser
                         
+                        self.loginStatus = true
                         print("User logged in successfully!")
                         return
                     } else {
+                        self.loginStatus = false
                         print("User entered the incorrect password.")
-                        
-                        // TODO: Modal for incorrect username/password
                     }
                 } else {
+                    self.loginStatus = false
                     print("User does not exist in the database.")
-                    
-                    // TODO: Modal for incorrect username/password
                 }
             }
         })
