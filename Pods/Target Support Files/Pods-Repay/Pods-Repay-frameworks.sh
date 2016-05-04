@@ -85,7 +85,11 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Repay/Firebase.framework"
+  install_framework "Pods-Repay/Realm.framework"
+  install_framework "Pods-Repay/RealmSwift.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Repay/Firebase.framework"
+  install_framework "Pods-Repay/Realm.framework"
+  install_framework "Pods-Repay/RealmSwift.framework"
 fi
