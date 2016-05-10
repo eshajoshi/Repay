@@ -82,7 +82,7 @@ class UploadViewController:
                         "category": category,
                         "requested_amt": String(amountInput.text!),
                         "status": "todo",
-                        "timestamp": NSDate().timeIntervalSince1970
+                        "timestamp": NSDate().timeIntervalSince1970 * 1000
                     ]
         
         let post1Ref = ref.childByAutoId()

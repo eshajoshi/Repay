@@ -182,7 +182,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController!.setNavigationBarHidden(true,animated: false);
+        navigationController!.setNavigationBarHidden(true, animated: false);
 
         // Customize buttons
         btnUpload.backgroundColor = UIColor.init(red: 249/255, green: 249/255, blue: 249/255, alpha: 1);

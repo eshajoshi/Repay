@@ -13,9 +13,9 @@
 		0ABC837A1CB9D6BA00E8A199 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABC83791CB9D6BA00E8A199 /* ConfirmViewController.swift */; };
 		62884EF31CD99573006F6D71 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62884EF21CD99573006F6D71 /* User.swift */; };
 		6297B9711CD7CE4C00D8A1BC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6297B9701CD7CE4C00D8A1BC /* LoginViewController.swift */; };
+		629B4EF01CE0637E00CFDD94 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629B4EEF1CE0637E00CFDD94 /* ChangePasswordViewController.swift */; };
 		62B0E5AF1CD996FD0043670E /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0E5AE1CD996FD0043670E /* Receipt.swift */; };
 		62B0E5B11CD999330043670E /* RegisteredAppUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0E5B01CD999330043670E /* RegisteredAppUsers.swift */; };
-		62B0E5B31CD9BA4E0043670E /* ChangePasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0E5B21CD9BA4E0043670E /* ChangePasswordTableViewController.swift */; };
 		62B197C41CB9A3F200421FB9 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62B197C31CB9A3F200421FB9 /* Category.storyboard */; };
 		62B197C61CB9A68500421FB9 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B197C51CB9A68500421FB9 /* CategoryTableViewController.swift */; };
 		62C0781D1CB8BB8F0084B1E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C0781C1CB8BB8F0084B1E9 /* AppDelegate.swift */; };
@@ -54,9 +54,9 @@
 		3668257FA0535E66BC8CBBE1 /* Pods_Repay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Repay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62884EF21CD99573006F6D71 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6297B9701CD7CE4C00D8A1BC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		629B4EEF1CE0637E00CFDD94 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		62B0E5AE1CD996FD0043670E /* Receipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
 		62B0E5B01CD999330043670E /* RegisteredAppUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisteredAppUsers.swift; sourceTree = "<group>"; };
-		62B0E5B21CD9BA4E0043670E /* ChangePasswordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordTableViewController.swift; sourceTree = "<group>"; };
 		62B197C31CB9A3F200421FB9 /* Category.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Category.storyboard; sourceTree = "<group>"; };
 		62B197C51CB9A68500421FB9 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		62C078191CB8BB8F0084B1E9 /* Repay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Repay.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +106,7 @@
 			children = (
 				C86091C732AD7277A457C561 /* Pods-Repay.debug.xcconfig */,
 				0438AACFDA68C6287623C2E8 /* Pods-Repay.release.xcconfig */,
+				DDB6CDE3676429C2B6EE5BA9 /* Frameworks */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -133,7 +134,7 @@
 		62AEBD421CCD55F9000925AE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				62B0E5B21CD9BA4E0043670E /* ChangePasswordTableViewController.swift */,
+				629B4EEF1CE0637E00CFDD94 /* ChangePasswordViewController.swift */,
 				62C0781C1CB8BB8F0084B1E9 /* AppDelegate.swift */,
 				62C0781E1CB8BB8F0084B1E9 /* ViewController.swift */,
 				62B197C51CB9A68500421FB9 /* CategoryTableViewController.swift */,
@@ -154,7 +155,6 @@
 				62C0783B1CB8BB900084B1E9 /* RepayUITests */,
 				62C0781A1CB8BB8F0084B1E9 /* Products */,
 				4A472E3C5BEEDE18904CD7FB /* Pods */,
-				DDB6CDE3676429C2B6EE5BA9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -394,10 +394,10 @@
 			files = (
 				62B0E5AF1CD996FD0043670E /* Receipt.swift in Sources */,
 				62B0E5B11CD999330043670E /* RegisteredAppUsers.swift in Sources */,
-				62B0E5B31CD9BA4E0043670E /* ChangePasswordTableViewController.swift in Sources */,
 				0AA720E31CB96A5400BC3B47 /* HomeViewController.swift in Sources */,
 				62C0781F1CB8BB8F0084B1E9 /* ViewController.swift in Sources */,
 				0AA720E11CB95F0E00BC3B47 /* UploadViewController.swift in Sources */,
+				629B4EF01CE0637E00CFDD94 /* ChangePasswordViewController.swift in Sources */,
 				62C0781D1CB8BB8F0084B1E9 /* AppDelegate.swift in Sources */,
 				6297B9711CD7CE4C00D8A1BC /* LoginViewController.swift in Sources */,
 				62884EF31CD99573006F6D71 /* User.swift in Sources */,

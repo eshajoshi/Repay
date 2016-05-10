@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 class User: Object {
+    dynamic var uid = ""
     dynamic var email = ""
     dynamic var first_name = ""
     dynamic var last_name = ""
