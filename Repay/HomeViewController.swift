@@ -175,7 +175,7 @@ class HomeViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        loadBalance();
+        //loadBalance();
     }
     
     // Initial view of Main storyboard
@@ -195,7 +195,7 @@ class HomeViewController: UIViewController {
         view.layer.insertSublayer(layer, below: btnUpload.layer)
         
         // Balance Customization
-        loadBalance()
+        //loadBalance()
         
         // Customize company logo
         setLogo("airbnb_large");

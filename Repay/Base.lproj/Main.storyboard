@@ -20,7 +20,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7uz-fN-zxV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1239.5" y="243.5"/>
+            <point key="canvasLocation" x="-1095.5" y="243.5"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="t4U-vB-LRL">
@@ -81,7 +81,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jaf-U1-noc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1818.5" y="243.5"/>
+            <point key="canvasLocation" x="-2210.5" y="243.5"/>
         </scene>
         <!--ChangePasswordViewController-->
         <scene sceneID="f7A-oC-zND">
@@ -175,11 +175,12 @@
                         <outlet property="modalView" destination="OJv-Q9-HvX" id="Bmn-q2-ZzZ"/>
                         <outlet property="newPasswordTextField" destination="fMZ-Iv-kSI" id="BzU-Hz-uHU"/>
                         <outlet property="welcomeNameLabel" destination="seA-e9-9pM" id="yoT-eE-4nr"/>
+                        <segue destination="jhQ-yk-2lf" kind="presentation" identifier="homeViewSegue" id="r88-Q9-Os5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SDH-nE-lTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1818.5" y="1101.5"/>
+            <point key="canvasLocation" x="-1666.5" y="243.5"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="chw-MT-VWH">

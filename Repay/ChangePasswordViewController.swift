@@ -35,6 +35,9 @@ class ChangePasswordViewController: UIViewController {
                 
                 tupleRef.updateChildValues(passwords)
                 
+                userToValidate?.new_password = newPasswordTextField.text!
+                userToValidate?.confirm_password = confirmPasswordTextField.text!
+                
                 // Add new user object to Realm
                 addNewUser((userToValidate?.uid)!,
                            email : (userToValidate?.email)!,
@@ -42,7 +45,9 @@ class ChangePasswordViewController: UIViewController {
                            lastName: (userToValidate?.last_name)!,
                            tempPassword: (userToValidate?.temp_password)!,
                            newPassword: newPasswordTextField.text!, confirmPassword: confirmPasswordTextField.text!)
-
+                
+                print("User changed password successfully.")
+                performSegueWithIdentifier("homeViewSegue", sender: self)
             } else {
                 print("Password fields do not match.")
                 // TODO: Modal for password fields do not match
@@ -75,7 +80,7 @@ class ChangePasswordViewController: UIViewController {
             user.confirm_password = confirmPassword
             
             registeredUsers.users.append(user)
-            registeredUsers.lastAdded = user
+            registeredUsers.loggedInUser = user
             
             realm.add([user, registeredUsers])
         }
@@ -104,17 +109,9 @@ class ChangePasswordViewController: UIViewController {
         confirmPasswordTextField.borderStyle = UITextBorderStyle.None
         confirmPasswordTextField.layer.cornerRadius = 5.0
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        print("view.frame2: ", view.frame)
-        print(modalView.frame)
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("view.frame: ", view.frame)
-        print("module.frame: ", modalView.frame)
             
         // Gradient
         let layer = CAGradientLayer()

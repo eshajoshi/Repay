@@ -25,6 +25,9 @@
 		62C078271CB8BB8F0084B1E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C078251CB8BB8F0084B1E9 /* LaunchScreen.storyboard */; };
 		62C078321CB8BB900084B1E9 /* RepayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C078311CB8BB900084B1E9 /* RepayTests.swift */; };
 		62C0783D1CB8BB900084B1E9 /* RepayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C0783C1CB8BB900084B1E9 /* RepayUITests.swift */; };
+		62E63F1F1CE2FBF600FB23EA /* Interview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E63F1E1CE2FBF600FB23EA /* Interview.swift */; };
+		62E63F211CE2FD0600FB23EA /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E63F201CE2FD0600FB23EA /* Budget.swift */; };
+		62E63F231CE2FD5B00FB23EA /* RegisteredInterviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E63F221CE2FD5B00FB23EA /* RegisteredInterviews.swift */; };
 		D2923C5229BD5C92A8D594E4 /* Pods_Repay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3668257FA0535E66BC8CBBE1 /* Pods_Repay.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +75,9 @@
 		62C078381CB8BB900084B1E9 /* RepayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RepayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C0783C1CB8BB900084B1E9 /* RepayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepayUITests.swift; sourceTree = "<group>"; };
 		62C0783E1CB8BB900084B1E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62E63F1E1CE2FBF600FB23EA /* Interview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interview.swift; sourceTree = "<group>"; };
+		62E63F201CE2FD0600FB23EA /* Budget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
+		62E63F221CE2FD5B00FB23EA /* RegisteredInterviews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisteredInterviews.swift; sourceTree = "<group>"; };
 		C86091C732AD7277A457C561 /* Pods-Repay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Repay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Repay/Pods-Repay.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,8 +121,11 @@
 			isa = PBXGroup;
 			children = (
 				62884EF21CD99573006F6D71 /* User.swift */,
+				62E63F201CE2FD0600FB23EA /* Budget.swift */,
+				62E63F221CE2FD5B00FB23EA /* RegisteredInterviews.swift */,
 				62B0E5AE1CD996FD0043670E /* Receipt.swift */,
 				62B0E5B01CD999330043670E /* RegisteredAppUsers.swift */,
+				62E63F1E1CE2FBF600FB23EA /* Interview.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -395,7 +404,9 @@
 				62B0E5AF1CD996FD0043670E /* Receipt.swift in Sources */,
 				62B0E5B11CD999330043670E /* RegisteredAppUsers.swift in Sources */,
 				0AA720E31CB96A5400BC3B47 /* HomeViewController.swift in Sources */,
+				62E63F1F1CE2FBF600FB23EA /* Interview.swift in Sources */,
 				62C0781F1CB8BB8F0084B1E9 /* ViewController.swift in Sources */,
+				62E63F231CE2FD5B00FB23EA /* RegisteredInterviews.swift in Sources */,
 				0AA720E11CB95F0E00BC3B47 /* UploadViewController.swift in Sources */,
 				629B4EF01CE0637E00CFDD94 /* ChangePasswordViewController.swift in Sources */,
 				62C0781D1CB8BB8F0084B1E9 /* AppDelegate.swift in Sources */,
@@ -403,6 +414,7 @@
 				62884EF31CD99573006F6D71 /* User.swift in Sources */,
 				0AA720DF1CB8CE0D00BC3B47 /* HistoryViewController.swift in Sources */,
 				0ABC837A1CB9D6BA00E8A199 /* ConfirmViewController.swift in Sources */,
+				62E63F211CE2FD0600FB23EA /* Budget.swift in Sources */,
 				62B197C61CB9A68500421FB9 /* CategoryTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
