@@ -70,7 +70,9 @@ class LoginViewController: UIViewController {
                         print("User logged in successfully!")
                         
                         // Send newUser object in segue to ChangePasswordViewController
-                        self.performSegueWithIdentifier("changePasswordSegue", sender: self.newUser)
+                        print("SEGUE 1")
+                        self.performSegueWithIdentifier("changePasswordSegue", sender: self)
+
                         return
                     } else {
                         //self.loginStatus = false
@@ -104,6 +106,8 @@ class LoginViewController: UIViewController {
     /* Sends newUser object to ChangePasswordViewController */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "changePasswordSegue") {
+            print("SEGUE 2")
+
             let changePasswordVC = segue.destinationViewController as! ChangePasswordViewController
             changePasswordVC.userToValidate = self.newUser
         }
