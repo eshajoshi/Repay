@@ -10,11 +10,17 @@ import Foundation
 import RealmSwift
 
 class Interview: Object {
-    dynamic var uid = ""
-    dynamic var interviewee: User?
+    dynamic var uid = ""                        // Unique id for Interview (key in DB)
+    dynamic var interviewee_id = ""             // 'user' object uid
     dynamic var position = ""
     dynamic var company = ""
-    dynamic var start_date = NSDate(timeIntervalSince1970: 1)
-    dynamic var end_date = NSDate(timeIntervalSince1970: 1)
-    dynamic var budgets: Budget?
+//    dynamic var start_date = NSDate(timeIntervalSince1970: 1)
+//    dynamic var end_date = NSDate(timeIntervalSince1970: 1)
+    dynamic var start_date = ""
+    dynamic var end_date = ""
+    dynamic var company_budget: Budget?        // Not in DB
+    dynamic var total_balance = 0.0            // Written to DB later
+    dynamic var food_balance = 0.0             // Written to DB later
+    dynamic var lodging_balance = 0.0          // Written to DB later
+    dynamic var transportation_balance = 0.0   // Written to DB later
 }

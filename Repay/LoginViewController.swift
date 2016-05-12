@@ -10,15 +10,14 @@ import UIKit
 import Firebase
 import RealmSwift
 
-let repayRef = "https://repay.firebaseio.com/"
+var ref = Firebase(url: "https://repay.firebaseio.com")
 
 class LoginViewController: UIViewController {
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var tempPasswordField: UITextField!
     @IBOutlet var loginBtn: UIButton!
     
-    var ref = Firebase(url: repayRef)
-    var newUser = User()
+    var newUser: User?
     
     /* Validate user email and temporary password with database */
     @IBAction func handleLogin(sender: AnyObject) {
@@ -38,43 +37,29 @@ class LoginViewController: UIViewController {
     
     func findUserFromFirebase() {
         print("Retrieving user info from Firebase...\t")
-        let usersRef = ref.childByAppendingPath("users")
         
-        newUser = User()
+        let usersRef = ref.childByAppendingPath("users")
         
         usersRef.queryOrderedByChild("email").observeEventType(.ChildAdded, withBlock: { snapshot in
             if let dbEmail = snapshot.value["email"] as? String {
                 
                 if dbEmail == self.emailTextField.text {
                     print("User \(snapshot.key):")
-                    print("\tEmail: \(dbEmail)")
+                    print(snapshot.value)
                     
                     let dbTempPassword = snapshot.value["temp_password"] as? String
                     
                     if dbTempPassword == self.tempPasswordField.text {
-                        print("\tTemp Password: \(dbTempPassword!)")
-                        
-                        let first_name = snapshot.value["first_name"] as? String
-                        let last_name = snapshot.value["last_name"] as? String
-                        
-                        print("\tFirst Name: \(first_name!)")
-                        print("\tLast Name: \(last_name!)")
-
-                        /* Adding user information to Realm data */
-                        self.setUpNewUserToSend(snapshot.key,
-                            email: self.emailTextField.text!,
-                            tempPassword: self.tempPasswordField.text!,
-                            firstName: first_name!,
-                            lastName: last_name!)
+                        self.newUser = User(uid: snapshot.key,
+                            email: (snapshot.value["email"] as? String)!,
+                            first_name: (snapshot.value["first_name"] as? String)!,
+                            last_name: (snapshot.value["last_name"] as? String)!,
+                            temp_password: (snapshot.value["temp_password"] as? String)!)
                         
                         print("User logged in successfully!")
                         
-                        // Send newUser object in segue to ChangePasswordViewController
                         self.performSegueWithIdentifier("changePasswordSegue", sender: self)
-
-                        return
                     } else {
-                        //self.loginStatus = false
                         print("User entered the incorrect password.")
                     }
                 } else {
@@ -82,15 +67,6 @@ class LoginViewController: UIViewController {
                 }
             }
         })
-    }
-    
-    func setUpNewUserToSend(uid : String, email : String, tempPassword : String,
-                            firstName : String, lastName: String) {
-        newUser.uid =  uid
-        newUser.email = email
-        newUser.temp_password = tempPassword
-        newUser.first_name = firstName
-        newUser.last_name = lastName
     }
     
     /* Enable/disable "log in" button based on non-nil user input */

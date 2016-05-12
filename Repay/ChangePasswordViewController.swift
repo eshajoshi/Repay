@@ -10,8 +10,7 @@ import UIKit
 import Firebase
 import RealmSwift
 
-let ref = Firebase(url: "https://repay.firebaseio.com")
-let realm = try! Realm()
+var realm = try! Realm()
 
 class ChangePasswordViewController: UIViewController {
     @IBOutlet var modalView: UIView!
@@ -39,7 +38,7 @@ class ChangePasswordViewController: UIViewController {
                 userToValidate?.confirm_password = confirmPasswordTextField.text!
                 
                 // Add new user object to Realm
-                addNewUser((userToValidate?.uid)!,
+                addNewUserToRealm((userToValidate?.uid)!,
                            email : (userToValidate?.email)!,
                            firstName: (userToValidate?.first_name)!,
                            lastName: (userToValidate?.last_name)!,
@@ -57,37 +56,25 @@ class ChangePasswordViewController: UIViewController {
         }
     }
     
-    // Call registeredAppUsers Realm object and update this user object with new and confirm password
-    // Write it back to Firebase
-    
     var moduleLayer: CALayer {
         return modalView.layer
     }
     
-    func addNewUser(uid : String, email : String, firstName : String, lastName: String,
+    func addNewUserToRealm(uid : String, email : String, firstName : String, lastName: String,
                     tempPassword: String, newPassword : String, confirmPassword : String) {
         
         try! realm.write {
-            let user = User()
-            let registeredUsers = RegisteredAppUsers()
+            let user = User(uid: uid, email: email, first_name: firstName, last_name: lastName, temp_password: tempPassword, new_password: newPassword, confirm_password: confirmPassword)
             
-            user.uid =  uid
-            user.email = email
-            user.first_name = firstName
-            user.last_name = lastName
-            user.temp_password = tempPassword
-            user.new_password = newPassword
-            user.confirm_password = confirmPassword
+//            let registeredUsers = RegisteredAppUsers()          // Is this always going to create new RegisteredAppUsers() instances?
+//            registeredUsers.users.append(user)
+//            registeredUsers.loggedInUser = user
             
-            registeredUsers.users.append(user)
-            registeredUsers.loggedInUser = user
-            
-            realm.add([user, registeredUsers])
+            realm.add(user)
         }
     }
     
     func customizeModule() {
-        print("\nChangePasswordController...")
         print("Customize module")
         modalView.layer.zPosition = 1;
         modalView.layer.cornerRadius = 10.0
@@ -112,7 +99,9 @@ class ChangePasswordViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-            
+        
+        print("\nChangePasswordController...")
+        
         // Gradient
         let layer = CAGradientLayer()
         layer.frame = CGRect(x:0, y: 0, width: view.frame.size.width, height: view.frame.size.height)

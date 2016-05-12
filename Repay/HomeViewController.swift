@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import RealmSwift
 
 extension String {
     public func indexOfCharacter(char: Character) -> Int? {
@@ -27,10 +29,6 @@ class HomeViewController: UIViewController {
     @IBOutlet var btnGoogle: UIButton!
     
     // ------ App vars -------
-    var totalBalance = 400.00
-    var foodBalance = 100.00
-    var lodgingBalance = 200.00
-    var transportationBalance = 100.00
     @IBOutlet var companyImage: UIImageView!
     @IBOutlet var balanceLabelText: UILabel!
     @IBOutlet weak var companyLabelText: UILabel!
@@ -39,6 +37,13 @@ class HomeViewController: UIViewController {
     @IBOutlet var foodAmt: UILabel!
     @IBOutlet var lodgingAmt: UILabel!
     @IBOutlet var transportationAmt: UILabel!
+    
+    var totalBalance = 400.00
+    var foodBalance = 100.00
+    var lodgingBalance = 200.00
+    var transportationBalance = 100.00
+    var loggedInUser: Results<User>?
+    var userInterviews = Array<Interview>()
     
     // ------ Modal functionality -------
     @IBAction func showModal(sender: AnyObject) {
@@ -169,6 +174,48 @@ class HomeViewController: UIViewController {
         balanceLabelText.attributedText = attributedString
     }
     
+    func readInterviewObjectsfromFirebase(userId : String) {
+        let interviewsRef = ref.childByAppendingPath("interviews")
+        let budgetsRef = ref.childByAppendingPath("budgets")
+        
+        interviewsRef.queryOrderedByChild(userId).observeEventType(.ChildAdded, withBlock: { snapshot in
+            let interview = Interview()
+            
+            interview.uid = snapshot.key
+            interview.interviewee_id = userId
+            interview.position = (snapshot.value["position"] as? String)!
+            interview.company = (snapshot.value["company"] as? String)!
+            interview.start_date = (snapshot.value["start_date"] as? String)!
+            interview.end_date = (snapshot.value["end_date"] as? String)!
+            
+            budgetsRef.queryOrderedByKey().observeEventType(.ChildAdded, withBlock: { snapshot in
+                if interview.company == snapshot.key {
+                    let budget = Budget()
+
+                    budget.company = snapshot.key
+                    budget.total_amount = Double((snapshot.value["total_amt"] as? String)!)!
+                    budget.food_amount = Double((snapshot.value["food_amt"] as? String)!)!
+                    budget.lodging_amount = Double((snapshot.value["lodging_amt"] as? String)!)!
+                    //budget.transportation_amount = Double((snapshot.value["transportation_amt"] as? String)!)!
+                
+                    interview.company_budget = budget
+                    interview.total_balance = budget.total_amount
+                    interview.food_balance = budget.food_amount
+                    interview.lodging_balance = budget.lodging_amount
+                    interview.transportation_balance = budget.transportation_amount
+                    
+                    // Appends the Interview object to 'userInterviews'
+                    self.userInterviews.append(interview)
+                    
+                    for object in self.userInterviews {
+                        print(object.uid)
+                    }
+                    //return self.userInterviews
+                }
+            })
+        })
+    }
+    
     func setLogo(id: String) {
         let image: UIImage = UIImage(named: id)!
         companyImage.image = image;
@@ -182,6 +229,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("\nHomeViewController...")
+        
         navigationController!.setNavigationBarHidden(true, animated: false);
 
         // Customize buttons
@@ -193,6 +242,15 @@ class HomeViewController: UIViewController {
         layer.frame = CGRect(x:0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
         layer.colors = [UIColor.init(red: 42/255, green: 183/255, blue:133/255, alpha: 1).CGColor, UIColor.init(red: 0/255, green: 94/255, blue:43/255, alpha: 1).CGColor]
         view.layer.insertSublayer(layer, below: btnUpload.layer)
+        
+        // Retrieve 'loggedInUser' RealmSwift object info
+        loggedInUser = realm.objects(User)
+        print("loggedInUser: \t", loggedInUser!)
+        let userId = loggedInUser![0].uid
+        
+        // Read'interview' objects such that interview.interviewee_id = userId & update array
+        readInterviewObjectsfromFirebase(userId)
+        print("\nUser Interviews: ", userInterviews)
         
         // Balance Customization
         //loadBalance()
