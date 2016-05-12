@@ -201,7 +201,7 @@
                                     <color key="titleColor" red="0.0" green="0.36862745099999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="xoz-c7-dwF" kind="presentation" id="Fzk-yS-ZVF"/>
+                                    <segue destination="xoz-c7-dwF" kind="presentation" identifier="selectCategorySegue" id="Fzk-yS-ZVF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TF5-U2-zXE">
@@ -211,7 +211,7 @@
                                     <color key="titleColor" red="0.0" green="0.36862745099999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="J85-K7-0gU" kind="presentation" id="Ahn-ze-irC"/>
+                                    <segue destination="J85-K7-0gU" kind="presentation" identifier="selectHistorySegue" id="Ahn-ze-irC"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C00-yA-BJ1">
@@ -292,7 +292,7 @@
                                     <action selector="showModal:" destination="KUO-Qh-pfq" eventType="touchUpInside" id="byt-CD-QTB"/>
                                 </connections>
                             </button>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jUQ-9W-lHe">
+                            <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jUQ-9W-lHe">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="8P5-m3-5Tl">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -300,14 +300,14 @@
                                 </view>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HCt-MC-SyI">
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HCt-MC-SyI">
                                 <rect key="frame" x="37" y="164" width="300" height="338"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Af-Kz-aNY">
                                         <rect key="frame" x="8" y="70" width="282" height="60"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                         <inset key="contentEdgeInsets" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal">
+                                        <state key="normal" title="Airbnb">
                                             <color key="titleColor" red="0.0" green="0.36862745099999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -321,7 +321,7 @@
                                         <rect key="frame" x="8" y="139" width="282" height="60"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                         <inset key="contentEdgeInsets" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal">
+                                        <state key="normal" title="Apple">
                                             <color key="titleColor" red="0.0" green="0.36862745099999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -358,7 +358,7 @@
                                         <rect key="frame" x="8" y="207" width="284" height="60"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                         <inset key="contentEdgeInsets" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal">
+                                        <state key="normal" title="Google">
                                             <color key="titleColor" red="0.0" green="0.36862745099999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>

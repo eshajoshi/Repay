@@ -47,6 +47,7 @@ class HomeViewController: UIViewController {
     var transportationBalance = 100.00
     var loggedInUser: Results<User>?
     var userInterviews = [Interview]()
+    var curInterview : Interview?
     
     // ------ Modal functionality -------
     @IBAction func showModal(sender: AnyObject) {
@@ -72,7 +73,7 @@ class HomeViewController: UIViewController {
         if btnText != "Cancel" {
             print("Company set to \(btnText).")
             companyLabelText.text = btnText
-            setLogo(getCompanyImageLogo(companyLabelText.text!))
+            setCompanyLogo(getCompanyImageLogo(companyLabelText.text!))
         }
 
         hideModal()
@@ -120,8 +121,8 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func customizeModal(userInterviews : [Interview]) {
-        print("Size of array: ", userInterviews.count)
+    func customizeModalInitially(userInterviews : [Interview]) {
+        print("Number of interviews lined up: ", userInterviews.count)
         
         for item in userInterviews {
             print(item.company)
@@ -154,6 +155,31 @@ class HomeViewController: UIViewController {
     }
     
     // ------ App Functionality -------
+    func customizeHomePage() {
+        self.companyLabelText.text = self.curInterview?.company
+        self.setCompanyLogo((self.curInterview?.company)!);
+        
+        // Balances
+        let longString = String(format:"$%.2f", (self.curInterview?.total_balance)!)
+        let attributedString = NSMutableAttributedString(string: longString, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(80)])
+        
+        attributedString.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir Next", size: 48.0)!, range: NSRange(location: longString.indexOfCharacter(".")! + 1,length:2))
+        
+        self.balanceLabelText.attributedText = attributedString
+        
+        
+        self.foodAmt.text = String(format:"$%.2f", (self.curInterview?.food_balance)!)
+        self.lodgingAmt.text = String(format:"$%.2f", (self.curInterview?.lodging_balance)!)
+        self.transportationAmt.text = String(format:"$%.2f", (self.curInterview?.transportation_balance)!)
+
+    }
+    
+    func setCompanyLogo(company_name: String) {
+        let id = getCompanyImageLogo(company_name)
+        let image: UIImage = UIImage(named: id)!
+        companyImage.image = image;
+    }
+    
     func loadBalance() {
         let defaults = NSUserDefaults.standardUserDefaults()
         
@@ -226,21 +252,23 @@ class HomeViewController: UIViewController {
                     // Appends the Interview object to 'userInterviews
                     self.userInterviews.append(interview)
                     
-                    // Modal (2 count is hella hardcoded)
-                    if (self.userInterviews.count == 2) {
-                        self.customizeModal(self.userInterviews);
-                        self.hideBlur()
-                        self.modalView.hidden = true;
+                    // Modal
+                    self.customizeModalInitially(self.userInterviews);
+                    self.hideBlur()
+                    self.modalView.hidden = true;
+                    
+                    if (self.curInterview == nil) {
+                        self.curInterview = self.userInterviews[0]
                     }
+                    
+                    // Home Page
+                    self.customizeHomePage()
+                    
+                    // Balance Customization
+                    //self.loadBalance()
                 }
             })
         })
-    }
-
-    
-    func setLogo(id: String) {
-        let image: UIImage = UIImage(named: id)!
-        companyImage.image = image;
     }
     
     func setUpCompanyButtons() {
@@ -282,12 +310,6 @@ class HomeViewController: UIViewController {
         
         // Read'interview' objects such that interview.interviewee_id = userId & update array
         readInterviewObjectsfromFirebase(userId)
-        
-        // Balance Customization
-        //loadBalance()
-        
-        // Customize company logo
-        setLogo("airbnb_large");
         
         // Modal
         setUpCompanyButtons()
