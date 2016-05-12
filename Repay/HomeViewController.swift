@@ -24,9 +24,12 @@ class HomeViewController: UIViewController {
     // ------ Modal vars -------
     @IBOutlet var blur: UIVisualEffectView!
     @IBOutlet var modalView: UIView!
-    @IBOutlet var btnAirbnb: UIButton!
-    @IBOutlet var btnApple: UIButton!
-    @IBOutlet var btnGoogle: UIButton!
+    @IBOutlet var companyBtn1: UIButton!
+    @IBOutlet var companyBtn2: UIButton!
+    @IBOutlet var companyBtn3: UIButton!
+    @IBOutlet var company1Logo: UIImageView!
+    @IBOutlet var company2Logo: UIImageView!
+    @IBOutlet var company3Logo: UIImageView!
     
     // ------ App vars -------
     @IBOutlet var companyImage: UIImageView!
@@ -43,7 +46,7 @@ class HomeViewController: UIViewController {
     var lodgingBalance = 200.00
     var transportationBalance = 100.00
     var loggedInUser: Results<User>?
-    var userInterviews = Array<Interview>()
+    var userInterviews = [Interview]()
     
     // ------ Modal functionality -------
     @IBAction func showModal(sender: AnyObject) {
@@ -81,9 +84,13 @@ class HomeViewController: UIViewController {
             return "airbnb_large"
         } else if company == "Apple" {
             return "apple_large"
+        } else if company == "Google" {
+            return "google_large"
+        } else if company == "Intuit" {
+            return ""
         }
         
-        return "google_large"
+        return ""                  // Microsoft eventually
     }
     
     func hideModal() {
@@ -113,23 +120,37 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func customizeModal() {
+    func customizeModal(userInterviews : [Interview]) {
+        print("Size of array: ", userInterviews.count)
+        
+        for item in userInterviews {
+            print(item.company)
+        }
+        
         modalView.layer.cornerRadius = 10.0
         modalView.layer.borderWidth = 0
         modalView.clipsToBounds = true
         
-        btnAirbnb.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue:229/255, alpha: 1);
-        btnAirbnb.layer.cornerRadius = 6.0
-        btnAirbnb.layer.borderWidth = 0
-        btnAirbnb.clipsToBounds = true
-        btnApple.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue:229/255, alpha: 1);
-        btnApple.layer.cornerRadius = 6.0
-        btnApple.layer.borderWidth = 0
-        btnApple.clipsToBounds = true
-        btnGoogle.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue:229/255, alpha: 1);
-        btnGoogle.layer.cornerRadius = 6.0
-        btnGoogle.layer.borderWidth = 0
-        btnGoogle.clipsToBounds = true
+        if (userInterviews.count >= 1) {
+            customizeCompanies(companyBtn1, index : 0)
+        }
+        
+        if (userInterviews.count >= 2) {
+            customizeCompanies(companyBtn2, index : 1)
+        }
+        
+        if (userInterviews.count == 3) {
+            customizeCompanies(companyBtn3, index : 2)
+        }
+    }
+    
+    func customizeCompanies(btn : UIButton, index : Int) {
+        btn.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue:229/255, alpha: 1);
+        btn.layer.cornerRadius = 6.0
+        btn.layer.borderWidth = 0
+        btn.clipsToBounds = true
+        
+        btn.setTitle(userInterviews[index].company, forState: .Normal)
     }
     
     // ------ App Functionality -------
@@ -179,46 +200,57 @@ class HomeViewController: UIViewController {
         let budgetsRef = ref.childByAppendingPath("budgets")
         
         interviewsRef.queryOrderedByChild(userId).observeEventType(.ChildAdded, withBlock: { snapshot in
-            let interview = Interview()
             
-            interview.uid = snapshot.key
-            interview.interviewee_id = userId
-            interview.position = (snapshot.value["position"] as? String)!
-            interview.company = (snapshot.value["company"] as? String)!
-            interview.start_date = (snapshot.value["start_date"] as? String)!
-            interview.end_date = (snapshot.value["end_date"] as? String)!
+            let interview = Interview(uid : snapshot.key,
+                interviewee_id : userId,
+                position : (snapshot.value["position"] as? String)!,
+                company : (snapshot.value["company"] as? String)!,
+                start_date: (snapshot.value["start_date"] as? String)!,
+                end_date : (snapshot.value["end_date"] as? String)!)
             
             budgetsRef.queryOrderedByKey().observeEventType(.ChildAdded, withBlock: { snapshot in
                 if interview.company == snapshot.key {
-                    let budget = Budget()
-
-                    budget.company = snapshot.key
-                    budget.total_amount = Double((snapshot.value["total_amt"] as? String)!)!
-                    budget.food_amount = Double((snapshot.value["food_amt"] as? String)!)!
-                    budget.lodging_amount = Double((snapshot.value["lodging_amt"] as? String)!)!
-                    //budget.transportation_amount = Double((snapshot.value["transportation_amt"] as? String)!)!
-                
+                    
+                    let budget = Budget(company: snapshot.key,
+                        total_amount: Double((snapshot.value["total_amt"] as? String)!)!,
+                        food_amount : Double((snapshot.value["food_amt"] as? String)!)!,
+                        lodging_amount : Double((snapshot.value["lodging_amt"] as? String)!)!,
+                        transportation_amount: Double((snapshot.value["transportation_amt"] as? String)!)!)
+                    
                     interview.company_budget = budget
                     interview.total_balance = budget.total_amount
                     interview.food_balance = budget.food_amount
                     interview.lodging_balance = budget.lodging_amount
                     interview.transportation_balance = budget.transportation_amount
-                    
-                    // Appends the Interview object to 'userInterviews'
+
+                    // Appends the Interview object to 'userInterviews
                     self.userInterviews.append(interview)
                     
-                    for object in self.userInterviews {
-                        print(object.uid)
+                    // Modal (2 count is hella hardcoded)
+                    if (self.userInterviews.count == 2) {
+                        self.customizeModal(self.userInterviews);
+                        self.hideBlur()
+                        self.modalView.hidden = true;
                     }
-                    //return self.userInterviews
                 }
             })
         })
     }
+
     
     func setLogo(id: String) {
         let image: UIImage = UIImage(named: id)!
         companyImage.image = image;
+    }
+    
+    func setUpCompanyButtons() {
+        companyBtn1.setTitle("", forState: .Normal)
+        companyBtn2.setTitle("", forState: .Normal)
+        companyBtn3.setTitle("", forState: .Normal)
+        
+        company1Logo.image = nil
+        company2Logo.image = nil
+        company3Logo.image = nil
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -250,7 +282,6 @@ class HomeViewController: UIViewController {
         
         // Read'interview' objects such that interview.interviewee_id = userId & update array
         readInterviewObjectsfromFirebase(userId)
-        print("\nUser Interviews: ", userInterviews)
         
         // Balance Customization
         //loadBalance()
@@ -259,7 +290,7 @@ class HomeViewController: UIViewController {
         setLogo("airbnb_large");
         
         // Modal
-        customizeModal();
+        setUpCompanyButtons()
         hideBlur()
         self.modalView.hidden = true;
     }

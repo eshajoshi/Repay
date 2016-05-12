@@ -8,7 +8,6 @@
 
 import Foundation
 import RealmSwift
-import Firebase
 
 class User: Object {
     dynamic var uid = ""

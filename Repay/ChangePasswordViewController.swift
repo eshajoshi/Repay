@@ -27,7 +27,8 @@ class ChangePasswordViewController: UIViewController {
         
         if (newPasswordTextField.hasText() && confirmPasswordTextField.hasText()) {
             if (newPasswordTextField.text! == confirmPasswordTextField.text!) {
-                // Updating data to Firebase
+                
+                // Updating User data to Firebase
                 let tupleRef = usersRef.childByAppendingPath(userToValidate?.uid)
                 let passwords = ["new_password": newPasswordTextField.text!,
                                  "confirm_password": confirmPasswordTextField.text!]
@@ -38,12 +39,21 @@ class ChangePasswordViewController: UIViewController {
                 userToValidate?.confirm_password = confirmPasswordTextField.text!
                 
                 // Add new user object to Realm
-                addNewUserToRealm((userToValidate?.uid)!,
-                           email : (userToValidate?.email)!,
-                           firstName: (userToValidate?.first_name)!,
-                           lastName: (userToValidate?.last_name)!,
-                           tempPassword: (userToValidate?.temp_password)!,
-                           newPassword: newPasswordTextField.text!, confirmPassword: confirmPasswordTextField.text!)
+                try! realm.write {
+                    let user = User(uid: (userToValidate?.uid)!,
+                        email: (userToValidate?.email)!,
+                        first_name: (userToValidate?.first_name)!,
+                        last_name: (userToValidate?.last_name)!,
+                        temp_password: (userToValidate?.temp_password)!,
+                        new_password: newPasswordTextField.text!,
+                        confirm_password: confirmPasswordTextField.text!)
+                    
+                    // let registeredUsers = RegisteredAppUsers()          // Is this always going to create new RegisteredAppUsers() instances?
+                    //  registeredUsers.users.append(user)
+                    //  registeredUsers.loggedInUser = user
+                    
+                    realm.add(user)
+                }
                 
                 print("User changed password successfully.")
                 performSegueWithIdentifier("homeViewSegue", sender: self)
@@ -58,20 +68,6 @@ class ChangePasswordViewController: UIViewController {
     
     var moduleLayer: CALayer {
         return modalView.layer
-    }
-    
-    func addNewUserToRealm(uid : String, email : String, firstName : String, lastName: String,
-                    tempPassword: String, newPassword : String, confirmPassword : String) {
-        
-        try! realm.write {
-            let user = User(uid: uid, email: email, first_name: firstName, last_name: lastName, temp_password: tempPassword, new_password: newPassword, confirm_password: confirmPassword)
-            
-//            let registeredUsers = RegisteredAppUsers()          // Is this always going to create new RegisteredAppUsers() instances?
-//            registeredUsers.users.append(user)
-//            registeredUsers.loggedInUser = user
-            
-            realm.add(user)
-        }
     }
     
     func customizeModule() {
