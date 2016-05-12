@@ -16,17 +16,18 @@ class Interview: Object {
     dynamic var company = ""
     dynamic var start_date = ""
     dynamic var end_date = ""
-
 //    dynamic var start_date = NSDate(timeIntervalSince1970: 1)
 //    dynamic var end_date = NSDate(timeIntervalSince1970: 1)
-    dynamic var company_budget: Budget?        // Not in DB
-    dynamic var total_balance = 0.0            // Written to DB later
-    dynamic var food_balance = 0.0             // Written to DB later
-    dynamic var lodging_balance = 0.0          // Written to DB later
-    dynamic var transportation_balance = 0.0   // Written to DB later
+    dynamic var company_budget: Budget?         // Not in DB
+    dynamic var total_consumed = 0.0            // Written to DB later
+    dynamic var food_consumed = 0.0             // Written to DB later
+    dynamic var lodging_consumed = 0.0          // Written to DB later
+    dynamic var transportation_consumed = 0.0   // Written to DB later
     
-    convenience init(uid: String, interviewee_id : String, position : String, company : String, start_date: String,
-                     end_date : String) {
+    convenience init(uid: String, interviewee_id: String, position: String,
+                     company: String, start_date: String, end_date: String,
+                     total_consumed: Double, food_consumed: Double, lodging_consumed: Double,
+                     transportation_consumed: Double) {
         
         self.init()
         self.uid = uid
@@ -35,5 +36,9 @@ class Interview: Object {
         self.company = company
         self.start_date = start_date
         self.end_date = end_date
+        self.total_consumed = total_consumed
+        self.food_consumed = food_consumed
+        self.lodging_consumed = lodging_consumed
+        self.transportation_consumed = transportation_consumed
     }
 }

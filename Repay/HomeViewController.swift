@@ -41,17 +41,13 @@ class HomeViewController: UIViewController {
     @IBOutlet var lodgingAmt: UILabel!
     @IBOutlet var transportationAmt: UILabel!
     
-    var totalBalance = 400.00
-    var foodBalance = 100.00
-    var lodgingBalance = 200.00
-    var transportationBalance = 100.00
     var loggedInUser: Results<User>?
     var userInterviews = [Interview]()
     var curInterview : Interview?
     
     // ------ Modal functionality -------
     @IBAction func showModal(sender: AnyObject) {
-        print("IBAction: Clicked on modal...")
+        print("Clicked on modal.")
         self.modalView.hidden = false
         UIView.animateWithDuration(0.4,
                                    delay: 0.0,
@@ -71,9 +67,16 @@ class HomeViewController: UIViewController {
         let btnText = button.currentTitle! as String
         
         if btnText != "Cancel" {
-            print("Company set to \(btnText).")
+            print("Company changed from \(curInterview?.company) to \(btnText).")
             companyLabelText.text = btnText
             setCompanyLogo(getCompanyImageLogo(companyLabelText.text!))
+            
+            for interview in userInterviews {
+                if (interview.company == companyLabelText.text) {
+                    self.curInterview = interview
+                    self.loadBalance()
+                }
+            }
         }
 
         hideModal()
@@ -82,16 +85,16 @@ class HomeViewController: UIViewController {
     
     func getCompanyImageLogo(company: String) -> String {
         if company == "Airbnb" {
-            return "airbnb_large"
+            return "airbnb_small"
         } else if company == "Apple" {
-            return "apple_large"
+            return "apple_small"
         } else if company == "Google" {
-            return "google_large"
+            return "google_small"
         } else if company == "Intuit" {
-            return ""
+            return "apple_small"    // Intuit logo eventually
         }
         
-        return ""                  // Microsoft eventually
+        return "google_small"                  // Microsoft logo eventually
     }
     
     func hideModal() {
@@ -121,10 +124,10 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func customizeModalInitially(userInterviews : [Interview]) {
-        print("Number of interviews lined up: ", userInterviews.count)
+    func customizeModalInitially() {
+        print("Number of interviews lined up: ", self.userInterviews.count)
         
-        for item in userInterviews {
+        for item in self.userInterviews {
             print(item.company)
         }
         
@@ -155,70 +158,43 @@ class HomeViewController: UIViewController {
     }
     
     // ------ App Functionality -------
-    func customizeHomePage() {
+    func loadBalance() {
+        // Set amounts set forth by company
+        let setFood = (self.curInterview?.company_budget?.food_amount)!
+        let setLodging = (self.curInterview?.company_budget?.lodging_amount)!
+        let setTransportation = (self.curInterview?.company_budget?.transportation_amount)!
+        let setTotal = (self.curInterview?.company_budget?.total_amount)!
+        
+        // Home page company
         self.companyLabelText.text = self.curInterview?.company
-        self.setCompanyLogo((self.curInterview?.company)!);
+        self.setCompanyLogo(getCompanyImageLogo((self.curInterview?.company)!))
         
-        // Balances
-        let longString = String(format:"$%.2f", (self.curInterview?.total_balance)!)
-        let attributedString = NSMutableAttributedString(string: longString, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(80)])
+        // HomePage FOOD Updated Balance
+        let remainingFood = setFood - (self.curInterview?.food_consumed)!
+        self.foodAmt.text = String(format:"$%.2f", remainingFood)
         
-        attributedString.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir Next", size: 48.0)!, range: NSRange(location: longString.indexOfCharacter(".")! + 1,length:2))
+        // HomePage LODGING Updated Balance
+        let remainingLodging = setLodging - (self.curInterview?.lodging_consumed)!
+        self.lodgingAmt.text = String(format:"$%.2f", remainingLodging)
+        
+        // HomePage TRANSPORTATION Updated Balance
+        let transportationRemaining = setTransportation - (self.curInterview?.transportation_consumed)!
+        self.transportationAmt.text = String(format:"$%.2f", transportationRemaining)
+
+        // HomePage TOTAL Updated Balance
+        let totalRemaining = setTotal - (self.curInterview?.total_consumed)!
+        let totalRemainingStr = String(format:"$%.2f", totalRemaining)
+        let attributedString = NSMutableAttributedString(string: totalRemainingStr, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(80)])
+        
+        attributedString.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir Next", size: 48.0)!, range: NSRange(location: totalRemainingStr.indexOfCharacter(".")! + 1,length: 2))
         
         self.balanceLabelText.attributedText = attributedString
-        
-        
-        self.foodAmt.text = String(format:"$%.2f", (self.curInterview?.food_balance)!)
-        self.lodgingAmt.text = String(format:"$%.2f", (self.curInterview?.lodging_balance)!)
-        self.transportationAmt.text = String(format:"$%.2f", (self.curInterview?.transportation_balance)!)
 
     }
     
-    func setCompanyLogo(company_name: String) {
-        let id = getCompanyImageLogo(company_name)
-        let image: UIImage = UIImage(named: id)!
+    func setCompanyLogo(image_name: String) {
+        let image: UIImage = UIImage(named: image_name)!
         companyImage.image = image;
-    }
-    
-    func loadBalance() {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        
-        let amt = defaults.stringForKey("amount")!
-        let category = defaults.stringForKey("requestedCategory")!
-        
-//        print("Amount: ", amt)
-//        print("Category view: ", category)
-        
-        // Update balance totals
-        if (Double(amt) != nil && String(category) != nil) {
-            if (category == "Food") {
-                foodBalance -= Double(amt)!
-                let amtString = NSString(format: "%.2f", foodBalance)
-                let amtString2 = "$" + (amtString as String);
-                foodAmt.text = amtString2
-            } else if (category == "Lodging") {
-                lodgingBalance -= Double(amt)!
-                let amtString = NSString(format: "%.2f", lodgingBalance)
-                let amtString2 = "$" + (amtString as String);
-                lodgingAmt.text = amtString2
-            } else if (category == "Transportation") {
-                transportationBalance -= Double(amt)!
-                let amtString = NSString(format: "%.2f", transportationBalance)
-                let amtString2 = "$" + (amtString as String);
-                transportationAmt.text = amtString2
-            }
-            
-            totalBalance -= totalBalance - Double(amt)!
-        }
-        
-        let s = NSString(format: "%.2f", totalBalance)
-        let longString = "$" + (s as String);
-        
-        let attributedString = NSMutableAttributedString(string: longString, attributes: [NSFontAttributeName : UIFont.systemFontOfSize(80)])
-        
-        attributedString.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir Next", size: 48.0)!, range: NSRange(location: longString.indexOfCharacter(".")! + 1,length:2))
-        
-        balanceLabelText.attributedText = attributedString
     }
     
     func readInterviewObjectsfromFirebase(userId : String) {
@@ -232,7 +208,11 @@ class HomeViewController: UIViewController {
                 position : (snapshot.value["position"] as? String)!,
                 company : (snapshot.value["company"] as? String)!,
                 start_date: (snapshot.value["start_date"] as? String)!,
-                end_date : (snapshot.value["end_date"] as? String)!)
+                end_date : (snapshot.value["end_date"] as? String)!,
+                total_consumed: 0,
+                food_consumed:  0,
+                lodging_consumed: 0,
+                transportation_consumed: 0)
             
             budgetsRef.queryOrderedByKey().observeEventType(.ChildAdded, withBlock: { snapshot in
                 if interview.company == snapshot.key {
@@ -244,28 +224,25 @@ class HomeViewController: UIViewController {
                         transportation_amount: Double((snapshot.value["transportation_amt"] as? String)!)!)
                     
                     interview.company_budget = budget
-                    interview.total_balance = budget.total_amount
-                    interview.food_balance = budget.food_amount
-                    interview.lodging_balance = budget.lodging_amount
-                    interview.transportation_balance = budget.transportation_amount
 
                     // Appends the Interview object to 'userInterviews
                     self.userInterviews.append(interview)
                     
                     // Modal
-                    self.customizeModalInitially(self.userInterviews);
+                    self.customizeModalInitially();
                     self.hideBlur()
                     self.modalView.hidden = true;
                     
-                    if (self.curInterview == nil) {
-                        self.curInterview = self.userInterviews[0]
-                    }
+                    self.curInterview = self.userInterviews[0]
                     
-                    // Home Page
-                    self.customizeHomePage()
+//                    if (self.curInterview == nil) {
+//                        self.curInterview = self.userInterviews[0]
+//                    } else {
+//                        // TODO: Read curInterview RealmSwift object
+//                    }
                     
-                    // Balance Customization
-                    //self.loadBalance()
+                    // Home Page & balance customization
+                    self.loadBalance()
                 }
             })
         })
