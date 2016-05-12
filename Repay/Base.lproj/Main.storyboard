@@ -201,7 +201,8 @@
                                     <color key="titleColor" red="0.0" green="0.36862745099999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="xoz-c7-dwF" kind="presentation" identifier="selectCategorySegue" id="Fzk-yS-ZVF"/>
+                                    <action selector="handleUploadReceipt:" destination="KUO-Qh-pfq" eventType="touchUpInside" id="DJC-ee-sip"/>
+                                    <segue destination="xoz-c7-dwF" kind="show" identifier="selectCategorySegue" id="Dh7-2L-va6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TF5-U2-zXE">

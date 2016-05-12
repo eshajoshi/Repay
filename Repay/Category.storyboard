@@ -268,7 +268,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJN-Vh-pLS">
                                                     <rect key="frame" x="8" y="0.0" width="359" height="75"/>
                                                     <connections>
-                                                        <segue destination="RM0-n3-tfc" kind="show" identifier="Food Request Reimbursement" id="bdy-TK-oed"/>
+                                                        <segue destination="RM0-n3-tfc" kind="show" identifier="foodReimbursement" id="bdy-TK-oed"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$100.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mCg-6w-wdR">
@@ -306,7 +306,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="COk-ym-P0q">
                                                     <rect key="frame" x="8" y="0.0" width="359" height="75"/>
                                                     <connections>
-                                                        <segue destination="RM0-n3-tfc" kind="show" identifier="Lodging Request Reimbursement" id="5iR-Kp-Vtf"/>
+                                                        <segue destination="RM0-n3-tfc" kind="show" identifier="lodgingReimbursement" id="5iR-Kp-Vtf"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lodging" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lky-6p-leL">
@@ -344,7 +344,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ouv-Jo-61c">
                                                     <rect key="frame" x="8" y="0.0" width="359" height="75"/>
                                                     <connections>
-                                                        <segue destination="RM0-n3-tfc" kind="show" identifier="Transportation Request Reimbursement" id="4su-7M-AL9"/>
+                                                        <segue destination="RM0-n3-tfc" kind="show" identifier="transportationReimbursement" id="4su-7M-AL9"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Transportation" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJo-5D-Qta">
@@ -437,6 +437,6 @@
         <image name="thank_you_check" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bdy-TK-oed"/>
+        <segue reference="5iR-Kp-Vtf"/>
     </inferredMetricsTieBreakers>
 </document>

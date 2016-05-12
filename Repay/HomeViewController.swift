@@ -56,7 +56,7 @@ class HomeViewController: UIViewController {
                                     self.modalView.alpha = 1
             },
                                    completion: { finished in
-                                    print("Bug moved left!")
+                                    print("Hooray")
         })
         
         showBlur()
@@ -67,7 +67,7 @@ class HomeViewController: UIViewController {
         let btnText = button.currentTitle! as String
         
         if btnText != "Cancel" {
-            print("Company changed from \(curInterview?.company) to \(btnText).")
+            print("Company changed from \((curInterview?.company)!) to \(btnText).")
             companyLabelText.text = btnText
             setCompanyLogo(getCompanyImageLogo(companyLabelText.text!))
             
@@ -158,6 +158,10 @@ class HomeViewController: UIViewController {
     }
     
     // ------ App Functionality -------
+    @IBAction func handleUploadReceipt(sender: AnyObject) {
+        self.performSegueWithIdentifier("selectCategorySegue", sender: self)
+    }
+    
     func loadBalance() {
         // Set amounts set forth by company
         let setFood = (self.curInterview?.company_budget?.food_amount)!
@@ -260,6 +264,16 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         //loadBalance();
+    }
+    
+    /* Sends curInterview object to CategoryTableViewController */
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "selectCategorySegue") {
+            let navVC = segue.destinationViewController as! UINavigationController
+            let selectCategoryVC = navVC.viewControllers.first as! CategoryTableViewController
+            
+            selectCategoryVC.curInterview = self.curInterview
+        }
     }
     
     // Initial view of Main storyboard

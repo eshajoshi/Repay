@@ -44,6 +44,9 @@ class UploadViewController:
     @IBOutlet var barBtnBack: UIBarButtonItem!
     @IBOutlet var btnRequest: UIButton!
     @IBOutlet var imagePreview: UIImageView!
+    
+    var curInterview: Interview?
+    var selectedCategory: String?
     var imagePicker: UIImagePickerController!
     
     @IBAction func inputReimbursementAmt(sender: UITextField) {
@@ -98,13 +101,10 @@ class UploadViewController:
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        print("UploadViewController")
+        
+        // Request Button
         btnRequest.backgroundColor = UIColor.groupTableViewBackgroundColor();
         
         // 'Select Category' Navigation Bar
@@ -114,6 +114,15 @@ class UploadViewController:
         // 'Cancel' Bar Button Item
         barBtnBack.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Avenir Next", size: 12)!], forState: UIControlState.Normal)
         barBtnBack.tintColor = UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        
+        print("Current interview: ", (curInterview?.uid)!)
+        print("Selected category: ", (selectedCategory)!)
+        
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+        
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
 
     }
 

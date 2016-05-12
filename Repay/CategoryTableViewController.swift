@@ -9,10 +9,6 @@
 import UIKit
 
 class CategoryTableViewController: UITableViewController {
-
-    var foodBalance = 100.00
-    var lodgingBalance = 200.00
-    var transportationBalance = 100.00
     @IBOutlet weak var btnFood: UIButton!
     @IBOutlet weak var btnLodging: UIButton!
     @IBOutlet weak var btnTransp: UIButton!
@@ -23,21 +19,44 @@ class CategoryTableViewController: UITableViewController {
     @IBOutlet var lodgingAmt: UILabel!
     @IBOutlet var transportationAmt: UILabel!
     
+    var curInterview: Interview?
+    
     @IBAction func cancel(sender: AnyObject) {
         navigationController?.dismissViewControllerAnimated(true, completion: {
             
         })
     }
     
+    func loadBalances() {
+        // Set amounts set forth by company
+        let setFood = (self.curInterview?.company_budget?.food_amount)!
+        let setLodging = (self.curInterview?.company_budget?.lodging_amount)!
+        let setTransportation = (self.curInterview?.company_budget?.transportation_amount)!
+        
+        // FOOD Updated Balance
+        let remainingFood = setFood - (self.curInterview?.food_consumed)!
+        self.foodAmt.text = String(format:"$%.2f", remainingFood)
+        
+        // LODGING Updated Balance
+        let remainingLodging = setLodging - (self.curInterview?.lodging_consumed)!
+        self.lodgingAmt.text = String(format:"$%.2f", remainingLodging)
+        
+        // TRANSPORTATION Updated Balance
+        let transportationRemaining = setTransportation - (self.curInterview?.transportation_consumed)!
+        self.transportationAmt.text = String(format:"$%.2f", transportationRemaining)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let prefs = NSUserDefaults.standardUserDefaults()
-
-        if (segue.identifier! == "Food Request Reimbursement") {
-            prefs.setValue("Food", forKey: "requestedCategory")
-        } else if (segue.identifier! == "Lodging Request Reimbursement") {
-            prefs.setValue("Lodging", forKey: "requestedCategory")
-        } else if (segue.identifier! == "Transportation Request Reimbursement"){
-            prefs.setValue("Transportation", forKey: "requestedCategory")
+        let uploadReceiptVC = segue.destinationViewController as! UploadViewController
+        
+        uploadReceiptVC.curInterview = self.curInterview
+        
+        if (segue.identifier == "foodReimbursement") {
+            uploadReceiptVC.selectedCategory = "Food"
+        } else if (segue.identifier == "lodgingReimbursement") {
+            uploadReceiptVC.selectedCategory = "Lodging"
+        } else {
+            uploadReceiptVC.selectedCategory = "Transportation"
         }
         
         print("Repay app recognizing a... ", segue.identifier!)
@@ -45,33 +64,8 @@ class CategoryTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let defaults = NSUserDefaults.standardUserDefaults()
         
-        let amt = defaults.stringForKey("amount")!
-        let category = defaults.stringForKey("requestedCategory")!
-        
-        print("Amount: ", amt)
-        print("Category view: ", category)
-        
-        // Update balance totals
-        if (Double(amt) != nil && String(category) != nil) {
-            if (category == "Food") {
-                foodBalance -= Double(amt)!
-                let amtString = NSString(format: "%.2f", foodBalance)
-                let amtString2 = "$" + (amtString as String);
-                foodAmt.text = amtString2
-            } else if (category == "Lodging") {
-                lodgingBalance -= Double(amt)!
-                let amtString = NSString(format: "%.2f", lodgingBalance)
-                let amtString2 = "$" + (amtString as String);
-                lodgingAmt.text = amtString2
-            } else if (category == "Transportation") {
-                transportationBalance -= Double(amt)!
-                let amtString = NSString(format: "%.2f", transportationBalance)
-                let amtString2 = "$" + (amtString as String);
-                transportationAmt.text = amtString2
-            }
-        }
+        print("CategoryTableViewController")
         
         // 'Select Category' Navigation Bar
         UINavigationBar.appearance().barTintColor = UIColor.init(red: 0/255, green: 94/255, blue: 43/255, alpha: 1)
@@ -81,20 +75,23 @@ class CategoryTableViewController: UITableViewController {
         barBtnCancel.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Avenir Next", size: 12)!], forState: UIControlState.Normal)
         barBtnCancel.tintColor = UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
         
-        // 'Food' Category
+        // Food Category
         btnFood.backgroundColor = UIColor.groupTableViewBackgroundColor()
         btnFood.layer.cornerRadius = 5
         btnFood.layer.borderWidth = 0
         
-        // 'Lodging' Category
+        // Lodging Category
         btnLodging.backgroundColor = UIColor.groupTableViewBackgroundColor()
         btnLodging.layer.cornerRadius = 5
         btnLodging.layer.borderWidth = 0
         
-        // 'Transportation' Category
+        // Transportation Category
         btnTransp.backgroundColor = UIColor.groupTableViewBackgroundColor()
         btnTransp.layer.cornerRadius = 5
         btnTransp.layer.borderWidth = 0
+
+        print("Current interview: ", (curInterview?.uid)!)
+        loadBalances()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -107,6 +104,4 @@ class CategoryTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
