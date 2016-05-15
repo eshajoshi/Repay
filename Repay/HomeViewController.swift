@@ -93,10 +93,12 @@ class HomeViewController: UIViewController {
         } else if company == "Google" {
             return "google_small"
         } else if company == "Intuit" {
-            return "apple_small"    // Intuit logo eventually
+            return "intuit_small"
+        } else if company == "Microsoft" {
+            return "microsoft_small"
         }
         
-        return "google_small"                  // Microsoft logo eventually
+        return "workday_small"
     }
     
     func hideModal() {
