@@ -41,9 +41,11 @@ class HomeViewController: UIViewController {
     @IBOutlet var lodgingAmt: UILabel!
     @IBOutlet var transportationAmt: UILabel!
     
-    var loggedInUser: Results<User>?
+    var loggedInUsers: Results<User>?
+    var loggedInUser: User?
     var userInterviews = [Interview]()
-    var curInterview : Interview?
+    var curInterview: Interview?
+    var userId: String?
     
     // ------ Modal functionality -------
     @IBAction func showModal(sender: AnyObject) {
@@ -295,12 +297,14 @@ class HomeViewController: UIViewController {
         view.layer.insertSublayer(layer, below: btnUpload.layer)
         
         // Retrieve 'loggedInUser' RealmSwift object info
-        loggedInUser = realm.objects(User)
-        print("loggedInUser: \t", loggedInUser!)
-        let userId = loggedInUser![0].uid
+        let predicate = NSPredicate(format: "uid = %@", userId!)
+        loggedInUsers = realm.objects(User).filter(predicate)
+        loggedInUser = loggedInUsers![0]
+        print("loggedInUser: \t", loggedInUser)
+        print("userId logged in: ", userId!)
         
         // Read'interview' objects such that interview.interviewee_id = userId & update array
-        readInterviewObjectsfromFirebase(userId)
+        readInterviewObjectsfromFirebase(userId!)
         
         // Modal
         setUpCompanyButtons()

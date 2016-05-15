@@ -52,6 +52,7 @@ class ChangePasswordViewController: UIViewController {
                     //  registeredUsers.users.append(user)
                     //  registeredUsers.loggedInUser = user
                     
+                    print("Adding User # \(user.uid) with name \(user.first_name) to RealmObject")
                     realm.add(user)
                 }
                 
@@ -91,6 +92,14 @@ class ChangePasswordViewController: UIViewController {
         confirmPasswordTextField.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
         confirmPasswordTextField.borderStyle = UITextBorderStyle.None
         confirmPasswordTextField.layer.cornerRadius = 5.0
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "homeViewSegue") {
+            let navVC = segue.destinationViewController as! UINavigationController
+            let homeVC = navVC.viewControllers.first as! HomeViewController
+            homeVC.userId = userToValidate?.uid
+        }
     }
 
     override func viewDidLoad() {

@@ -13,14 +13,18 @@ import RealmSwift
 var ref = Firebase(url: "https://repay.firebaseio.com")
 
 class LoginViewController: UIViewController {
+    @IBOutlet var modalView: UIView!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var tempPasswordField: UITextField!
-    @IBOutlet var loginBtn: UIButton!
+    @IBOutlet var signUpBtn: UIButton!
+    @IBOutlet var logInBtn: UIButton!
     
     var newUser: User?
     
     /* Validate user email and temporary password with database */
-    @IBAction func handleLogin(sender: AnyObject) {
+    @IBAction func handleSignUp(sender: AnyObject) {
+        print("User is trying to sign up...")
+        
         if (emailTextField.hasText() && tempPasswordField.hasText()) {
             print("Trying to validate user with email: \(emailTextField.text!)\n")
             
@@ -31,8 +35,9 @@ class LoginViewController: UIViewController {
         }
     }
     
-    @IBAction func handleUnknownPassword(sender: AnyObject) {
-        print("User does not know password...")
+    @IBAction func handleLogIn(sender: AnyObject) {
+        print("User is trying to log in...")
+
     }
     
     func findUserFromFirebase() {
@@ -58,7 +63,7 @@ class LoginViewController: UIViewController {
                         
                         print("User logged in successfully!")
                         
-                        self.performSegueWithIdentifier("changePasswordSegue", sender: self)
+                    self.performSegueWithIdentifier("changePasswordSegue", sender: self)
                     } else {
                         print("User entered the incorrect password.")
                     }
@@ -69,15 +74,36 @@ class LoginViewController: UIViewController {
         })
     }
     
-    /* Enable/disable "log in" button based on non-nil user input */
-    func enableLoginButton() {
-        if (emailTextField.hasText() && tempPasswordField.hasText()) {
-            loginBtn.backgroundColor = UIColor(red: 90/255, green: 178/255, blue: 143/255, alpha: 1.0)
-        } else {
-            loginBtn.backgroundColor = UIColor(red: 166/255, green: 168/255, blue: 168/255, alpha: 0.5)
-        }
+    var moduleLayer: CALayer {
+        return modalView.layer
     }
+    
+    func customizeModule() {
+        print("Customize module")
+        modalView.layer.zPosition = 1;
+        modalView.layer.cornerRadius = 10.0
+        modalView.layer.borderWidth = 0
+        modalView.clipsToBounds = true
         
+        moduleLayer.backgroundColor = UIColor.init(red: 249/255, green: 249/255, blue: 249/255, alpha: 1).CGColor
+        moduleLayer.borderWidth = 0
+    }
+    
+    func customizeModuleFields() {
+        emailTextField.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
+        emailTextField.borderStyle = UITextBorderStyle.None
+        emailTextField.layer.cornerRadius = 5.0
+        
+        tempPasswordField.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
+        tempPasswordField.borderStyle = UITextBorderStyle.None
+        tempPasswordField.layer.cornerRadius = 5.0
+        
+        signUpBtn.backgroundColor = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 1.0)
+        
+        logInBtn.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
+        logInBtn.layer.cornerRadius = 5.0
+    }
+    
     /* Sends newUser object to ChangePasswordViewController */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "changePasswordSegue") {
@@ -89,18 +115,19 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        enableLoginButton()
-        
         // Gradient
         let layer = CAGradientLayer()
         layer.frame = CGRect(x:0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
         layer.colors = [UIColor.init(red: 42/255, green: 183/255, blue:133/255, alpha: 1).CGColor, UIColor.init(red: 0/255, green: 94/255, blue:43/255, alpha: 1).CGColor]
         view.layer.insertSublayer(layer, atIndex: 0)
+        
+        // Module
+        customizeModule()
+        customizeModuleFields()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 }
