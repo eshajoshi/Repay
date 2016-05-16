@@ -12,7 +12,7 @@ import RealmSwift
 
 var ref = Firebase(url: "https://repay.firebaseio.com")
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var modalView: UIView!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var tempPasswordField: UITextField!
@@ -40,6 +40,24 @@ class LoginViewController: UIViewController {
 
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        let nextTag: Int = textField.tag + 1
+        print(nextTag)
+        let nextResponder: UIResponder? = textField.superview?.superview?.viewWithTag(nextTag)
+        print(nextResponder)
+        
+        if nextResponder == tempPasswordField {
+            print("tempPasswordField is now first responder.")
+            tempPasswordField.becomeFirstResponder()        // Set next responder
+        } else {
+            print("Sign up.")
+            textField.resignFirstResponder()                // Remove keyboard
+            handleSignUp(signUpBtn)
+        }
+        
+        return false
+    }
+    
     func findUserFromFirebase() {
         print("Retrieving user info from Firebase...\t")
         
@@ -47,8 +65,10 @@ class LoginViewController: UIViewController {
         
         usersRef.queryOrderedByChild("email").observeEventType(.ChildAdded, withBlock: { snapshot in
             if let dbEmail = snapshot.value["email"] as? String {
-                
-                if dbEmail == self.emailTextField.text {
+
+                print("emailTextField.text: ", self.emailTextField.text!)
+
+                if dbEmail == self.emailTextField.text! {
                     print("User \(snapshot.key):")
                     print(snapshot.value)
                     
@@ -62,8 +82,8 @@ class LoginViewController: UIViewController {
                             temp_password: (snapshot.value["temp_password"] as? String)!)
                         
                         print("User logged in successfully!")
-                        
-                    self.performSegueWithIdentifier("changePasswordSegue", sender: self)
+                        self.performSegueWithIdentifier("changePasswordSegue", sender: self)
+                        return
                     } else {
                         print("User entered the incorrect password.")
                     }
@@ -93,12 +113,19 @@ class LoginViewController: UIViewController {
         emailTextField.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
         emailTextField.borderStyle = UITextBorderStyle.None
         emailTextField.layer.cornerRadius = 5.0
+        emailTextField.returnKeyType = UIReturnKeyType.Next
+        emailTextField.delegate = self
+        emailTextField.tag = 0
         
         tempPasswordField.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
         tempPasswordField.borderStyle = UITextBorderStyle.None
         tempPasswordField.layer.cornerRadius = 5.0
+        tempPasswordField.returnKeyType = UIReturnKeyType.Go
+        tempPasswordField.delegate = self
+        tempPasswordField.tag = 1
         
         signUpBtn.backgroundColor = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 1.0)
+        signUpBtn.tag = 2
         
         logInBtn.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
         logInBtn.layer.cornerRadius = 5.0
@@ -124,6 +151,7 @@ class LoginViewController: UIViewController {
         // Module
         customizeModule()
         customizeModuleFields()
+    
     }
     
     override func didReceiveMemoryWarning() {
