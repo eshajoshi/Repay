@@ -78,8 +78,9 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
             confirmPasswordTextField.becomeFirstResponder()         // Set next responder
         } else {
             print("Change password.")
-            textField.resignFirstResponder()                        // Remove keyboard
-            handleChangePassword(changePasswordBtn)
+            textField.resignFirstResponder()
+            self.view.endEditing(true)                              // Remove keyboard
+            //handleChangePassword(changePasswordBtn)
         }
         
         return false
@@ -113,7 +114,6 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
         confirmPasswordTextField.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
         confirmPasswordTextField.borderStyle = UITextBorderStyle.None
         confirmPasswordTextField.layer.cornerRadius = 5.0
-        confirmPasswordTextField.returnKeyType = UIReturnKeyType.Go
         confirmPasswordTextField.delegate = self
         confirmPasswordTextField.tag = 1
     }

@@ -48,10 +48,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if nextResponder == tempPasswordField {
             print("tempPasswordField is now first responder.")
             tempPasswordField.becomeFirstResponder()        // Set next responder
-        } else {
+        } else if nextTag == 2 {
             print("Sign up.")
             textField.resignFirstResponder()                // Remove keyboard
-            handleSignUp(signUpBtn)
+            handleSignUp(signUpBtn)                         // "Sign up"
         }
         
         return false
