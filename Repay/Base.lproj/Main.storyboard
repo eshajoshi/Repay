@@ -253,6 +253,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="changePasswordBtn" destination="zno-ge-7PK" id="71c-4x-njt"/>
                         <outlet property="confirmPasswordTextField" destination="pDA-qv-cM6" id="gq5-6J-7RC"/>
                         <outlet property="modalView" destination="OJv-Q9-HvX" id="Bmn-q2-ZzZ"/>
                         <outlet property="newPasswordTextField" destination="fMZ-Iv-kSI" id="BzU-Hz-uHU"/>

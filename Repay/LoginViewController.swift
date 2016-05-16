@@ -13,6 +13,7 @@ import RealmSwift
 var ref = Firebase(url: "https://repay.firebaseio.com")
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
+    
     @IBOutlet var modalView: UIView!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var tempPasswordField: UITextField!
@@ -42,9 +43,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         let nextTag: Int = textField.tag + 1
-        print(nextTag)
         let nextResponder: UIResponder? = textField.superview?.superview?.viewWithTag(nextTag)
-        print(nextResponder)
         
         if nextResponder == tempPasswordField {
             print("tempPasswordField is now first responder.")
@@ -65,8 +64,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         usersRef.queryOrderedByChild("email").observeEventType(.ChildAdded, withBlock: { snapshot in
             if let dbEmail = snapshot.value["email"] as? String {
-
-                print("emailTextField.text: ", self.emailTextField.text!)
 
                 if dbEmail == self.emailTextField.text! {
                     print("User \(snapshot.key):")

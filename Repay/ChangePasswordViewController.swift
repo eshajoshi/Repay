@@ -12,11 +12,13 @@ import RealmSwift
 
 var realm = try! Realm()
 
-class ChangePasswordViewController: UIViewController {
+class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
+    
     @IBOutlet var modalView: UIView!
     @IBOutlet var welcomeNameLabel: UILabel!
     @IBOutlet var newPasswordTextField: UITextField!
     @IBOutlet var confirmPasswordTextField: UITextField!
+    @IBOutlet var changePasswordBtn: UIButton!
     
     var userToValidate: User?
     
@@ -67,6 +69,22 @@ class ChangePasswordViewController: UIViewController {
         }
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        let nextTag: Int = textField.tag + 1
+        let nextResponder: UIResponder? = textField.superview?.superview?.viewWithTag(nextTag)
+        
+        if nextResponder == confirmPasswordTextField {
+            print("confirmPasswordTextField is now first responder.")
+            confirmPasswordTextField.becomeFirstResponder()         // Set next responder
+        } else {
+            print("Change password.")
+            textField.resignFirstResponder()                        // Remove keyboard
+            handleChangePassword(changePasswordBtn)
+        }
+        
+        return false
+    }
+    
     var moduleLayer: CALayer {
         return modalView.layer
     }
@@ -88,10 +106,16 @@ class ChangePasswordViewController: UIViewController {
         newPasswordTextField.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
         newPasswordTextField.borderStyle = UITextBorderStyle.None
         newPasswordTextField.layer.cornerRadius = 5.0
+        newPasswordTextField.returnKeyType = UIReturnKeyType.Next
+        newPasswordTextField.delegate = self
+        newPasswordTextField.tag = 0
         
         confirmPasswordTextField.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
         confirmPasswordTextField.borderStyle = UITextBorderStyle.None
         confirmPasswordTextField.layer.cornerRadius = 5.0
+        confirmPasswordTextField.returnKeyType = UIReturnKeyType.Go
+        confirmPasswordTextField.delegate = self
+        confirmPasswordTextField.tag = 1
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
