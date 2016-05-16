@@ -49,7 +49,7 @@ class HomeViewController: UIViewController {
     
     // ------ Modal functionality -------
     @IBAction func showModal(sender: AnyObject) {
-        print("Clicked on modal.")
+        print("\nClicked on modal:")
         self.modalView.hidden = false
         UIView.animateWithDuration(0.4,
                                    delay: 0.0,
@@ -58,7 +58,6 @@ class HomeViewController: UIViewController {
                                     self.modalView.alpha = 1
             },
                                    completion: { finished in
-                                    print("Hooray")
         })
         
         showBlur()
@@ -69,7 +68,7 @@ class HomeViewController: UIViewController {
         let btnText = button.currentTitle! as String
         
         if btnText != "Cancel" {
-            print("Company changed from \((curInterview?.company)!) to \(btnText).")
+            print("\tCompany changed from \((curInterview?.company)!) to \(btnText).")
             companyLabelText.text = btnText
             setCompanyLogo(companyLabelText.text!, view: companyImage)
             
@@ -154,7 +153,7 @@ class HomeViewController: UIViewController {
     }
     
     func customizeModalInitially() {
-        print("Number of interviews lined up: ", self.userInterviews.count)
+        print("\nNumber of interviews lined up: ", self.userInterviews.count)
         
         for item in self.userInterviews {
             print(item.company)
