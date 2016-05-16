@@ -79,8 +79,7 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
         } else {
             print("Change password.")
             textField.resignFirstResponder()
-            self.view.endEditing(true)                              // Remove keyboard
-            //handleChangePassword(changePasswordBtn)
+            handleChangePassword(changePasswordBtn)
         }
         
         return false

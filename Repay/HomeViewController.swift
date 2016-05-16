@@ -71,7 +71,7 @@ class HomeViewController: UIViewController {
         if btnText != "Cancel" {
             print("Company changed from \((curInterview?.company)!) to \(btnText).")
             companyLabelText.text = btnText
-            setCompanyLogo(getCompanyImageLogo(companyLabelText.text!))
+            setCompanyLogo(companyLabelText.text!, view: companyImage)
             
             for interview in userInterviews {
                 if (interview.company == companyLabelText.text) {
@@ -85,20 +85,45 @@ class HomeViewController: UIViewController {
         hideBlur()
     }
     
-    func getCompanyImageLogo(company: String) -> String {
+    func getCompanyImageName(company: String, view: UIImageView) -> String {
         if company == "Airbnb" {
+            if (view == companyImage) {
+                return "airbnb_large"
+            }
+            
             return "airbnb_small"
         } else if company == "Apple" {
+            if (view == companyImage) {
+                return "apple_large"
+            }
+                
             return "apple_small"
         } else if company == "Google" {
+            if (view == companyImage) {
+                return "google_large"
+            }
+            
             return "google_small"
         } else if company == "Intuit" {
+            if (view == companyImage) {
+                return "intuit_large"
+            }
+            
             return "intuit_small"
         } else if company == "Microsoft" {
+            if (view == companyImage) {
+                return "microsoft_large"
+            }
+            
             return "microsoft_small"
         }
         
+        if (view == companyImage) {
+            return "workday_large"
+        }
+            
         return "workday_small"
+
     }
     
     func hideModal() {
@@ -141,14 +166,17 @@ class HomeViewController: UIViewController {
         
         if (userInterviews.count >= 1) {
             customizeCompanies(companyBtn1, index : 0)
+            setCompanyLogo(userInterviews[0].company, view: company1Logo)
         }
         
         if (userInterviews.count >= 2) {
             customizeCompanies(companyBtn2, index : 1)
+            setCompanyLogo(userInterviews[1].company, view: company2Logo)
         }
         
         if (userInterviews.count == 3) {
             customizeCompanies(companyBtn3, index : 2)
+            setCompanyLogo(userInterviews[2].company, view: company3Logo)
         }
     }
     
@@ -175,7 +203,7 @@ class HomeViewController: UIViewController {
         
         // Home page company
         self.companyLabelText.text = self.curInterview?.company
-        self.setCompanyLogo(getCompanyImageLogo((self.curInterview?.company)!))
+        self.setCompanyLogo((self.curInterview?.company)!, view: companyImage)
         
         // HomePage FOOD Updated Balance
         let remainingFood = setFood - (self.curInterview?.food_consumed)!
@@ -200,59 +228,56 @@ class HomeViewController: UIViewController {
 
     }
     
-    func setCompanyLogo(image_name: String) {
-        let image: UIImage = UIImage(named: image_name)!
-        companyImage.image = image;
+    func setCompanyLogo(companyName: String, view: UIImageView) {
+        let image: UIImage = UIImage(named: getCompanyImageName(companyName, view: view))!
+        view.image = image;
     }
     
     func readInterviewObjectsfromFirebase(userId : String) {
         let interviewsRef = ref.childByAppendingPath("interviews")
         let budgetsRef = ref.childByAppendingPath("budgets")
         
-        interviewsRef.queryOrderedByChild(userId).observeEventType(.ChildAdded, withBlock: { snapshot in
+        interviewsRef.queryOrderedByChild("interviewee_id").observeEventType(.ChildAdded, withBlock: { snapshot in
             
-            let interview = Interview(uid : snapshot.key,
-                interviewee_id : userId,
-                position : (snapshot.value["position"] as? String)!,
-                company : (snapshot.value["company"] as? String)!,
-                start_date: (snapshot.value["start_date"] as? String)!,
-                end_date : (snapshot.value["end_date"] as? String)!,
-                total_consumed: 0,
-                food_consumed:  0,
-                lodging_consumed: 0,
-                transportation_consumed: 0)
-            
-            budgetsRef.queryOrderedByKey().observeEventType(.ChildAdded, withBlock: { snapshot in
-                if interview.company == snapshot.key {
-                    
-                    let budget = Budget(company: snapshot.key,
-                        total_amount: Double((snapshot.value["total_amt"] as? String)!)!,
-                        food_amount : Double((snapshot.value["food_amt"] as? String)!)!,
-                        lodging_amount : Double((snapshot.value["lodging_amt"] as? String)!)!,
-                        transportation_amount: Double((snapshot.value["transportation_amt"] as? String)!)!)
-                    
-                    interview.company_budget = budget
-
-                    // Appends the Interview object to 'userInterviews
-                    self.userInterviews.append(interview)
-                    
-                    // Modal
-                    self.customizeModalInitially();
-                    self.hideBlur()
-                    self.modalView.hidden = true;
-                    
-                    self.curInterview = self.userInterviews[0]
-                    
-//                    if (self.curInterview == nil) {
-//                        self.curInterview = self.userInterviews[0]
-//                    } else {
-//                        // TODO: Read curInterview RealmSwift object
-//                    }
-                    
-                    // Home Page & balance customization
-                    self.loadBalance()
-                }
-            })
+            if userId == snapshot.value["interviewee_id"] as? String {
+                
+                let interview = Interview(uid : snapshot.key,
+                    interviewee_id : userId,
+                    position : (snapshot.value["position"] as? String)!,
+                    company : (snapshot.value["company"] as? String)!,
+                    start_date: (snapshot.value["start_date"] as? String)!,
+                    end_date : (snapshot.value["end_date"] as? String)!,
+                    total_consumed: 0,
+                    food_consumed:  0,
+                    lodging_consumed: 0,
+                    transportation_consumed: 0)
+                
+                budgetsRef.queryOrderedByKey().observeEventType(.ChildAdded, withBlock: { snapshot in
+                    if interview.company == snapshot.key {
+                        
+                        let budget = Budget(company: snapshot.key,
+                            total_amount: Double((snapshot.value["total_amt"] as? String)!)!,
+                            food_amount : Double((snapshot.value["food_amt"] as? String)!)!,
+                            lodging_amount : Double((snapshot.value["lodging_amt"] as? String)!)!,
+                            transportation_amount: Double((snapshot.value["transportation_amt"] as? String)!)!)
+                        
+                        interview.company_budget = budget
+                        
+                        // Appends the Interview object to 'userInterviews
+                        self.userInterviews.append(interview)
+                        
+                        // Modal
+                        self.customizeModalInitially();
+                        self.hideBlur()
+                        self.modalView.hidden = true;
+                        
+                        self.curInterview = self.userInterviews[0]
+                        
+                        // Home Page & balance customization
+                        self.loadBalance()
+                    }
+                })
+            }
         })
     }
     
