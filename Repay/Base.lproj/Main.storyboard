@@ -488,7 +488,7 @@
                 <viewControllerPlaceholder storyboardName="Category" bundleIdentifier="com.repay.Repay" referencedIdentifier="StartCategoryNav" id="xoz-c7-dwF" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wzK-zv-hD9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5" y="-145"/>
+            <point key="canvasLocation" x="-60" y="-153"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3eQ-hm-bFc">
@@ -525,7 +525,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dTT-uh-8TP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="808.5" y="559.5"/>
+            <point key="canvasLocation" x="672.5" y="559.5"/>
         </scene>
     </scenes>
     <resources>
