@@ -91,14 +91,14 @@ class UploadViewController:
                 // Update curInterview budgets
                 self.updateInterviewBudgets()
                 
+                // Write Receipt tuple to Firebase
+                self.writeReceiptTupleToFirebase(self.receiptObject!)
+                
                 // Write curInterview (with added Receipt object) to Realm Swift object
                 try! realm.write {
                     realm.add(self.curInterview!)
                 }
                 print("Added curInterview object to RealmSwift object.")
-                
-                // Write Receipt tuple to Firebase
-                self.writeReceiptTupleToFirebase(self.receiptObject!)
                 
                 self.performSegueWithIdentifier("confirmViewSegue", sender: self)
             }
@@ -170,7 +170,7 @@ class UploadViewController:
         
         let receiptKeyId = ref.childByAppendingPath("receipts").childByAutoId();
         receiptKeyId.setValue(receiptTuple);
-        print("New receipt tuple written to Firebase.")
+        print("New receipt tuple of \(receiptObject.requested_amt) written to Firebase.")
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
