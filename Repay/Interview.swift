@@ -16,13 +16,12 @@ class Interview: Object {
     dynamic var company = ""
     dynamic var start_date = ""
     dynamic var end_date = ""
-//    dynamic var start_date = NSDate(timeIntervalSince1970: 1)
-//    dynamic var end_date = NSDate(timeIntervalSince1970: 1)
     dynamic var company_budget: Budget?         // Not in DB
     dynamic var total_consumed = 0.0            // Written to DB later
     dynamic var food_consumed = 0.0             // Written to DB later
     dynamic var lodging_consumed = 0.0          // Written to DB later
     dynamic var transportation_consumed = 0.0   // Written to DB later
+    let receipts = List<Receipt>()
     
     convenience init(uid: String, interviewee_id: String, position: String,
                      company: String, start_date: String, end_date: String,

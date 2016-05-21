@@ -55,7 +55,7 @@ class CategoryTableViewController: UITableViewController {
             uploadReceiptVC.selectedCategory = "Food"
         } else if (segue.identifier == "lodgingReimbursement") {
             uploadReceiptVC.selectedCategory = "Lodging"
-        } else {
+        } else if (segue.identifier == "transportationReimbursement") {
             uploadReceiptVC.selectedCategory = "Transportation"
         }
         
