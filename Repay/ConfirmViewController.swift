@@ -39,18 +39,20 @@ class ConfirmViewController: UIViewController {
         // Configuring view fields
         switch (lastReceipt!.category) {
             case "Lodging":
-                categoryText.text = "Your LODGING request for"
+                categoryText.text = "LODGING"
                 break;
             case "Transportation":
-                categoryText.text = "Your TRANSPORTATION request for"
+                categoryText.text = "TRANSPORTATION"
                 break;
             default:
-                categoryText.text = "Your FOOD request for"
+                categoryText.text = "FOOD"
                 break;
         }
         
         amount.text = "$" + String(lastReceipt!.requested_amt)
         yaybtn.backgroundColor = UIColor.init(red: 249/255, green: 249/255, blue: 249/255, alpha: 1);
+        
+        print("Your \(categoryText.text!) request for \(amount.text!) is under review!")
     }
 
     override func didReceiveMemoryWarning() {

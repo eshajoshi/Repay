@@ -49,13 +49,7 @@ class UploadViewController:
     var last: String?
     
     @IBAction func inputReimbursementAmt(sender: UITextField) {
-        let reimbursementAmt = sender.text
-        
-//        if amountInput.text?.rangeOfString("$") == nil {
-//            amountInput.text = "$" + reimbursementAmt!
-//        }
-        
-        amountInput.text = reimbursementAmt!
+        amountInput.text = (sender.text)!
     }
     
     @IBAction func handleBtnBack(sender: AnyObject) {
@@ -94,15 +88,34 @@ class UploadViewController:
                 // Write Receipt tuple to Firebase
                 self.writeReceiptTupleToFirebase(self.receiptObject!)
                 
-                // Write curInterview (with added Receipt object) to Realm Swift object
-                try! realm.write {
-                    realm.add(self.curInterview!)
-                }
-                print("Added curInterview object to RealmSwift object.")
+                // Update curInterview object in Realm
+                self.updateCurInterviewInRealm(self.curInterview!)
+                print("Added/modified curInterview object to RealmSwift object.")
                 
                 self.performSegueWithIdentifier("confirmViewSegue", sender: self)
             }
         })
+    }
+    
+    func updateCurInterviewInRealm(interview: Interview) {
+        let updatedInterview = Interview(uid: interview.uid,
+                                         interviewee_id: interview.interviewee_id,
+                                         position: interview.position,
+                                         company: interview.company,
+                                         start_date: interview.start_date,
+                                         end_date: interview.end_date,
+                                         total_consumed: interview.total_consumed,
+                                         food_consumed: interview.food_consumed,
+                                         lodging_consumed: interview.lodging_consumed,
+                                         transportation_consumed: interview.transportation_consumed)
+        
+        do {
+            try realm.write() {
+                realm.add(updatedInterview, update: true)
+            }
+        } catch {
+            print("Error adding/updating curInterview to Realm object!")
+        }
     }
     
     func populateReceiptObject(receiptId: Int, base64String: String) -> (Receipt) {
@@ -134,6 +147,7 @@ class UploadViewController:
                 }
                 
                 self.curInterview!.food_consumed = newFoodTotal
+                break;
             case "Lodging":
                 let newLodgingTotal = curInterview!.lodging_consumed + reqAmt;
                 
@@ -142,6 +156,7 @@ class UploadViewController:
                 }
                 
                 self.curInterview!.lodging_consumed = newLodgingTotal
+                break;
             case "Transportation":
                 let newTransTotal = curInterview!.transportation_consumed + reqAmt;
                 
@@ -150,10 +165,12 @@ class UploadViewController:
                 }
                 
                 self.curInterview!.transportation_consumed = newTransTotal
+                break;
             default:
-                self.curInterview!.total_consumed = newTotal
                 break;
         }
+        
+        self.curInterview!.total_consumed = newTotal
     }
     
     func writeReceiptTupleToFirebase(receiptObject: Receipt) {

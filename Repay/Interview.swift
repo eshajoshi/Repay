@@ -40,4 +40,8 @@ class Interview: Object {
         self.lodging_consumed = lodging_consumed
         self.transportation_consumed = transportation_consumed
     }
+    
+    override class func primaryKey() -> String? {
+        return "uid"
+    }
 }
