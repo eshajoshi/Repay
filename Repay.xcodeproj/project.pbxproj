@@ -11,6 +11,7 @@
 		0AA720E11CB95F0E00BC3B47 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA720E01CB95F0E00BC3B47 /* UploadViewController.swift */; };
 		0AA720E31CB96A5400BC3B47 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA720E21CB96A5400BC3B47 /* HomeViewController.swift */; };
 		0ABC837A1CB9D6BA00E8A199 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABC83791CB9D6BA00E8A199 /* ConfirmViewController.swift */; };
+		6202DB391CF2955F002528DC /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6202DB381CF2955F002528DC /* History.storyboard */; };
 		62884EF31CD99573006F6D71 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62884EF21CD99573006F6D71 /* User.swift */; };
 		6297B9711CD7CE4C00D8A1BC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6297B9701CD7CE4C00D8A1BC /* LoginViewController.swift */; };
 		629B4EF01CE0637E00CFDD94 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629B4EEF1CE0637E00CFDD94 /* ChangePasswordViewController.swift */; };
@@ -55,6 +56,7 @@
 		0AA720E21CB96A5400BC3B47 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0ABC83791CB9D6BA00E8A199 /* ConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		3668257FA0535E66BC8CBBE1 /* Pods_Repay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Repay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6202DB381CF2955F002528DC /* History.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
 		62884EF21CD99573006F6D71 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6297B9701CD7CE4C00D8A1BC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		629B4EEF1CE0637E00CFDD94 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			children = (
 				62C078201CB8BB8F0084B1E9 /* Main.storyboard */,
 				62B197C31CB9A3F200421FB9 /* Category.storyboard */,
+				6202DB381CF2955F002528DC /* History.storyboard */,
 				62C078251CB8BB8F0084B1E9 /* LaunchScreen.storyboard */,
 			);
 			name = View;
@@ -328,6 +331,7 @@
 				62B197C41CB9A3F200421FB9 /* Category.storyboard in Resources */,
 				62C078271CB8BB8F0084B1E9 /* LaunchScreen.storyboard in Resources */,
 				62C078241CB8BB8F0084B1E9 /* Assets.xcassets in Resources */,
+				6202DB391CF2955F002528DC /* History.storyboard in Resources */,
 				62C078221CB8BB8F0084B1E9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -295,7 +295,7 @@
                                     <color key="titleColor" red="0.0" green="0.36862745099999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="J85-K7-0gU" kind="presentation" identifier="selectHistorySegue" id="Ahn-ze-irC"/>
+                                    <segue destination="i35-t8-Uxn" kind="presentation" identifier="selectHistorySegue" id="Ahn-ze-irC"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C00-yA-BJ1">
@@ -490,42 +490,13 @@
             </objects>
             <point key="canvasLocation" x="-60" y="-153"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="3eQ-hm-bFc">
+        <!--StartHistoryNav-->
+        <scene sceneID="2U9-8c-Spb">
             <objects>
-                <navigationController id="J85-K7-0gU" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qn0-aS-8mq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="Uhs-rw-wgR" kind="relationship" relationship="rootViewController" id="RYb-sc-EX3"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oEA-eC-tnR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="History" bundleIdentifier="com.esha.Repay" referencedIdentifier="StartHistoryNav" id="i35-t8-Uxn" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qpW-f8-yt0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="56.5" y="559.5"/>
-        </scene>
-        <!--History-->
-        <scene sceneID="QeZ-ZP-PIe">
-            <objects>
-                <viewController id="Uhs-rw-wgR" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="noA-ar-D1g"/>
-                        <viewControllerLayoutGuide type="bottom" id="3Sg-TF-AeH"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="hb4-Yw-KDI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="History" id="nHz-yU-VlW">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="YwA-OE-nm7"/>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dTT-uh-8TP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="672.5" y="559.5"/>
+            <point key="canvasLocation" x="-65.5" y="557"/>
         </scene>
     </scenes>
     <resources>
