@@ -48,8 +48,9 @@ class ConfirmViewController: UIViewController {
                 categoryText.text = "FOOD"
                 break;
         }
-        
-        amount.text = "$" + String(lastReceipt!.requested_amt)
+                
+        let str = NSString(format: "%.2f", lastReceipt!.requested_amt)
+        amount.text = "$" + (str as String)
         yaybtn.backgroundColor = UIColor.init(red: 249/255, green: 249/255, blue: 249/255, alpha: 1);
         
         print("Your \(categoryText.text!) request for \(amount.text!) is under review!")

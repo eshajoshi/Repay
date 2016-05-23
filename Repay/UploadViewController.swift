@@ -113,7 +113,6 @@ class UploadViewController:
                        requested_amt: Double(self.amountInput.text!)!,
                        status: "todo",
                        timestamp: NSDate().timeIntervalSince1970 * 1000)
-        
     }
     
     func updateReceiptsListInRealm(interview: Interview, receiptObject: Receipt) {
@@ -168,7 +167,6 @@ class UploadViewController:
                     // TODO: Modal for spending too much of company FOOD budget
                 }
                 
-                //self.curInterview!.food_consumed = newFoodTotal
                 updatedInterview.food_consumed = newFoodTotal
 
                 break;
@@ -179,7 +177,6 @@ class UploadViewController:
                     // TODO: Modal for spending too much of company LODGING budget
                 }
                 
-                //self.curInterview!.lodging_consumed = newLodgingTotal
                 updatedInterview.lodging_consumed = newLodgingTotal
 
                 break;
@@ -190,7 +187,6 @@ class UploadViewController:
                     // TODO: Modal for spending too much of company TRANS budget
                 }
                 
-                //self.curInterview!.transportation_consumed = newTransTotal
                 updatedInterview.transportation_consumed = newTransTotal
                 
                 break;
@@ -198,7 +194,6 @@ class UploadViewController:
                 break;
         }
         
-        //self.curInterview!.total_consumed = newTotal
         updatedInterview.total_consumed = newTotal
         
         do {
