@@ -25,7 +25,7 @@
         <!--History-->
         <scene sceneID="QeZ-ZP-PIe">
             <objects>
-                <viewController id="Uhs-rw-wgR" sceneMemberID="viewController">
+                <viewController id="Uhs-rw-wgR" customClass="HistoryViewController" customModule="Repay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="noA-ar-D1g"/>
                         <viewControllerLayoutGuide type="bottom" id="3Sg-TF-AeH"/>
@@ -36,8 +36,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="History" id="nHz-yU-VlW">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="YwA-OE-nm7"/>
+                        <barButtonItem key="leftBarButtonItem" title="CANCEL" id="YwA-OE-nm7">
+                            <connections>
+                                <action selector="handleBtnBack:" destination="Uhs-rw-wgR" id="YJ5-XC-se9"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="barBtnBack" destination="YwA-OE-nm7" id="uXY-hb-Tlt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dTT-uh-8TP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

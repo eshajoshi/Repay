@@ -65,7 +65,7 @@ class CategoryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("CategoryTableViewController")
+        print("CategoryTableViewController...")
         
         // 'Select Category' Navigation Bar
         UINavigationBar.appearance().barTintColor = UIColor.init(red: 0/255, green: 94/255, blue: 43/255, alpha: 1)
