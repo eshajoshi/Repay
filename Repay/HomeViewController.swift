@@ -294,15 +294,12 @@ class HomeViewController: UIViewController {
                     lodging_amount : Double((snapshot.value["lodging_amt"] as? String)!)!,
                     transportation_amount: Double((snapshot.value["transportation_amt"] as? String)!)!)
                 
-                //self.curInterview!.company_budget = budget
-                
                 // Update curInterview object in Realm with new budgets
                 self.updateCurInterviewInRealm(self.curInterview!, budget: budget)
                 
                 self.loadBalance()
             }
         })
-
     }
     
     func updateCurInterviewInRealm(interview: Interview, budget: Budget) {
