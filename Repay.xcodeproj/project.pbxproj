@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0AA720DF1CB8CE0D00BC3B47 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA720DE1CB8CE0D00BC3B47 /* HistoryViewController.swift */; };
 		0AA720E11CB95F0E00BC3B47 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA720E01CB95F0E00BC3B47 /* UploadViewController.swift */; };
 		0AA720E31CB96A5400BC3B47 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA720E21CB96A5400BC3B47 /* HomeViewController.swift */; };
 		0ABC837A1CB9D6BA00E8A199 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABC83791CB9D6BA00E8A199 /* ConfirmViewController.swift */; };
 		6202DB391CF2955F002528DC /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6202DB381CF2955F002528DC /* History.storyboard */; };
+		6202DB3B1CF2A510002528DC /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6202DB3A1CF2A510002528DC /* HistoryTableViewController.swift */; };
 		62884EF31CD99573006F6D71 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62884EF21CD99573006F6D71 /* User.swift */; };
 		6297B9711CD7CE4C00D8A1BC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6297B9701CD7CE4C00D8A1BC /* LoginViewController.swift */; };
 		629B4EF01CE0637E00CFDD94 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629B4EEF1CE0637E00CFDD94 /* ChangePasswordViewController.swift */; };
@@ -51,12 +51,12 @@
 
 /* Begin PBXFileReference section */
 		0438AACFDA68C6287623C2E8 /* Pods-Repay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Repay.release.xcconfig"; path = "Pods/Target Support Files/Pods-Repay/Pods-Repay.release.xcconfig"; sourceTree = "<group>"; };
-		0AA720DE1CB8CE0D00BC3B47 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		0AA720E01CB95F0E00BC3B47 /* UploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		0AA720E21CB96A5400BC3B47 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0ABC83791CB9D6BA00E8A199 /* ConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		3668257FA0535E66BC8CBBE1 /* Pods_Repay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Repay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6202DB381CF2955F002528DC /* History.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
+		6202DB3A1CF2A510002528DC /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		62884EF21CD99573006F6D71 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6297B9701CD7CE4C00D8A1BC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		629B4EEF1CE0637E00CFDD94 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
@@ -150,10 +150,10 @@
 				62C0781C1CB8BB8F0084B1E9 /* AppDelegate.swift */,
 				62C0781E1CB8BB8F0084B1E9 /* ViewController.swift */,
 				62B197C51CB9A68500421FB9 /* CategoryTableViewController.swift */,
+				6202DB3A1CF2A510002528DC /* HistoryTableViewController.swift */,
 				0AA720E01CB95F0E00BC3B47 /* UploadViewController.swift */,
 				0ABC83791CB9D6BA00E8A199 /* ConfirmViewController.swift */,
 				0AA720E21CB96A5400BC3B47 /* HomeViewController.swift */,
-				0AA720DE1CB8CE0D00BC3B47 /* HistoryViewController.swift */,
 				6297B9701CD7CE4C00D8A1BC /* LoginViewController.swift */,
 			);
 			name = Controller;
@@ -413,10 +413,10 @@
 				62E63F231CE2FD5B00FB23EA /* RegisteredInterviews.swift in Sources */,
 				0AA720E11CB95F0E00BC3B47 /* UploadViewController.swift in Sources */,
 				629B4EF01CE0637E00CFDD94 /* ChangePasswordViewController.swift in Sources */,
+				6202DB3B1CF2A510002528DC /* HistoryTableViewController.swift in Sources */,
 				62C0781D1CB8BB8F0084B1E9 /* AppDelegate.swift in Sources */,
 				6297B9711CD7CE4C00D8A1BC /* LoginViewController.swift in Sources */,
 				62884EF31CD99573006F6D71 /* User.swift in Sources */,
-				0AA720DF1CB8CE0D00BC3B47 /* HistoryViewController.swift in Sources */,
 				0ABC837A1CB9D6BA00E8A199 /* ConfirmViewController.swift in Sources */,
 				62E63F211CE2FD0600FB23EA /* Budget.swift in Sources */,
 				62B197C61CB9A68500421FB9 /* CategoryTableViewController.swift in Sources */,
