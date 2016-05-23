@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -26,23 +27,82 @@
         <scene sceneID="tWg-bC-bNE">
             <objects>
                 <tableViewController id="g5r-su-KvI" customClass="HistoryTableViewController" customModule="Repay" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="k9A-tP-hud">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="81" sectionHeaderHeight="28" sectionFooterHeight="28" id="k9A-tP-hud">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="jIv-Au-VP6">
-                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Pending" rowHeight="48" id="g2z-12-Reb">
+                                <rect key="frame" x="0.0" y="92" width="375" height="48"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g2z-12-Reb" id="oGC-id-VAr">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="47.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PENDING" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="add-8a-bHL">
+                                            <rect key="frame" x="17" y="16" width="56" height="16"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="12"/>
+                                            <color key="textColor" red="0.0" green="0.36862745099999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="80" id="jIv-Au-VP6" customClass="HistoryTableViewCell" customModule="Repay" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="140" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jIv-Au-VP6" id="xDe-5w-8sm">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="FOOD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Td2-Gz-98q">
+                                            <rect key="frame" x="20" y="28" width="52" height="24"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.36862745099999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$17.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNE-Pb-85D">
+                                            <rect key="frame" x="215" y="18" width="80" height="33.5"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.36862745099999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="April 9, 2016" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LwK-Os-0ha">
+                                            <rect key="frame" x="220" y="47" width="73" height="16"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="12"/>
+                                            <color key="textColor" red="0.0" green="0.36862745099999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" highlightedImage="forward_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="xW4-Fw-Rov">
+                                            <rect key="frame" x="333" y="34" width="7.5" height="13"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="LwK-Os-0ha" secondAttribute="trailing" constant="42" id="1l5-v3-pQS"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="CNE-Pb-85D" secondAttribute="bottom" constant="29" id="EZ3-Ux-W5m"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="xW4-Fw-Rov" secondAttribute="trailing" constant="14.6" id="FKi-eC-TN7"/>
+                                        <constraint firstItem="xW4-Fw-Rov" firstAttribute="leading" secondItem="CNE-Pb-85D" secondAttribute="trailing" constant="40" id="QbB-QV-H8T"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="xW4-Fw-Rov" secondAttribute="bottom" constant="34.100000000000001" id="WbB-Zf-vxj"/>
+                                        <constraint firstItem="LwK-Os-0ha" firstAttribute="top" secondItem="xDe-5w-8sm" secondAttribute="topMargin" constant="47" id="dk7-Xd-mSW"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Td2-Gz-98q" secondAttribute="bottom" constant="29" id="eAa-hh-fi6"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="LwK-Os-0ha" secondAttribute="bottom" constant="17" id="hLZ-qL-9hC"/>
+                                        <constraint firstItem="xW4-Fw-Rov" firstAttribute="top" secondItem="xDe-5w-8sm" secondAttribute="topMargin" constant="34" id="hqn-Mj-wIs"/>
+                                        <constraint firstItem="CNE-Pb-85D" firstAttribute="top" secondItem="xDe-5w-8sm" secondAttribute="topMargin" constant="18" id="oMd-jy-MD0"/>
+                                        <constraint firstItem="Td2-Gz-98q" firstAttribute="top" secondItem="xDe-5w-8sm" secondAttribute="topMargin" constant="28" id="w9C-ka-DuO"/>
+                                        <constraint firstItem="Td2-Gz-98q" firstAttribute="leading" secondItem="xDe-5w-8sm" secondAttribute="leadingMargin" constant="20" id="yUA-D5-8Jh"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="arrowImage" destination="xW4-Fw-Rov" id="Ydw-by-kSm"/>
+                                    <outlet property="category" destination="Td2-Gz-98q" id="msG-bK-O3y"/>
+                                    <outlet property="date" destination="LwK-Os-0ha" id="zuW-mI-Qbr"/>
+                                    <outlet property="requested_amt" destination="CNE-Pb-85D" id="fQL-7f-nG8"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="g5r-su-KvI" id="ooN-Pf-YrR"/>
-                            <outlet property="delegate" destination="g5r-su-KvI" id="AKj-kw-FTI"/>
+                            <outlet property="dataSource" destination="g5r-su-KvI" id="wQt-Um-BWT"/>
+                            <outlet property="delegate" destination="g5r-su-KvI" id="13g-kY-4rB"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="History" id="44t-GO-szp">
@@ -63,4 +123,7 @@
             <point key="canvasLocation" x="620.5" y="559.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="forward_arrow" width="8" height="13"/>
+    </resources>
 </document>

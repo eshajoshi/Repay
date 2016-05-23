@@ -7,17 +7,78 @@
 //
 
 import UIKit
+import Firebase
 
 class HistoryTableViewController: UITableViewController, UINavigationControllerDelegate {
     
     @IBOutlet var barBtnBack: UIBarButtonItem!
     
+    var curInterview: Interview?
+    var pendingReceipts = [Receipt]()
+    var completedReceipts = [Receipt]()
+    
     @IBAction func handleBtnBack(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    func readReceiptsFromFirebase(interviewId: String) {
+        print("Reading/sorting receipts from Firebase by interview_id: \(interviewId)...")
+        
+        ref.childByAppendingPath("receipts").observeEventType(.ChildAdded, withBlock: { snapshot in
+            if interviewId == snapshot.value["interview_id"] as! String {
+                print("\tid: \(snapshot.value["id"])")
+                print("\trequested_amt: \(snapshot.value["requested_amt"])!")
+                
+                let status = snapshot.value["status"] as! String
+                
+                if status == "approved" {           // No longer needs attention
+                    self.completedReceipts.append(self.convertSnapshotToReceipt(snapshot))
+                } else {                            // Needed to be looked over by HR or accepted/disputed by interviewee
+                    self.pendingReceipts.append(self.convertSnapshotToReceipt(snapshot))
+                }
+            }
+        })
+    }
+    
+    func convertSnapshotToReceipt(snapshot: FDataSnapshot) -> (Receipt) {
+        print("Converting snapshot data to a Receipt object...")
+        
+        return Receipt(id: snapshot.value["id"] as! String,
+                    interview_id: snapshot.value["interview_id"] as! String,
+                    category: snapshot.value["category"] as! String,
+                    first_name: snapshot.value["first_name"] as! String,
+                    last_name: snapshot.value["last_name"] as! String,
+                    position: snapshot.value["position"] as! String,
+                    image: snapshot.value["image"] as! String,
+                    requested_amt: snapshot.value["requested_amt"] as! Double,
+                    status: snapshot.value["status"] as! String,
+                    timestamp: snapshot.value["timestamp"] as! Double)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        print("tableView.frame: \(tableView.frame)")
+        
+        self.readReceiptsFromFirebase((self.curInterview?.uid)!)
+        
+        let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 35 * Int64(NSEC_PER_SEC))
+        
+        // Execute code with a delay
+        dispatch_after(time, dispatch_get_main_queue()) {
+            print("pendingReceipts.count: \(self.pendingReceipts.count)")
+            
+            for item in self.pendingReceipts {
+                print("\t interview_id: \(item.interview_id)")
+            }
+            
+            // Reload data
+            self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
+    }
+    
     override func viewDidLoad() {
-        print("HistoryViewController...")
+        super.viewDidLoad()
+
+        print("\nHistoryTableViewController...")
         
         // 'History' Navigation Bar
         UINavigationBar.appearance().barTintColor = UIColor.init(red: 0/255, green: 94/255, blue: 43/255, alpha: 1)
@@ -27,13 +88,8 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
         barBtnBack.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Avenir Next", size: 12)!], forState: UIControlState.Normal)
         barBtnBack.tintColor = UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
         
-        super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.clearsSelectionOnViewWillAppear = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,35 +97,41 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
+    // 'Pending' and 'Completed' interviews section
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.pendingReceipts.count
     }
-
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
+        print("Configuring table view cells...")
+        
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! HistoryTableViewCell
+        
+        // Aesthetics
+        cell.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
+        cell.layer.cornerRadius = 5
+        cell.layer.borderWidth = 0
+            
+        // Content
+        cell.category?.text = pendingReceipts[indexPath.row].category
+        cell.requested_amt?.text = "$" + String(self.pendingReceipts[indexPath.row].requested_amt)
+        cell.date?.text = String(pendingReceipts[indexPath.row].timestamp)
+        cell.arrowImage?.image = UIImage(named: "forward_arrow")
+            
+        print("cell.category.text: \(cell.category.text)")
+        print("cell.requested_amt.text: \(cell.requested_amt.text)")
+        
         return cell
     }
-    */
 
-    /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+        return false
     }
-    */
 
     /*
     // Override to support editing the table view.

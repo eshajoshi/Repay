@@ -116,6 +116,8 @@ class UploadViewController:
     }
     
     func updateReceiptsListInRealm(interview: Interview, receiptObject: Receipt) {
+        print("Updating receipts list in Realm...")
+        
         let updatedInterview = Interview(uid: interview.uid,
                                          interviewee_id: interview.interviewee_id,
                                          position: interview.position,
@@ -148,7 +150,7 @@ class UploadViewController:
         let reqAmt = Double(self.amountInput.text!)!
         let category = self.selectedCategory!
         
-        let newTotal = interview.total_consumed + Double(self.amountInput.text!)!
+        let newTotal = interview.total_consumed + reqAmt
         
         // Create updatedInterview object
         let updatedInterview = Interview()
@@ -309,7 +311,7 @@ class UploadViewController:
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("\nUploadViewController")
+        print("\nUploadViewController...")
         
         // Request Button
         btnRequest.backgroundColor = UIColor.groupTableViewBackgroundColor();

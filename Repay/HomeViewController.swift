@@ -340,12 +340,15 @@ class HomeViewController: UIViewController {
         let realmInterviews = realm.objects(Interview)
         
         if (realmInterviews.count > 0) {
+            print(realmInterviews)
+
             self.curInterview = realmInterviews[0]
             
             print("Updated Realm curInterview:")
             print("\t food: \(self.curInterview!.food_consumed)")
             print("\t lodging: \(self.curInterview!.lodging_consumed)")
             print("\t trans: \(self.curInterview!.transportation_consumed)")
+            print("\t receipts: \(self.curInterview!.receipts)")
         }
     }
     
@@ -367,6 +370,11 @@ class HomeViewController: UIViewController {
             let selectCategoryVC = navVC.viewControllers.first as! CategoryTableViewController
             
             selectCategoryVC.curInterview = self.curInterview
+        } else if (segue.identifier == "selectHistorySegue") {
+            let navVC = segue.destinationViewController as! UINavigationController
+            let selectHistoryVC = navVC.viewControllers.first as! HistoryTableViewController
+            
+            selectHistoryVC.curInterview = self.curInterview
         }
     }
     

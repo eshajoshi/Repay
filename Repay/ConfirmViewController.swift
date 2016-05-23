@@ -25,7 +25,7 @@ class ConfirmViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("\nConfirmViewController.")
+        print("\nConfirmViewController...")
 
         // Do any additional setup after loading the view.
         navigationController!.setNavigationBarHidden(true,animated: false);

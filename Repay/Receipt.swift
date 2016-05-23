@@ -20,6 +20,7 @@ class Receipt: Object {
     dynamic var requested_amt = 0.0
     dynamic var status = ""
     dynamic var timestamp = 0.0
+    let messages = List<Message>()
     
     convenience init(id: String, interview_id: String, category: String,
                      first_name: String, last_name: String, position: String,
@@ -37,5 +38,9 @@ class Receipt: Object {
         self.requested_amt = requested_amt
         self.status = status
         self.timestamp = timestamp
+    }
+    
+    override class func primaryKey() -> String? {
+        return "id"
     }
 }
