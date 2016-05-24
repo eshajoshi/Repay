@@ -10,6 +10,7 @@ import UIKit
 
 class HistoryTableViewCell: UITableViewCell {
     
+    @IBOutlet var btn: UIButton!
     @IBOutlet var category: UILabel!
     @IBOutlet var requested_amt: UILabel!
     @IBOutlet var date: UILabel!

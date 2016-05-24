@@ -21,59 +21,21 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func readReceiptsFromFirebase(interviewId: String) {
-        print("Reading/sorting receipts from Firebase by interview_id: \(interviewId)...")
-        
-        ref.childByAppendingPath("receipts").observeEventType(.ChildAdded, withBlock: { snapshot in
-            if interviewId == snapshot.value["interview_id"] as! String {
-                print("\tid: \(snapshot.value["id"])")
-                print("\trequested_amt: \(snapshot.value["requested_amt"])!")
-                
-                let status = snapshot.value["status"] as! String
-                
-                if status == "approved" {           // No longer needs attention
-                    self.completedReceipts.append(self.convertSnapshotToReceipt(snapshot))
-                } else {                            // Needed to be looked over by HR or accepted/disputed by interviewee
-                    self.pendingReceipts.append(self.convertSnapshotToReceipt(snapshot))
-                }
-            }
-        })
-    }
-    
-    func convertSnapshotToReceipt(snapshot: FDataSnapshot) -> (Receipt) {
-        print("Converting snapshot data to a Receipt object...")
-        
-        return Receipt(id: snapshot.value["id"] as! String,
-                    interview_id: snapshot.value["interview_id"] as! String,
-                    category: snapshot.value["category"] as! String,
-                    first_name: snapshot.value["first_name"] as! String,
-                    last_name: snapshot.value["last_name"] as! String,
-                    position: snapshot.value["position"] as! String,
-                    image: snapshot.value["image"] as! String,
-                    requested_amt: snapshot.value["requested_amt"] as! Double,
-                    status: snapshot.value["status"] as! String,
-                    timestamp: snapshot.value["timestamp"] as! Double)
-    }
-    
     override func viewDidAppear(animated: Bool) {
         print("tableView.frame: \(tableView.frame)")
+        print("pendingReceipts.count: \(pendingReceipts.count)")
+        print("completedReceipts.count: \(completedReceipts.count)")
         
-        self.readReceiptsFromFirebase((self.curInterview?.uid)!)
-        
-        let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 35 * Int64(NSEC_PER_SEC))
-        
-        // Execute code with a delay
-        dispatch_after(time, dispatch_get_main_queue()) {
-            print("pendingReceipts.count: \(self.pendingReceipts.count)")
-            
-            for item in self.pendingReceipts {
-                print("\t interview_id: \(item.interview_id)")
-            }
-            
-            // Reload data
-            self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Automatic)
-        }
+        // Reload data
+        self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Automatic)
     }
+    
+    /*
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+    }
+     */
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,13 +59,27 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
         // Dispose of any resources that can be recreated.
     }
 
-    // 'Pending' and 'Completed' interviews section
+    // Set to pendingReceipts.count + completedReceipts.count + 2 ('Pending' and 'Completed' labels)
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        // TODO: Need to change to accommodate self.completedReceipts.count + 1
+        return self.pendingReceipts.count + 1
     }
 
+    // Set to one cell for each section
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.pendingReceipts.count
+        return 1
+    }
+    
+    // Height for header in section to set space between cells
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    // Set the header's background color to white color
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.whiteColor()
+        return headerView;
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -112,18 +88,24 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! HistoryTableViewCell
         
         // Aesthetics
-        cell.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
-        cell.layer.cornerRadius = 5
-        cell.layer.borderWidth = 0
-            
+        cell.btn.backgroundColor = UIColor.init(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
+        cell.btn.layer.cornerRadius = 5
+        cell.btn.layer.borderWidth = 0
+        cell.category.sizeToFit()
+        cell.category.adjustsFontSizeToFitWidth = true
+        cell.requested_amt.sizeToFit()
+        cell.requested_amt.adjustsFontSizeToFitWidth = true
+        cell.date.sizeToFit()
+        cell.date.adjustsFontSizeToFitWidth = true
+        
         // Content
         cell.category?.text = pendingReceipts[indexPath.row].category
-        cell.requested_amt?.text = "$" + String(self.pendingReceipts[indexPath.row].requested_amt)
-        cell.date?.text = String(pendingReceipts[indexPath.row].timestamp)
+        
+        let str = NSString(format: "%.2f", self.pendingReceipts[indexPath.row].requested_amt)
+        cell.requested_amt?.text = "$" + (str as String)
+        
+        cell.date?.text = String(NSDate(timeIntervalSince1970 : (pendingReceipts[indexPath.row].timestamp / 1000)))
         cell.arrowImage?.image = UIImage(named: "forward_arrow")
-            
-        print("cell.category.text: \(cell.category.text)")
-        print("cell.requested_amt.text: \(cell.requested_amt.text)")
         
         return cell
     }
@@ -157,16 +139,6 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
     */
 

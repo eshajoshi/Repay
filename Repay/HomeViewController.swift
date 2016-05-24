@@ -47,6 +47,10 @@ class HomeViewController: UIViewController {
     var curInterview: Interview?
     var userId: String?
     
+    // Pass to HistoryTableViewController
+    var pendingReceipts = [Receipt]()
+    var completedReceipts = [Receipt]()
+    
     // ------ Modal functionality -------
     @IBAction func showModal(sender: AnyObject) {
         print("\nClicked on modal:")
@@ -335,7 +339,7 @@ class HomeViewController: UIViewController {
         company3Logo.image = nil
     }
     
-    /* Read curInterview object from RealmSwift */
+    // Read curInterview object from RealmSwift
     func updateCurInterview() {
         let realmInterviews = realm.objects(Interview)
         
@@ -352,6 +356,46 @@ class HomeViewController: UIViewController {
         }
     }
     
+    // Read receipts from Firebase
+    func readReceiptsFromFirebase(interviewId: String) {
+        print("Reading/sorting receipts from Firebase by interview_id: \(interviewId)...")
+        
+        ref.childByAppendingPath("receipts").observeEventType(.ChildAdded, withBlock: { snapshot in
+            if interviewId == snapshot.value["interview_id"] as! String {
+                print("\tid: \(snapshot.value["id"])")
+                print("\trequested_amt: \(snapshot.value["requested_amt"])!")
+                
+                let status = snapshot.value["status"] as! String
+                let nReceipt = self.convertSnapshotToReceipt(snapshot)
+                
+                if status == "approved" {           // No longer needs attention
+                    if (!self.completedReceipts.contains({$0.id == nReceipt.id})) {
+                        self.completedReceipts.append(nReceipt)
+                    }
+                } else {                            // Needed to be looked over by HR or accepted/disputed by interviewee
+                    if (!self.pendingReceipts.contains({$0.id == nReceipt.id})) {
+                        self.pendingReceipts.append(nReceipt)
+                    }
+                }
+            }
+        })
+    }
+    
+    func convertSnapshotToReceipt(snapshot: FDataSnapshot) -> (Receipt) {
+        print("Converting snapshot data to a Receipt object...")
+        
+        return Receipt(id: snapshot.value["id"] as! String,
+                       interview_id: snapshot.value["interview_id"] as! String,
+                       category: snapshot.value["category"] as! String,
+                       first_name: snapshot.value["first_name"] as! String,
+                       last_name: snapshot.value["last_name"] as! String,
+                       position: snapshot.value["position"] as! String,
+                       image: snapshot.value["image"] as! String,
+                       requested_amt: snapshot.value["requested_amt"] as! Double,
+                       status: snapshot.value["status"] as! String,
+                       timestamp: snapshot.value["timestamp"] as! Double)
+    }
+    
     override func viewDidAppear(animated: Bool) {
         print("HomeViewController - viewDidAppear")
         updateCurInterview()
@@ -361,9 +405,18 @@ class HomeViewController: UIViewController {
         } else {
             loadBalance()
         }
+        
+        // Repopulate pendingReceipts and completedReceipts to send to HistoryViewTableController
+        readReceiptsFromFirebase((curInterview?.uid)!)
+        
+        // Execute code with a delay
+        let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 35 * Int64(NSEC_PER_SEC))
+        dispatch_after(time, dispatch_get_main_queue()) {
+            print("pendingReceipts.count: \(self.pendingReceipts.count)")
+            print("completedReceipts.count: \(self.completedReceipts.count)")
+        }
     }
     
-    /* Sends curInterview object to CategoryTableViewController */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "selectCategorySegue") {
             let navVC = segue.destinationViewController as! UINavigationController
@@ -375,6 +428,8 @@ class HomeViewController: UIViewController {
             let selectHistoryVC = navVC.viewControllers.first as! HistoryTableViewController
             
             selectHistoryVC.curInterview = self.curInterview
+            selectHistoryVC.pendingReceipts = self.pendingReceipts
+            selectHistoryVC.completedReceipts = self.completedReceipts
         }
     }
     

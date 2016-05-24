@@ -77,9 +77,7 @@ class UploadViewController:
                 // Image converted to base64 string for storage on Firebase
                 let imageData = UIImagePNGRepresentation(self.imagePreview.image!.resize(0.5))
                 let base64String = imageData!.base64EncodedStringWithOptions(.Encoding64CharacterLineLength)
-                
-                // TODO: Figure out how to populate the unique receipt id (random numbers)
-                let receiptId = Int(arc4random_uniform(6) + 100)
+                let receiptId = Int(arc4random_uniform(900))
                 
                 // Populate Receipt object and append to curInterview.receipts (list)
                 self.receiptObject = self.populateReceiptObject(receiptId, base64String: base64String)
