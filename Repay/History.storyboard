@@ -53,9 +53,6 @@
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j1C-3L-TdY">
                                             <rect key="frame" x="20" y="0.0" width="335" height="80"/>
                                             <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                                            <connections>
-                                                <segue destination="xWG-Ar-1dC" kind="show" identifier="viewReimbursementSegue" id="cQ2-Iz-sIm"/>
-                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FOOD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Td2-Gz-98q">
                                             <rect key="frame" x="40" y="28" width="114" height="23"/>
@@ -106,6 +103,7 @@
                     <connections>
                         <outlet property="barBtnBack" destination="zhn-e8-lv3" id="QBH-Ze-ppJ"/>
                         <outlet property="segmentedControl" destination="J6X-Vr-PhY" id="OV2-AV-Bvt"/>
+                        <segue destination="xWG-Ar-1dC" kind="show" identifier="viewReimbursementSegue" id="hp1-vi-29s"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UXr-5e-EeT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -115,7 +113,7 @@
         <!--ReimbursementTableViewController-->
         <scene sceneID="TX3-at-whi">
             <objects>
-                <tableViewController title="ReimbursementTableViewController" id="aqu-aY-clO" customClass="ReimbursementTableViewController" customModule="Repay" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="reimbursementTVC" title="ReimbursementTableViewController" id="aqu-aY-clO" customClass="ReimbursementTableViewController" customModule="Repay" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="3tz-OA-AIF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -156,7 +154,7 @@
         <!--Navigation Controller-->
         <scene sceneID="0ON-35-2Xz">
             <objects>
-                <navigationController id="xWG-Ar-1dC" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="reimbursementNavController" id="xWG-Ar-1dC" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aRJ-dm-wBn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

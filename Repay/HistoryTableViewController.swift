@@ -18,7 +18,6 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
     var approvedReceipts = [Receipt]()
     var flaggedReceipts = [Receipt]()
     var todoReceipts = [Receipt]()
-    var receiptCell: HistoryTableViewCell?
     
     @IBAction func handleSegmentedControlChange(sender: AnyObject) {
         self.tableView.reloadData()
@@ -36,15 +35,6 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
         
         // Reload data
         self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Automatic)
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "viewReimbursementSegue" {
-            let navVC = segue.destinationViewController as! UINavigationController
-            let reimbursementTVC = navVC.viewControllers.first as! ReimbursementTableViewController
-            
-            reimbursementTVC.receiptCell = self.receiptCell
-        }
     }
     
     override func viewDidLoad() {
@@ -66,7 +56,6 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
         segmentedControl.tintColor = UIColor.init(red: 0/255, green: 94/255, blue: 43/255, alpha: 1)
         segmentedControl.setTitleTextAttributes(attr as [NSObject : AnyObject] , forState: .Normal)
 
-        
         // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
     }
@@ -117,10 +106,14 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("Selected cell #\(indexPath.row)")
 
-        let indexPath = tableView.indexPathForSelectedRow
-        self.receiptCell = tableView.cellForRowAtIndexPath(indexPath!) as! HistoryTableViewCell!
-
-        performSegueWithIdentifier("viewReimbursementSegue", sender: self)
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! HistoryTableViewCell!
+        
+        let reimbursementTVC = navigationController?.storyboard?.instantiateViewControllerWithIdentifier("reimbursementTVC") as? ReimbursementTableViewController
+        
+        reimbursementTVC!.receiptCell = cell
+        
+        // Push the TableVC into the view hierarachy
+        navigationController?.pushViewController(reimbursementTVC!, animated: true)
     }
     
     // Configuring table view cells
