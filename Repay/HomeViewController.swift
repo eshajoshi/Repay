@@ -48,8 +48,9 @@ class HomeViewController: UIViewController {
     var userId: String?
     
     // Pass to HistoryTableViewController
-    var pendingReceipts = [Receipt]()
-    var completedReceipts = [Receipt]()
+    var approvedReceipts = [Receipt]()
+    var flaggedReceipts = [Receipt]()
+    var todoReceipts = [Receipt]()
     
     // ------ Modal functionality -------
     @IBAction func showModal(sender: AnyObject) {
@@ -359,8 +360,10 @@ class HomeViewController: UIViewController {
     // Read receipts from Firebase
     func readReceiptsFromFirebase(interviewId: String) {
         print("Reading/sorting receipts from Firebase by interview_id: \(interviewId)...")
-        
+                
         ref.childByAppendingPath("receipts").observeEventType(.ChildAdded, withBlock: { snapshot in
+            print("New child...")
+            
             if interviewId == snapshot.value["interview_id"] as! String {
                 print("\tid: \(snapshot.value["id"])")
                 print("\trequested_amt: \(snapshot.value["requested_amt"])!")
@@ -369,12 +372,16 @@ class HomeViewController: UIViewController {
                 let nReceipt = self.convertSnapshotToReceipt(snapshot)
                 
                 if status == "approved" {           // No longer needs attention
-                    if (!self.completedReceipts.contains({$0.id == nReceipt.id})) {
-                        self.completedReceipts.append(nReceipt)
+                    if (!self.approvedReceipts.contains({$0.id == nReceipt.id})) {
+                        self.approvedReceipts.append(nReceipt)
                     }
-                } else {                            // Needed to be looked over by HR or accepted/disputed by interviewee
-                    if (!self.pendingReceipts.contains({$0.id == nReceipt.id})) {
-                        self.pendingReceipts.append(nReceipt)
+                } else if status == "flagged" {     // Needs to be accepted/disputed by interviewee
+                    if (!self.flaggedReceipts.contains({$0.id == nReceipt.id})) {
+                        self.flaggedReceipts.append(nReceipt)
+                    }
+                } else {                            // Needs to be looked over by business HR
+                    if (!self.todoReceipts.contains({$0.id == nReceipt.id})) {
+                        self.todoReceipts.append(nReceipt)
                     }
                 }
             }
@@ -390,7 +397,6 @@ class HomeViewController: UIViewController {
                        first_name: snapshot.value["first_name"] as! String,
                        last_name: snapshot.value["last_name"] as! String,
                        position: snapshot.value["position"] as! String,
-                       image: snapshot.value["image"] as! String,
                        requested_amt: snapshot.value["requested_amt"] as! Double,
                        status: snapshot.value["status"] as! String,
                        timestamp: snapshot.value["timestamp"] as! Double)
@@ -410,10 +416,11 @@ class HomeViewController: UIViewController {
         readReceiptsFromFirebase((curInterview?.uid)!)
         
         // Execute code with a delay
-        let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 35 * Int64(NSEC_PER_SEC))
+        let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 5 * Int64(NSEC_PER_SEC))
         dispatch_after(time, dispatch_get_main_queue()) {
-            print("pendingReceipts.count: \(self.pendingReceipts.count)")
-            print("completedReceipts.count: \(self.completedReceipts.count)")
+            print("approvedReceipts.count: \(self.approvedReceipts.count)")
+            print("flaggedReceipts.count: \(self.flaggedReceipts.count)")
+            print("todoReceipts.count: \(self.todoReceipts.count)")
         }
     }
     
@@ -425,11 +432,12 @@ class HomeViewController: UIViewController {
             selectCategoryVC.curInterview = self.curInterview
         } else if (segue.identifier == "selectHistorySegue") {
             let navVC = segue.destinationViewController as! UINavigationController
-            let selectHistoryVC = navVC.viewControllers.first as! HistoryTableViewController
+            let selectHistoryTVC = navVC.viewControllers.first as! HistoryTableViewController
             
-            selectHistoryVC.curInterview = self.curInterview
-            selectHistoryVC.pendingReceipts = self.pendingReceipts
-            selectHistoryVC.completedReceipts = self.completedReceipts
+            selectHistoryTVC.curInterview = self.curInterview
+            selectHistoryTVC.approvedReceipts = self.approvedReceipts
+            selectHistoryTVC.flaggedReceipts = self.flaggedReceipts
+            selectHistoryTVC.todoReceipts = self.todoReceipts
         }
     }
     

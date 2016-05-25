@@ -80,7 +80,7 @@ class UploadViewController:
                 let receiptId = Int(arc4random_uniform(900))
                 
                 // Populate Receipt object and append to curInterview.receipts (list)
-                self.receiptObject = self.populateReceiptObject(receiptId, base64String: base64String)
+                self.receiptObject = self.populateReceiptObject(receiptId)
                 self.updateReceiptsListInRealm(self.curInterview!, receiptObject: self.receiptObject!)
                 
                 // Update curInterview budgets
@@ -88,6 +88,9 @@ class UploadViewController:
                 
                 // Write Receipt tuple to Firebase
                 self.writeReceiptTupleToFirebase(self.receiptObject!)
+                
+                // Write Image tuple to Firebase
+                self.writeImageTupleToFirebase(self.receiptObject!.id, base64String: base64String)
                 
                 // Update curInterview object in Realm
                 self.updateCurInterviewInRealm(self.curInterview!)
@@ -98,7 +101,7 @@ class UploadViewController:
         })
     }
     
-    func populateReceiptObject(receiptId: Int, base64String: String) -> (Receipt) {
+    func populateReceiptObject(receiptId: Int) -> (Receipt) {
         print("Populating receipt object...")
         
         return Receipt(id: String(receiptId),
@@ -107,7 +110,6 @@ class UploadViewController:
                        first_name: self.first!,
                        last_name: self.last!,
                        position: self.curInterview!.position,
-                       image: base64String,
                        requested_amt: Double(self.amountInput.text!)!,
                        status: "todo",
                        timestamp: NSDate().timeIntervalSince1970 * 1000)
@@ -261,15 +263,28 @@ class UploadViewController:
                             "first_name": receiptObject.first_name,
                             "last_name": receiptObject.last_name,
                             "position": receiptObject.position,
-                            "image": receiptObject.image,
                             "requested_amt": receiptObject.requested_amt,
                             "status": receiptObject.status,
                             "timestamp": receiptObject.timestamp]
         
-        let receiptKeyId = ref.childByAppendingPath("receipts").childByAutoId();
+        let receiptKeyId = ref.childByAppendingPath("receipts").childByAutoId()
         receiptKeyId.setValue(receiptTuple);
         print("New receipt tuple of \(receiptObject.requested_amt) written to Firebase.")
     }
+    
+    func writeImageTupleToFirebase(receipt_id: String, base64String: String) {
+        print("Writing image object to firebase...")
+        
+        let imageUid = Int(arc4random_uniform(900))
+        let imageTuple = ["uid": imageUid,
+                          "receipt_id": receipt_id,
+                          "imageStr": base64String]
+        
+        let imageKeyId = ref.childByAppendingPath("images").childByAutoId()
+        imageKeyId.setValue(imageTuple);
+        print("New image tuple of id: \(imageUid) and receipt_id: \(receipt_id) written to Firebase.")
+    }
+
     
     func updateCurInterviewInRealm(interview: Interview) {
         let updatedInterview = Interview(uid: interview.uid,

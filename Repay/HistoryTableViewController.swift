@@ -14,8 +14,10 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
     @IBOutlet var barBtnBack: UIBarButtonItem!
     
     var curInterview: Interview?
-    var pendingReceipts = [Receipt]()
-    var completedReceipts = [Receipt]()
+    var approvedReceipts = [Receipt]()
+    var flaggedReceipts = [Receipt]()
+    var todoReceipts = [Receipt]()
+    var receiptCell: HistoryTableViewCell?
     
     @IBAction func handleBtnBack(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -23,19 +25,22 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
     
     override func viewDidAppear(animated: Bool) {
         print("tableView.frame: \(tableView.frame)")
-        print("pendingReceipts.count: \(pendingReceipts.count)")
-        print("completedReceipts.count: \(completedReceipts.count)")
+        print("approvedReceipts.count: \(self.approvedReceipts.count)")
+        print("flaggedReceipts.count: \(self.flaggedReceipts.count)")
+        print("todoReceipts.count: \(self.todoReceipts.count)")
         
         // Reload data
         self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Automatic)
     }
     
-    /*
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
+        if segue.identifier == "viewReimbursementSegue" {
+            let navVC = segue.destinationViewController as! UINavigationController
+            let reimbursementTVC = navVC.viewControllers.first as! ReimbursementTableViewController
+            
+            reimbursementTVC.receiptCell = self.receiptCell
+        }
     }
-     */
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +67,7 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
     // Set to pendingReceipts.count + completedReceipts.count + 2 ('Pending' and 'Completed' labels)
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // TODO: Need to change to accommodate self.completedReceipts.count + 1
-        return self.pendingReceipts.count + 1
+        return self.flaggedReceipts.count + 1
     }
 
     // Set to one cell for each section
@@ -82,6 +87,16 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
         return headerView;
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("Selected cell #\(indexPath.row)")
+
+        let indexPath = tableView.indexPathForSelectedRow
+        self.receiptCell = tableView.cellForRowAtIndexPath(indexPath!) as! HistoryTableViewCell!
+
+        performSegueWithIdentifier("viewReimbursementSegue", sender: self)
+    }
+    
+    // Configuring table view cells
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         print("Configuring table view cells...")
         
@@ -99,12 +114,12 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
         cell.date.adjustsFontSizeToFitWidth = true
         
         // Content
-        cell.category?.text = pendingReceipts[indexPath.row].category
+        cell.category?.text = flaggedReceipts[indexPath.row].category
         
-        let str = NSString(format: "%.2f", self.pendingReceipts[indexPath.row].requested_amt)
+        let str = NSString(format: "%.2f", self.flaggedReceipts[indexPath.row].requested_amt)
         cell.requested_amt?.text = "$" + (str as String)
         
-        cell.date?.text = String(NSDate(timeIntervalSince1970 : (pendingReceipts[indexPath.row].timestamp / 1000)))
+        cell.date?.text = String(NSDate(timeIntervalSince1970 : (flaggedReceipts[indexPath.row].timestamp / 1000)))
         cell.arrowImage?.image = UIImage(named: "forward_arrow")
         
         return cell

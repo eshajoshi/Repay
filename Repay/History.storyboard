@@ -22,10 +22,10 @@
             </objects>
             <point key="canvasLocation" x="56.5" y="559.5"/>
         </scene>
-        <!--History-->
+        <!--HistoryTableViewController-->
         <scene sceneID="tWg-bC-bNE">
             <objects>
-                <tableViewController id="g5r-su-KvI" customClass="HistoryTableViewController" customModule="Repay" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="HistoryTableViewController" id="g5r-su-KvI" customClass="HistoryTableViewController" customModule="Repay" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="81" sectionHeaderHeight="28" sectionFooterHeight="28" id="k9A-tP-hud">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,6 +57,9 @@
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j1C-3L-TdY">
                                             <rect key="frame" x="20" y="0.0" width="335" height="80"/>
                                             <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                            <connections>
+                                                <segue destination="xWG-Ar-1dC" kind="show" identifier="viewReimbursementSegue" id="cQ2-Iz-sIm"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FOOD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Td2-Gz-98q">
                                             <rect key="frame" x="40" y="28" width="114" height="23"/>
@@ -111,6 +114,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UXr-5e-EeT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="620.5" y="559.5"/>
+        </scene>
+        <!--ReimbursementTableViewController-->
+        <scene sceneID="TX3-at-whi">
+            <objects>
+                <tableViewController title="ReimbursementTableViewController" id="aqu-aY-clO" customClass="ReimbursementTableViewController" customModule="Repay" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="3tz-OA-AIF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="xSh-Vw-SoD">
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xSh-Vw-SoD" id="MtP-Lg-gER">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="aqu-aY-clO" id="1xh-e6-I6F"/>
+                            <outlet property="delegate" destination="aqu-aY-clO" id="hXq-pI-mgq"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Request Reimbursement" id="t4R-1O-YLj">
+                        <barButtonItem key="leftBarButtonItem" title="CANCEL" id="kw8-xN-wTu">
+                            <connections>
+                                <action selector="handleBtnBack:" destination="aqu-aY-clO" id="k2O-r2-WWB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="barBtnBack" destination="kw8-xN-wTu" id="HnZ-Ym-Zea"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZFu-h1-OAc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1718.5" y="558.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0ON-35-2Xz">
+            <objects>
+                <navigationController id="xWG-Ar-1dC" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aRJ-dm-wBn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="aqu-aY-clO" kind="relationship" relationship="rootViewController" id="cUQ-C7-IQ2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NfZ-sO-kG1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1180" y="559"/>
         </scene>
     </scenes>
     <resources>
