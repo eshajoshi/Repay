@@ -11,6 +11,7 @@ import Firebase
 
 class HistoryTableViewController: UITableViewController, UINavigationControllerDelegate {
     
+    @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var barBtnBack: UIBarButtonItem!
     
     var curInterview: Interview?
@@ -18,6 +19,10 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
     var flaggedReceipts = [Receipt]()
     var todoReceipts = [Receipt]()
     var receiptCell: HistoryTableViewCell?
+    
+    @IBAction func handleSegmentedControlChange(sender: AnyObject) {
+        self.tableView.reloadData()
+    }
     
     @IBAction func handleBtnBack(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -55,6 +60,13 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
         barBtnBack.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Avenir Next", size: 12)!], forState: UIControlState.Normal)
         barBtnBack.tintColor = UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
         
+        // Segmented Control
+        let attr = [NSForegroundColorAttributeName: UIColor.init(red: 0/255, green: 94/255, blue: 43/255, alpha: 1),
+                    NSFontAttributeName: UIFont(name: "Avenir Next", size: 12)!]
+        segmentedControl.tintColor = UIColor.init(red: 0/255, green: 94/255, blue: 43/255, alpha: 1)
+        segmentedControl.setTitleTextAttributes(attr as [NSObject : AnyObject] , forState: .Normal)
+
+        
         // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
     }
@@ -64,10 +76,25 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
         // Dispose of any resources that can be recreated.
     }
 
-    // Set to pendingReceipts.count + completedReceipts.count + 2 ('Pending' and 'Completed' labels)
+    // Set to size of list depending on which segmented control index is selected
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // TODO: Need to change to accommodate self.completedReceipts.count + 1
-        return self.flaggedReceipts.count + 1
+        var numSections = 0
+        
+        switch (segmentedControl.selectedSegmentIndex) {
+            case 0:                 // TODO receipts
+                numSections = todoReceipts.count
+                break
+            case 1:                 // FLAGGED receipts
+                numSections = flaggedReceipts.count
+                break
+            case 2:                 // APPROVED receipts
+                numSections = approvedReceipts.count
+                break
+            default:
+                break
+        }
+        
+        return numSections
     }
 
     // Set to one cell for each section
@@ -98,7 +125,6 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
     
     // Configuring table view cells
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        print("Configuring table view cells...")
         
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! HistoryTableViewCell
         
@@ -113,14 +139,42 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
         cell.date.sizeToFit()
         cell.date.adjustsFontSizeToFitWidth = true
         
-        // Content
-        cell.category?.text = flaggedReceipts[indexPath.row].category
+        // Set content of each cell
+        switch (segmentedControl.selectedSegmentIndex) {
+            case 0:                 // TODO receipts
+                // Content
+                cell.category?.text = todoReceipts[indexPath.row].category
+                
+                let str = NSString(format: "%.2f", self.todoReceipts[indexPath.row].requested_amt)
+                cell.requested_amt?.text = "$" + (str as String)
+                
+                cell.date?.text = String(NSDate(timeIntervalSince1970 : (todoReceipts[indexPath.row].timestamp / 1000)))
+                
+                break
+            case 1:                 // FLAGGED receipts
+                cell.category?.text = flaggedReceipts[indexPath.row].category
+                
+                let str = NSString(format: "%.2f", self.flaggedReceipts[indexPath.row].requested_amt)
+                cell.requested_amt?.text = "$" + (str as String)
+                
+                cell.date?.text = String(NSDate(timeIntervalSince1970 : (flaggedReceipts[indexPath.row].timestamp / 1000)))
+                
+                break
+            case 2:                 // APPROVED receipts
+                cell.category?.text = approvedReceipts[indexPath.row].category
+                
+                let str = NSString(format: "%.2f", self.approvedReceipts[indexPath.row].requested_amt)
+                cell.requested_amt?.text = "$" + (str as String)
+                
+                cell.date?.text = String(NSDate(timeIntervalSince1970 : (approvedReceipts[indexPath.row].timestamp / 1000)))
+                
+                break
+            default:
+                break
+        }
         
-        let str = NSString(format: "%.2f", self.flaggedReceipts[indexPath.row].requested_amt)
-        cell.requested_amt?.text = "$" + (str as String)
-        
-        cell.date?.text = String(NSDate(timeIntervalSince1970 : (flaggedReceipts[indexPath.row].timestamp / 1000)))
         cell.arrowImage?.image = UIImage(named: "forward_arrow")
+
         
         return cell
     }

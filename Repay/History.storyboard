@@ -30,25 +30,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <segmentedControl key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="J6X-Vr-PhY">
+                            <rect key="frame" x="0.0" y="64" width="375" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Todo"/>
+                                <segment title="Flagged"/>
+                                <segment title="Approved"/>
+                            </segments>
+                            <connections>
+                                <action selector="handleSegmentedControlChange:" destination="g5r-su-KvI" eventType="valueChanged" id="ilj-tJ-q84"/>
+                            </connections>
+                        </segmentedControl>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Pending" rowHeight="48" id="g2z-12-Reb">
-                                <rect key="frame" x="0.0" y="92" width="375" height="48"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g2z-12-Reb" id="oGC-id-VAr">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="47.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PENDING" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="add-8a-bHL">
-                                            <rect key="frame" x="17" y="16" width="56" height="16"/>
-                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="12"/>
-                                            <color key="textColor" red="0.0" green="0.36862745099999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="80" id="jIv-Au-VP6" customClass="HistoryTableViewCell" customModule="Repay" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="140" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="122" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jIv-Au-VP6" id="xDe-5w-8sm">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
@@ -109,6 +105,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="barBtnBack" destination="zhn-e8-lv3" id="QBH-Ze-ppJ"/>
+                        <outlet property="segmentedControl" destination="J6X-Vr-PhY" id="OV2-AV-Bvt"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UXr-5e-EeT" userLabel="First Responder" sceneMemberID="firstResponder"/>
