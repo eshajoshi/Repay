@@ -155,6 +155,7 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
                 cell.requested_amt?.text = "$" + (str as String)
                 cell.date?.text = getHumanReadableDate(NSDate(timeIntervalSince1970 : (todoReceipts[indexPath.row].timestamp / 1000)))
                 cell.receipt_id = todoReceipts[indexPath.row].id
+                cell.status = todoReceipts[indexPath.row].status
                 
                 break
             case 1:                 // FLAGGED receipts
@@ -164,6 +165,7 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
                 cell.requested_amt?.text = "$" + (str as String)
                 cell.date?.text = getHumanReadableDate(NSDate(timeIntervalSince1970 : (flaggedReceipts[indexPath.row].timestamp / 1000)))
                 cell.receipt_id = flaggedReceipts[indexPath.row].id
+                cell.status = flaggedReceipts[indexPath.row].status
                 
                 break
             case 2:                 // APPROVED receipts
@@ -173,6 +175,7 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
                 cell.requested_amt?.text = "$" + (str as String)
                 cell.date?.text = getHumanReadableDate(NSDate(timeIntervalSince1970 : (approvedReceipts[indexPath.row].timestamp / 1000)))
                 cell.receipt_id = approvedReceipts[indexPath.row].id
+                cell.status = approvedReceipts[indexPath.row].status
                 
                 break
             default:

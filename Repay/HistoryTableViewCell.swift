@@ -17,6 +17,7 @@ class HistoryTableViewCell: UITableViewCell {
     @IBOutlet var arrowImage: UIImageView!
     
     var receipt_id: String?
+    var status: String?
 
     override func awakeFromNib() {
         super.awakeFromNib()

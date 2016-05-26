@@ -53,20 +53,29 @@ class ReimbursementTableViewController: UITableViewController {
         requested_amt.text = receiptCell?.requested_amt.text
         
         // Load approved amount and reason
-        let receiptsRef = ref.childByAppendingPath("receipts")
-        
-        receiptsRef.observeEventType(.ChildAdded, withBlock: { snapshot in
-            if self.receiptCell?.receipt_id == snapshot.value["id"] as? String {
-                
-                let messagesRef = receiptsRef.childByAppendingPath(snapshot.key + "/messages")
-                
-                messagesRef.queryOrderedByKey().observeEventType(.ChildAdded, withBlock: { snapshot in
-                    let str = NSString(format: "%.2f", (Float((snapshot.value["approved_amt"] as? Int)!)))
-                    self.approved_amt.text = "$" + (str as String)
-                    self.reason.text = snapshot.value["flagged_reason"] as? String
-                })
-            }
-        })
+        if (receiptCell?.status == "flagged") {
+            let receiptsRef = ref.childByAppendingPath("receipts")
+            
+            receiptsRef.observeEventType(.ChildAdded, withBlock: { snapshot in
+                if self.receiptCell?.receipt_id == snapshot.value["id"] as? String {
+                    
+                    let messagesRef = receiptsRef.childByAppendingPath(snapshot.key + "/messages")
+                    
+                    messagesRef.queryOrderedByKey().observeEventType(.ChildAdded, withBlock: { snapshot in
+                        let str = NSString(format: "%.2f", (Float((snapshot.value["approved_amt"] as? Int)!)))
+                        self.approved_amt.text = "$" + (str as String)
+                        self.reason.text = snapshot.value["flagged_reason"] as? String
+                    })
+                }
+            })
+        } else if (receiptCell?.status == "approved") {
+            self.approved_amt.text = requested_amt.text
+            self.reason.text = "N/A"
+        } else {                // Todo
+            self.approved_amt.text = "Pending..."
+            self.reason.text = "N/A"
+        }
+
     }
     
     override func viewDidAppear(animated: Bool) {
