@@ -253,12 +253,15 @@
                     <toolbarItems>
                         <barButtonItem style="plain" id="d8i-w6-SH5">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cFw-Tx-yWe">
-                                <rect key="frame" x="16" y="7" width="165" height="30"/>
+                                <rect key="frame" x="16" y="-9" width="165" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
                                 <state key="normal" title="ACCEPT">
                                     <color key="titleColor" red="0.0" green="0.36862745099999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="handleAcceptBtn:" destination="aqu-aY-clO" eventType="touchUpInside" id="YnJ-WG-zAa"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                         <barButtonItem style="plain" id="F5p-8v-6ly">
@@ -269,6 +272,9 @@
                                 <state key="normal" title="DISPUTE">
                                     <color key="titleColor" red="0.0" green="0.36862745099999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="handleDisputeBtn:" destination="aqu-aY-clO" eventType="touchUpInside" id="4aI-RP-eJd"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </toolbarItems>
@@ -281,9 +287,11 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="acceptBtn" destination="cFw-Tx-yWe" id="hqo-iE-5Pj"/>
                         <outlet property="approved_amt" destination="Vtg-Ed-lXt" id="sJV-8h-nd0"/>
                         <outlet property="approved_amt_view" destination="VRF-aV-ISt" id="YzG-3n-EU9"/>
                         <outlet property="barBtnBack" destination="kw8-xN-wTu" id="HnZ-Ym-Zea"/>
+                        <outlet property="disputeBtn" destination="LJT-HZ-QU7" id="Miv-LX-FvZ"/>
                         <outlet property="reason" destination="nb8-Hc-Uk6" id="IGB-J1-mRF"/>
                         <outlet property="reason_view" destination="Z8o-IJ-Pcu" id="GIl-DZ-4rz"/>
                         <outlet property="receiptImage" destination="PO2-B0-3zL" id="Bnj-Sd-SJN"/>

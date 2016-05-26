@@ -20,8 +20,18 @@ class ReimbursementTableViewController: UITableViewController {
     @IBOutlet var reason: UILabel!
     @IBOutlet var reason_view: UIView!
     @IBOutlet var receiptImage: UIImageView!
+    @IBOutlet var acceptBtn: UIButton!
+    @IBOutlet var disputeBtn: UIButton!
     
     var receiptCell: HistoryTableViewCell?
+    
+    @IBAction func handleAcceptBtn(sender: AnyObject) {
+        print("Pressed the 'Accept' btn.")
+    }
+    
+    @IBAction func handleDisputeBtn(sender: AnyObject) {
+        print("Pressed the 'Dispute' btn.")
+    }
     
     @IBAction func handleBtnBack(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -41,8 +51,6 @@ class ReimbursementTableViewController: UITableViewController {
         
         // Load image
         ref.childByAppendingPath("images").observeEventType(.ChildAdded, withBlock: { snapshot in
-            print("Rendering image from Firebase...")
-            
             if self.receiptCell?.receipt_id == snapshot.value["receipt_id"] as? String {
                 self.receiptImage.image = self.retrieveReceiptImage((snapshot.value["imageStr"] as? String)!)
             }
@@ -75,11 +83,31 @@ class ReimbursementTableViewController: UITableViewController {
             self.approved_amt.text = "Pending..."
             self.reason.text = "N/A"
         }
+    }
+    
+    func loadButtons() {
+        acceptBtn.frame = CGRectMake(acceptBtn.frame.origin.x, acceptBtn.frame.origin.y, acceptBtn.frame.size.width, acceptBtn.frame.size.height + 20)
+        
+        disputeBtn.frame = CGRectMake(disputeBtn.frame.origin.x, disputeBtn.frame.origin.y, disputeBtn.frame.size.width, disputeBtn.frame.size.height + 20)
+        
+        if (receiptCell?.status == "approved" || receiptCell?.status == "todo") {
+            acceptBtn.hidden = true
+            disputeBtn.hidden = true
+        } else {
+            acceptBtn.hidden = false
+            disputeBtn.hidden = false
 
+            acceptBtn.tintColor = UIColor.init(red: 0/255, green: 94/255, blue: 43/255, alpha: 1)
+            disputeBtn.tintColor = UIColor.init(red: 0/255, green: 94/255, blue: 43/255, alpha: 1)
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
         loadTVCFields()
+        loadButtons()
+        
+        self.navigationController!.toolbarHidden = false;
+        self.navigationController!.toolbar.frame.size.height = 60
     }
 
     override func viewDidLoad() {
@@ -111,6 +139,10 @@ class ReimbursementTableViewController: UITableViewController {
         reason.adjustsFontSizeToFitWidth = true
         
         loadTVCFields()
+        loadButtons()
+        
+        self.navigationController!.toolbarHidden = false;
+        self.navigationController!.toolbar.frame.size.height = 60
         
         // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
