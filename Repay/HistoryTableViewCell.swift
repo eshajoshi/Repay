@@ -15,6 +15,8 @@ class HistoryTableViewCell: UITableViewCell {
     @IBOutlet var requested_amt: UILabel!
     @IBOutlet var date: UILabel!
     @IBOutlet var arrowImage: UIImageView!
+    
+    var receipt_id: String?
 
     override func awakeFromNib() {
         super.awakeFromNib()

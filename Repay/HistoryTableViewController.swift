@@ -33,6 +33,9 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
         print("flaggedReceipts.count: \(self.flaggedReceipts.count)")
         print("todoReceipts.count: \(self.todoReceipts.count)")
         
+        // Set default selected segmented control to "Flagged"
+        segmentedControl.selectedSegmentIndex = 1
+        
         // Reload data
         self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Automatic)
     }
@@ -55,6 +58,9 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
                     NSFontAttributeName: UIFont(name: "Avenir Next", size: 12)!]
         segmentedControl.tintColor = UIColor.init(red: 0/255, green: 94/255, blue: 43/255, alpha: 1)
         segmentedControl.setTitleTextAttributes(attr as [NSObject : AnyObject] , forState: .Normal)
+        
+        // Set default selected segmented control to "Flagged"
+        segmentedControl.selectedSegmentIndex = 1
 
         // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
@@ -116,6 +122,13 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
         navigationController?.pushViewController(reimbursementTVC!, animated: true)
     }
     
+    func getHumanReadableDate(req_date: NSDate) -> String {
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = NSDateFormatterStyle.LongStyle
+        
+        return formatter.stringFromDate(req_date)
+    }
+    
     // Configuring table view cells
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -135,13 +148,12 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
         // Set content of each cell
         switch (segmentedControl.selectedSegmentIndex) {
             case 0:                 // TODO receipts
-                // Content
                 cell.category?.text = todoReceipts[indexPath.row].category
                 
                 let str = NSString(format: "%.2f", self.todoReceipts[indexPath.row].requested_amt)
                 cell.requested_amt?.text = "$" + (str as String)
-                
-                cell.date?.text = String(NSDate(timeIntervalSince1970 : (todoReceipts[indexPath.row].timestamp / 1000)))
+                cell.date?.text = getHumanReadableDate(NSDate(timeIntervalSince1970 : (todoReceipts[indexPath.row].timestamp / 1000)))
+                cell.receipt_id = todoReceipts[indexPath.row].id
                 
                 break
             case 1:                 // FLAGGED receipts
@@ -149,8 +161,8 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
                 
                 let str = NSString(format: "%.2f", self.flaggedReceipts[indexPath.row].requested_amt)
                 cell.requested_amt?.text = "$" + (str as String)
-                
-                cell.date?.text = String(NSDate(timeIntervalSince1970 : (flaggedReceipts[indexPath.row].timestamp / 1000)))
+                cell.date?.text = getHumanReadableDate(NSDate(timeIntervalSince1970 : (flaggedReceipts[indexPath.row].timestamp / 1000)))
+                cell.receipt_id = flaggedReceipts[indexPath.row].id
                 
                 break
             case 2:                 // APPROVED receipts
@@ -158,8 +170,8 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
                 
                 let str = NSString(format: "%.2f", self.approvedReceipts[indexPath.row].requested_amt)
                 cell.requested_amt?.text = "$" + (str as String)
-                
-                cell.date?.text = String(NSDate(timeIntervalSince1970 : (approvedReceipts[indexPath.row].timestamp / 1000)))
+                cell.date?.text = getHumanReadableDate(NSDate(timeIntervalSince1970 : (approvedReceipts[indexPath.row].timestamp / 1000)))
+                cell.receipt_id = approvedReceipts[indexPath.row].id
                 
                 break
             default:
@@ -167,7 +179,6 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
         }
         
         cell.arrowImage?.image = UIImage(named: "forward_arrow")
-
         
         return cell
     }

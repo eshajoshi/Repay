@@ -7,14 +7,63 @@
 //
 
 import UIKit
+import Firebase
 
 class ReimbursementTableViewController: UITableViewController {
+    @IBOutlet var tabBarView: UIView!
     @IBOutlet var barBtnBack: UIBarButtonItem!
+    @IBOutlet var requested_date: UILabel!
+    @IBOutlet var requested_amt: UILabel!
+    @IBOutlet var requested_amt_view: UIView!
+    @IBOutlet var approved_amt: UILabel!
+    @IBOutlet var approved_amt_view: UIView!
+    @IBOutlet var reason: UILabel!
+    @IBOutlet var reason_view: UIView!
+    @IBOutlet var receiptImage: UIImageView!
     
     var receiptCell: HistoryTableViewCell?
     
     @IBAction func handleBtnBack(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+//    func convertStrToImageView(image_str: String) -> UIImage {
+//        return nil
+//    }
+    
+    func loadTVCFields() {
+        print("Loading ReimbursementTVC fields...")
+        // Load image
+        ref.childByAppendingPath("images").observeEventType(.ChildAdded, withBlock: { snapshot in
+            if self.receiptCell?.receipt_id == snapshot.value["receipt_id"] as? String {
+//                let image: UIImage = UIImage(imageLiteral: convertStrToImageView((snapshot.value["imageStr"] as? String)!))
+//                receiptImage.image = image;
+            }
+        })
+        
+        // Load date and requested amount
+        requested_date.text = receiptCell?.date.text
+        requested_amt.text = receiptCell?.requested_amt.text
+        
+        // Load approved amount and reason
+        let receiptsRef = ref.childByAppendingPath("receipts")
+        
+        receiptsRef.observeEventType(.Value, withBlock: { snapshot in
+            if self.receiptCell?.receipt_id == snapshot.value["receipt_id"] as? String {
+                
+                let messagesRef = receiptsRef.childByAppendingPath("messages")
+                
+                messagesRef.observeEventType(.ChildAdded, withBlock: { snapshot in
+                    let str = NSString(format: "%.2f", (snapshot.value["approved_amt"] as? String)!)
+                    self.approved_amt.text = "$" + (str as String)
+                    self.reason.text = snapshot.value["flagged_reason"] as? String
+                })
+            }
+        })
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        loadTVCFields()
     }
 
     override func viewDidLoad() {
@@ -31,7 +80,24 @@ class ReimbursementTableViewController: UITableViewController {
         // 'Back' Bar Button Item
         barBtnBack.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Avenir Next", size: 12)!], forState: UIControlState.Normal)
         barBtnBack.tintColor = UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
-
+        
+        // Views
+        requested_amt_view.layer.cornerRadius = 5.0
+        approved_amt_view.layer.cornerRadius = 5.0
+        reason_view.layer.cornerRadius = 5.0
+        
+        // Labels
+        requested_date.sizeToFit()
+        requested_date.adjustsFontSizeToFitWidth = true
+        requested_amt.sizeToFit()
+        requested_amt.adjustsFontSizeToFitWidth = true
+        approved_amt.sizeToFit()
+        approved_amt.adjustsFontSizeToFitWidth = true
+        reason.sizeToFit()
+        reason.adjustsFontSizeToFitWidth = true
+        
+        loadTVCFields()
+        
         // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
     }
@@ -40,70 +106,4 @@ class ReimbursementTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
