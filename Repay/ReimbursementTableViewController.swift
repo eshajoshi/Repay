@@ -27,17 +27,24 @@ class ReimbursementTableViewController: UITableViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-//    func convertStrToImageView(image_str: String) -> UIImage {
-//        return nil
-//    }
+    func retrieveReceiptImage(encodedImageData: String) -> UIImage {
+        print("Retrieving UIImage from encoded image data...")
+        
+        let imageData = NSData(base64EncodedString: encodedImageData, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)!
+        let decodedimage = UIImage(data: imageData)!
+        
+        return decodedimage
+    }
     
     func loadTVCFields() {
         print("Loading ReimbursementTVC fields...")
+        
         // Load image
         ref.childByAppendingPath("images").observeEventType(.ChildAdded, withBlock: { snapshot in
+            print("Rendering image from Firebase...")
+            
             if self.receiptCell?.receipt_id == snapshot.value["receipt_id"] as? String {
-//                let image: UIImage = UIImage(imageLiteral: convertStrToImageView((snapshot.value["imageStr"] as? String)!))
-//                receiptImage.image = image;
+                self.receiptImage.image = self.retrieveReceiptImage((snapshot.value["imageStr"] as? String)!)
             }
         })
         
@@ -53,7 +60,7 @@ class ReimbursementTableViewController: UITableViewController {
                 
                 let messagesRef = receiptsRef.childByAppendingPath(snapshot.key + "/messages")
                 
-                messagesRef.queryOrderedByKey().observeEventType(.ChildAdded, withBlock: { snapshot in                    
+                messagesRef.queryOrderedByKey().observeEventType(.ChildAdded, withBlock: { snapshot in
                     let str = NSString(format: "%.2f", (Float((snapshot.value["approved_amt"] as? Int)!)))
                     self.approved_amt.text = "$" + (str as String)
                     self.reason.text = snapshot.value["flagged_reason"] as? String
@@ -74,8 +81,6 @@ class ReimbursementTableViewController: UITableViewController {
         // 'History' Navigation Bar
         UINavigationBar.appearance().barTintColor = UIColor.init(red: 0/255, green: 94/255, blue: 43/255, alpha: 1)
         UINavigationBar.appearance().titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Avenir Next", size: 17)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
-        
-        print("receiptCell: \((receiptCell?.category.text)!) and \((receiptCell?.requested_amt.text)!)")
         
         // 'Back' Bar Button Item
         barBtnBack.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Avenir Next", size: 12)!], forState: UIControlState.Normal)

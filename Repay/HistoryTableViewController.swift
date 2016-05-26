@@ -28,6 +28,7 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
     }
     
     override func viewDidAppear(animated: Bool) {
+        print("HistoryTableViewController - viewDidAppear")
         print("tableView.frame: \(tableView.frame)")
         print("approvedReceipts.count: \(self.approvedReceipts.count)")
         print("flaggedReceipts.count: \(self.flaggedReceipts.count)")
