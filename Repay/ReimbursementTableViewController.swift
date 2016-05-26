@@ -48,13 +48,13 @@ class ReimbursementTableViewController: UITableViewController {
         // Load approved amount and reason
         let receiptsRef = ref.childByAppendingPath("receipts")
         
-        receiptsRef.observeEventType(.Value, withBlock: { snapshot in
-            if self.receiptCell?.receipt_id == snapshot.value["receipt_id"] as? String {
+        receiptsRef.observeEventType(.ChildAdded, withBlock: { snapshot in
+            if self.receiptCell?.receipt_id == snapshot.value["id"] as? String {
                 
-                let messagesRef = receiptsRef.childByAppendingPath("messages")
+                let messagesRef = receiptsRef.childByAppendingPath(snapshot.key + "/messages")
                 
-                messagesRef.observeEventType(.ChildAdded, withBlock: { snapshot in
-                    let str = NSString(format: "%.2f", (snapshot.value["approved_amt"] as? String)!)
+                messagesRef.queryOrderedByKey().observeEventType(.ChildAdded, withBlock: { snapshot in                    
+                    let str = NSString(format: "%.2f", (Float((snapshot.value["approved_amt"] as? Int)!)))
                     self.approved_amt.text = "$" + (str as String)
                     self.reason.text = snapshot.value["flagged_reason"] as? String
                 })
