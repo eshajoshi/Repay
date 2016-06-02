@@ -281,7 +281,7 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Request Reimbursement" id="t4R-1O-YLj">
-                        <barButtonItem key="leftBarButtonItem" title="CANCEL" id="kw8-xN-wTu">
+                        <barButtonItem key="leftBarButtonItem" title="BACK" id="kw8-xN-wTu">
                             <connections>
                                 <action selector="handleBtnBack:" destination="aqu-aY-clO" id="k2O-r2-WWB"/>
                             </connections>

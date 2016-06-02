@@ -34,7 +34,7 @@ class ReimbursementTableViewController: UITableViewController {
     }
     
     @IBAction func handleBtnBack(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     func retrieveReceiptImage(encodedImageData: String) -> UIImage {
