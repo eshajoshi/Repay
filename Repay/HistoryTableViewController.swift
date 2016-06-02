@@ -36,6 +36,8 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
         if flaggedReceipts.count > 0 {
             segmentedControl.selectedSegmentIndex = 1
         }
+        
+        self.tableView.reloadData()
     }
     
     override func viewDidLoad() {
