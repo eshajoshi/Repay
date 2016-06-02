@@ -29,22 +29,22 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
     
     override func viewDidAppear(animated: Bool) {
         print("HistoryTableViewController - viewDidAppear")
-        print("tableView.frame: \(tableView.frame)")
-        print("approvedReceipts.count: \(self.approvedReceipts.count)")
-        print("flaggedReceipts.count: \(self.flaggedReceipts.count)")
-        print("todoReceipts.count: \(self.todoReceipts.count)")
         
         // Set default selected segmented control to "Flagged"
         segmentedControl.selectedSegmentIndex = 1
         
         // Reload data
         self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Automatic)
+        self.tableView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         print("\nHistoryTableViewController...")
+        
+        print("flagged receipts: ", flaggedReceipts)
+        print("approved receipts: ", approvedReceipts)
         
         // 'History' Navigation Bar
         UINavigationBar.appearance().barTintColor = UIColor.init(red: 0/255, green: 94/255, blue: 43/255, alpha: 1)
@@ -149,7 +149,7 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
         // Set content of each cell
         switch (segmentedControl.selectedSegmentIndex) {
             case 0:                 // TODO receipts
-                cell.category?.text = todoReceipts[indexPath.row].category
+                cell.category?.text = self.todoReceipts[indexPath.row].category
                 
                 let str = NSString(format: "%.2f", self.todoReceipts[indexPath.row].requested_amt)
                 cell.requested_amt?.text = "$" + (str as String)
@@ -159,23 +159,23 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
                 
                 break
             case 1:                 // FLAGGED receipts
-                cell.category?.text = flaggedReceipts[indexPath.row].category
+                cell.category?.text = self.flaggedReceipts[indexPath.row].category
                 
                 let str = NSString(format: "%.2f", self.flaggedReceipts[indexPath.row].requested_amt)
                 cell.requested_amt?.text = "$" + (str as String)
                 cell.date?.text = getHumanReadableDate(NSDate(timeIntervalSince1970 : (flaggedReceipts[indexPath.row].timestamp / 1000)))
-                cell.receipt_id = flaggedReceipts[indexPath.row].id
-                cell.status = flaggedReceipts[indexPath.row].status
+                cell.receipt_id = self.flaggedReceipts[indexPath.row].id
+                cell.status = self.flaggedReceipts[indexPath.row].status
                 
                 break
             case 2:                 // APPROVED receipts
-                cell.category?.text = approvedReceipts[indexPath.row].category
+                cell.category?.text = self.approvedReceipts[indexPath.row].category
                 
                 let str = NSString(format: "%.2f", self.approvedReceipts[indexPath.row].requested_amt)
                 cell.requested_amt?.text = "$" + (str as String)
                 cell.date?.text = getHumanReadableDate(NSDate(timeIntervalSince1970 : (approvedReceipts[indexPath.row].timestamp / 1000)))
-                cell.receipt_id = approvedReceipts[indexPath.row].id
-                cell.status = approvedReceipts[indexPath.row].status
+                cell.receipt_id = self.approvedReceipts[indexPath.row].id
+                cell.status = self.approvedReceipts[indexPath.row].status
                 
                 break
             default:

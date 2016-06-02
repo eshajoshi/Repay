@@ -226,16 +226,16 @@ class HomeViewController: UIViewController {
                     if interview.company == snapshot.key {
                         
                         let budget = Budget(company: snapshot.key,
-                            total_amount: Double((snapshot.value["total_amt"] as? String)!)!,
-                            food_amount : Double((snapshot.value["food_amt"] as? String)!)!,
-                            lodging_amount : Double((snapshot.value["lodging_amt"] as? String)!)!,
-                            transportation_amount: Double((snapshot.value["transportation_amt"] as? String)!)!)
+                            total_amount: snapshot.value["total_amt"] as! Double,
+                            food_amount : snapshot.value["food_amt"] as! Double,
+                            lodging_amount : snapshot.value["lodging_amt"] as! Double,
+                            transportation_amount: snapshot.value["transportation_amt"] as! Double)
                         
                         interview.company_budget = budget
                         
                         // Appends the Interview object to 'userInterviews
                         self.userInterviews.append(interview)
-                        
+                        2
                         // Modal
                         self.customizeModalInitially();
                         self.hideBlur()
@@ -362,25 +362,24 @@ class HomeViewController: UIViewController {
         print("Reading/sorting receipts from Firebase by interview_id: \(interviewId)...")
                 
         ref.childByAppendingPath("receipts").observeEventType(.ChildAdded, withBlock: { snapshot in
-            print("New child...")
             
             if interviewId == snapshot.value["interview_id"] as! String {
-                print("\tid: \(snapshot.value["id"])")
-                print("\trequested_amt: \(snapshot.value["requested_amt"])!")
-                
                 let status = snapshot.value["status"] as! String
                 let nReceipt = self.convertSnapshotToReceipt(snapshot)
                 
                 if status == "approved" {           // No longer needs attention
                     if (!self.approvedReceipts.contains({$0.id == nReceipt.id})) {
+                        print("\tApproved receipt of id: \((snapshot.value["id"])!) and amt: \((snapshot.value["requested_amt"])!)")
                         self.approvedReceipts.append(nReceipt)
                     }
                 } else if status == "flagged" {     // Needs to be accepted/disputed by interviewee
                     if (!self.flaggedReceipts.contains({$0.id == nReceipt.id})) {
+                        print("\tFlagged receipt of id: \((snapshot.value["id"])!) and amt: \((snapshot.value["requested_amt"])!)")
                         self.flaggedReceipts.append(nReceipt)
                     }
                 } else {                            // Needs to be looked over by business HR
                     if (!self.todoReceipts.contains({$0.id == nReceipt.id})) {
+                        print("\tTodo receipt of id: \((snapshot.value["id"])!) and amt: \((snapshot.value["requested_amt"])!)")
                         self.todoReceipts.append(nReceipt)
                     }
                 }
