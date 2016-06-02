@@ -87,8 +87,8 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="g5r-su-KvI" id="wQt-Um-BWT"/>
-                            <outlet property="delegate" destination="g5r-su-KvI" id="13g-kY-4rB"/>
+                            <outlet property="dataSource" destination="g5r-su-KvI" id="zaM-SW-Dzh"/>
+                            <outlet property="delegate" destination="g5r-su-KvI" id="nTl-fA-Me6"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="History" id="44t-GO-szp">

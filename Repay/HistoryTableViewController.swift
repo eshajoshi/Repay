@@ -15,9 +15,9 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
     @IBOutlet var barBtnBack: UIBarButtonItem!
     
     var curInterview: Interview?
-    var approvedReceipts = [Receipt]()
-    var flaggedReceipts = [Receipt]()
     var todoReceipts = [Receipt]()
+    var flaggedReceipts = [Receipt]()
+    var approvedReceipts = [Receipt]()
     
     @IBAction func handleSegmentedControlChange(sender: AnyObject) {
         self.tableView.reloadData()
@@ -30,12 +30,12 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
     override func viewDidAppear(animated: Bool) {
         print("HistoryTableViewController - viewDidAppear")
         
-        // Set default selected segmented control to "Flagged"
-        segmentedControl.selectedSegmentIndex = 1
+        segmentedControl.selectedSegmentIndex = 0
         
-        // Reload data
-        self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Automatic)
-        self.tableView.reloadData()
+        // Set default selected segmented control to "Flagged" if any need immediate attention
+        if flaggedReceipts.count > 0 {
+            segmentedControl.selectedSegmentIndex = 1
+        }
     }
     
     override func viewDidLoad() {
@@ -43,6 +43,7 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
 
         print("\nHistoryTableViewController...")
         
+        print("todo receipts: ", todoReceipts)
         print("flagged receipts: ", flaggedReceipts)
         print("approved receipts: ", approvedReceipts)
         
@@ -74,28 +75,21 @@ class HistoryTableViewController: UITableViewController, UINavigationControllerD
 
     // Set to size of list depending on which segmented control index is selected
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        var numSections = 0
-        
-        switch (segmentedControl.selectedSegmentIndex) {
-            case 0:                 // TODO receipts
-                numSections = todoReceipts.count
-                break
-            case 1:                 // FLAGGED receipts
-                numSections = flaggedReceipts.count
-                break
-            case 2:                 // APPROVED receipts
-                numSections = approvedReceipts.count
-                break
-            default:
-                break
-        }
-        
-        return numSections
+        return 1
     }
 
     // Set to one cell for each section
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        switch (segmentedControl.selectedSegmentIndex) {
+            case 0:                 // TODO receipts
+                return todoReceipts.count
+            case 1:                 // FLAGGED receipts
+                return flaggedReceipts.count
+            case 2:                 // APPROVED receipts
+                return approvedReceipts.count
+            default:
+                return 1
+        }
     }
     
     // Height for header in section to set space between cells

@@ -80,7 +80,15 @@ class HomeViewController: UIViewController {
             for interview in userInterviews {
                 if (interview.company == companyLabelText.text) {
                     self.curInterview = interview
-                    self.loadBalance()
+                    loadBalance()
+                    
+//                    updateCurInterview()
+//                    
+//                    if (curInterview!.company_budget == nil) {
+//                        setCompanyBudgets()
+//                    } else {
+//                        loadBalance()
+//                    }
                 }
             }
         }
@@ -350,10 +358,10 @@ class HomeViewController: UIViewController {
             self.curInterview = realmInterviews[0]
             
             print("Updated Realm curInterview:")
-            print("\t food: \(self.curInterview!.food_consumed)")
-            print("\t lodging: \(self.curInterview!.lodging_consumed)")
-            print("\t trans: \(self.curInterview!.transportation_consumed)")
-            print("\t receipts: \(self.curInterview!.receipts)")
+            print("\t total food: \(self.curInterview!.food_consumed)")
+            print("\t total lodging: \(self.curInterview!.lodging_consumed)")
+            print("\t total trans: \(self.curInterview!.transportation_consumed)")
+            print("\t total: \(self.curInterview!.total_consumed)")
         }
     }
     
@@ -388,8 +396,8 @@ class HomeViewController: UIViewController {
     }
     
     func convertSnapshotToReceipt(snapshot: FDataSnapshot) -> (Receipt) {
-        print("Converting snapshot data to a Receipt object...")
-                
+        //print("Converting snapshot data to a Receipt object...")
+        
         return Receipt(id: snapshot.value["id"] as! String,
                        interview_id: snapshot.value["interview_id"] as! String,
                        company: snapshot.value["company"] as! String,

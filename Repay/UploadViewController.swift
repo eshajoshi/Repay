@@ -81,7 +81,7 @@ class UploadViewController:
                 
                 // Populate Receipt object and append to curInterview.receipts (list)
                 self.receiptObject = self.populateReceiptObject(receiptId)
-                self.updateReceiptsListInRealm(self.curInterview!, receiptObject: self.receiptObject!)
+                //self.updateReceiptsListInRealm(self.curInterview!, receiptObject: self.receiptObject!)
                 
                 // Update curInterview budgets
                 self.updateInterviewBudgets(self.curInterview!)
@@ -116,30 +116,33 @@ class UploadViewController:
                        timestamp: NSDate().timeIntervalSince1970 * 1000)
     }
     
-    func updateReceiptsListInRealm(interview: Interview, receiptObject: Receipt) {
-        print("Updating receipts list in Realm...")
-        
-        let updatedInterview = Interview(uid: interview.uid,
-                                         interviewee_id: interview.interviewee_id,
-                                         position: interview.position,
-                                         company: interview.company,
-                                         start_date: interview.start_date,
-                                         end_date: interview.end_date,
-                                         total_consumed: interview.total_consumed,
-                                         food_consumed: interview.food_consumed,
-                                         lodging_consumed: interview.lodging_consumed,
-                                         transportation_consumed: interview.transportation_consumed)
-        
-        updatedInterview.receipts.append(receiptObject)
-        
-        do {
-            try realm.write() {
-                realm.add(updatedInterview, update: true)
-            }
-        } catch {
-            print("Error updating curInterview receipts list to Realm object!")
-        }
-    }
+//    func updateReceiptsListInRealm(interview: Interview, receiptObject: Receipt) {
+//        print("Updating receipts list in Realm...")
+//        
+//        let updatedInterview = Interview(uid: interview.uid,
+//                                         interviewee_id: interview.interviewee_id,
+//                                         position: interview.position,
+//                                         company: interview.company,
+//                                         start_date: interview.start_date,
+//                                         end_date: interview.end_date,
+//                                         total_consumed: interview.total_consumed,
+//                                         food_consumed: interview.food_consumed,
+//                                         lodging_consumed: interview.lodging_consumed,
+//                                         transportation_consumed: interview.transportation_consumed)
+//        
+//        for item in interview.receipts {
+//            updatedInterview.receipts.append(item)
+//        }
+//        updatedInterview.receipts.append(receiptObject)
+//        
+//        do {
+//            try realm.write() {
+//                realm.add(updatedInterview, update: true)
+//            }
+//        } catch {
+//            print("Error updating curInterview receipts list to Realm object!")
+//        }
+//    }
     
     func updateInterviewBudgets(interview: Interview) {
         print("Updating interview budgets...")
@@ -150,6 +153,7 @@ class UploadViewController:
         
         let reqAmt = Double(self.amountInput.text!)!
         let category = self.selectedCategory!
+        print("category: ", category)
         
         let newTotal = interview.total_consumed + reqAmt
         
@@ -162,8 +166,14 @@ class UploadViewController:
         updatedInterview.start_date = interview.start_date
         updatedInterview.end_date = interview.end_date
         
+        updatedInterview.food_consumed = interview.food_consumed
+        updatedInterview.lodging_consumed = interview.lodging_consumed
+        updatedInterview.transportation_consumed = interview.transportation_consumed
+        updatedInterview.total_consumed = newTotal
+        
         switch (category) {
             case "Food":
+                print("interview.food_consumed", interview.food_consumed)
                 let newFoodTotal = interview.food_consumed + reqAmt;
                 
                 if (newFoodTotal > company_budget_food) {
@@ -196,8 +206,6 @@ class UploadViewController:
             default:
                 break;
         }
-        
-        updatedInterview.total_consumed = newTotal
         
         do {
             try realm.write() {
