@@ -106,6 +106,7 @@ class UploadViewController:
         
         return Receipt(id: String(receiptId),
                        interview_id: self.curInterview!.uid,
+                       company: self.curInterview!.company,
                        category: self.selectedCategory!,
                        first_name: self.first!,
                        last_name: self.last!,
@@ -216,10 +217,10 @@ class UploadViewController:
             if self.curInterview!.company == snapshot.key {
                 
                 let budget = Budget(company: snapshot.key,
-                    total_amount: Double((snapshot.value["total_amt"] as? String)!)!,
-                    food_amount : Double((snapshot.value["food_amt"] as? String)!)!,
-                    lodging_amount : Double((snapshot.value["lodging_amt"] as? String)!)!,
-                    transportation_amount: Double((snapshot.value["transportation_amt"] as? String)!)!)
+                    total_amount: snapshot.value["total_amt"] as! Double,
+                    food_amount : snapshot.value["food_amt"] as! Double,
+                    lodging_amount : snapshot.value["lodging_amt"] as! Double,
+                    transportation_amount: snapshot.value["transportation_amt"] as! Double)
                 
                 self.company_budget_food = budget.food_amount
                 self.company_budget_lodging = budget.lodging_amount
@@ -259,6 +260,7 @@ class UploadViewController:
         
         let receiptTuple = ["id": receiptObject.id,
                             "interview_id": receiptObject.interview_id,
+                            "company": receiptObject.company,
                             "category": receiptObject.category,
                             "first_name": receiptObject.first_name,
                             "last_name": receiptObject.last_name,

@@ -294,10 +294,10 @@ class HomeViewController: UIViewController {
             if self.curInterview!.company == snapshot.key {
                 
                 let budget = Budget(company: snapshot.key,
-                    total_amount: Double((snapshot.value["total_amt"] as? String)!)!,
-                    food_amount : Double((snapshot.value["food_amt"] as? String)!)!,
-                    lodging_amount : Double((snapshot.value["lodging_amt"] as? String)!)!,
-                    transportation_amount: Double((snapshot.value["transportation_amt"] as? String)!)!)
+                    total_amount: snapshot.value["total_amt"] as! Double,
+                    food_amount : snapshot.value["food_amt"] as! Double,
+                    lodging_amount : snapshot.value["lodging_amt"] as! Double,
+                    transportation_amount: snapshot.value["transportation_amt"] as! Double)
                 
                 // Update curInterview object in Realm with new budgets
                 self.updateCurInterviewInRealm(self.curInterview!, budget: budget)
@@ -389,9 +389,10 @@ class HomeViewController: UIViewController {
     
     func convertSnapshotToReceipt(snapshot: FDataSnapshot) -> (Receipt) {
         print("Converting snapshot data to a Receipt object...")
-        
+                
         return Receipt(id: snapshot.value["id"] as! String,
                        interview_id: snapshot.value["interview_id"] as! String,
+                       company: snapshot.value["company"] as! String,
                        category: snapshot.value["category"] as! String,
                        first_name: snapshot.value["first_name"] as! String,
                        last_name: snapshot.value["last_name"] as! String,
