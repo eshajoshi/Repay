@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class DisputeReimbursementTableViewController: UITableViewController {
+class DisputeReimbursementTableViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet var barBtnBack: UIBarButtonItem!
     @IBOutlet var receiptImage: UIImageView!
     @IBOutlet var date_requested: UILabel!
@@ -19,6 +19,7 @@ class DisputeReimbursementTableViewController: UITableViewController {
     @IBOutlet var new_requested_amt_view: UIView!
     @IBOutlet var new_reason: UITextField!
     @IBOutlet var new_reason_view: UIView!
+    @IBOutlet var requestBtn: UIButton!
     
     var receiptCell: HistoryTableViewCell?
     var image: UIImage?
@@ -27,11 +28,38 @@ class DisputeReimbursementTableViewController: UITableViewController {
     @IBAction func handleBtnBack(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func enterNewAmount(sender: AnyObject) {
+        print("User is trying to request a new amount...")
+    }
+    
+    @IBAction func requestNewReason(sender: AnyObject) {
+        print("User is providing a reason for new request...")
+    }
+    
+    @IBAction func handleRequest(sender: AnyObject) {
+        print("User is requesting a new reimbursement...")
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        let nextTag: Int = textField.tag + 1
+        let nextResponder: UIResponder? = textField.superview?.superview?.viewWithTag(nextTag)
+        
+        if nextResponder == new_reason {
+            print("new_reason is now first responder.")
+            new_reason.becomeFirstResponder()               // Set next responder
+        } else if nextTag == 2 {
+            print("Request.")
+            new_reason.resignFirstResponder()               // Remove keyboard
+            handleRequest(requestBtn)                       // "Request"
+        }
+        
+        return false
+    }
 
     func loadTVCFields() {
         print("Loading ReimbursementTVC fields...")
         
-        // Load image, date and approved amount
         receiptImage.image = image
         date_requested.text = receiptCell?.date.text
         approved_amt.text = approved_amt_str
@@ -73,7 +101,7 @@ class DisputeReimbursementTableViewController: UITableViewController {
         new_reason.sizeToFit()
         new_reason.adjustsFontSizeToFitWidth = true
         
-        // Load fields
+        // Load image, date and approved amount
         loadTVCFields()
     }
     

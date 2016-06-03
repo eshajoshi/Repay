@@ -420,6 +420,9 @@
                                                             <color key="textColor" red="0.0" green="0.36862745099999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                             <textInputTraits key="textInputTraits"/>
+                                                            <connections>
+                                                                <action selector="enterNewAmount:" destination="yPa-v5-Lpi" eventType="editingDidEnd" id="noC-dE-EvN"/>
+                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
@@ -442,6 +445,10 @@
                                                             <color key="textColor" red="0.0" green="0.36862745099999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                                             <textInputTraits key="textInputTraits"/>
+                                                            <connections>
+                                                                <action selector="enterNewReason:" destination="yPa-v5-Lpi" eventType="editingDidEnd" id="5uJ-Rk-Diq"/>
+                                                                <action selector="requestNewReason:" destination="yPa-v5-Lpi" eventType="editingDidEnd" id="vAS-tm-AT6"/>
+                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
@@ -452,6 +459,16 @@
                                                     <color key="textColor" red="0.0" green="0.36862745099999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UEN-oM-wON">
+                                                    <rect key="frame" x="0.0" y="130" width="375" height="30"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                                    <state key="normal" title="REQUEST">
+                                                        <color key="titleColor" red="0.0" green="0.36862745099999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="handleRequest:" destination="yPa-v5-Lpi" eventType="touchUpInside" id="raL-9z-HHw"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -478,9 +495,10 @@
                         <outlet property="date_requested" destination="TC5-vB-wxK" id="Ten-QU-VdS"/>
                         <outlet property="new_reason" destination="FMN-ew-I9N" id="1FU-Ty-7ju"/>
                         <outlet property="new_reason_view" destination="KqT-9W-h1g" id="gzy-Jr-d1L"/>
-                        <outlet property="new_requested_amt" destination="0SH-zF-eXK" id="Frq-4C-77n"/>
+                        <outlet property="new_requested_amt" destination="0SH-zF-eXK" id="dX2-ee-nkJ"/>
                         <outlet property="new_requested_amt_view" destination="sKy-Ml-wA3" id="edL-p7-Lmy"/>
                         <outlet property="receiptImage" destination="Asv-fR-aaX" id="SQz-b6-nAL"/>
+                        <outlet property="requestBtn" destination="UEN-oM-wON" id="sGP-hI-BIy"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rZM-Zm-8sG" userLabel="First Responder" sceneMemberID="firstResponder"/>
