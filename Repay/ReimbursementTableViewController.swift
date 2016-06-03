@@ -106,11 +106,11 @@ class ReimbursementTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "acceptReimbursementSegue") {
-//            let navVC = segue.destinationViewController as! UINavigationController
-            //let acceptReimbursementVC = navVC.viewControllers.first as! AcceptReimbursementViewController
+            let navVC = segue.destinationViewController as! UINavigationController
+            let acceptReimbursementVC = navVC.viewControllers.first as! AcceptReimbursementViewController
             
-            //acceptReimbursementVC.receiptCell = receiptCell
-        } else if (segue.identifier == "disputeReimbursementSegue") {            
+            acceptReimbursementVC.approved_amt = approved_amt.text
+        } else if (segue.identifier == "disputeReimbursementSegue") {
             let navVC = segue.destinationViewController as! UINavigationController
             let disputeReimbursementTVC = navVC.topViewController as! DisputeReimbursementTableViewController
             

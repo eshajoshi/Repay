@@ -2,68 +2,42 @@
 //  AcceptReimbursementViewController.swift
 //  Repay
 //
-//  Created by Esha Joshi on 6/2/16.
+//  Created by Esha Joshi on 6/3/16.
 //  Copyright © 2016 Esha Joshi. All rights reserved.
 //
 
 import UIKit
-import Firebase
 
 class AcceptReimbursementViewController: UIViewController {
-    @IBOutlet var barBtnBack: UIBarButtonItem!
-    @IBOutlet var receiptImage: UIImageView!
-    @IBOutlet var date_requested: UILabel!
-    @IBOutlet var approved_amt: UILabel!
-    @IBOutlet var approved_amt_view: UIView!
-    @IBOutlet var new_requested_amt_view: UIView!
-    @IBOutlet var new_requested_amt: UILabel!
-    @IBOutlet var new_reason_view: UIView!
-    @IBOutlet var new_reason: UILabel!
+    @IBOutlet var amount: UILabel!
+    @IBOutlet var yaybtn: UIButton!
     
-    var receiptCell: HistoryTableViewCell?
+    var approved_amt: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         print("\nAcceptReimbursementViewController...")
         
-        // 'History' Navigation Bar
-        UINavigationBar.appearance().barTintColor = UIColor.init(red: 0/255, green: 94/255, blue: 43/255, alpha: 1)
-        UINavigationBar.appearance().titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Avenir Next", size: 17)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
+        // Do any additional setup after loading the view.
+        navigationController!.setNavigationBarHidden(true,animated: false);
         
-        // 'Back' Bar Button Item
-        barBtnBack.setTitleTextAttributes([ NSFontAttributeName: UIFont(name: "Avenir Next", size: 12)!], forState: UIControlState.Normal)
-        barBtnBack.tintColor = UIColor.init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        //Gradient
+        let layer = CAGradientLayer()
+        layer.frame = CGRect(x:0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
+        layer.colors = [UIColor.init(red: 42/255, green: 183/255, blue:133/255, alpha: 1).CGColor, UIColor.init(red: 0/255, green: 94/255, blue:43/255, alpha: 1).CGColor]
+        view.layer.insertSublayer(layer, below: amount.layer)
+
+        let str = NSString(format: "%00.2f", approved_amt!)
+        amount.text = "$" + (str as String)
+        yaybtn.backgroundColor = UIColor.init(red: 249/255, green: 249/255, blue: 249/255, alpha: 1);
         
-        // Views
-        new_requested_amt_view.layer.cornerRadius = 5.0
-        approved_amt_view.layer.cornerRadius = 5.0
-        new_reason_view.layer.cornerRadius = 5.0
-        
-        // Labels
-        date_requested.sizeToFit()
-        date_requested.adjustsFontSizeToFitWidth = true
-        approved_amt.sizeToFit()
-        approved_amt.adjustsFontSizeToFitWidth = true
-        new_requested_amt.sizeToFit()
-        new_requested_amt.adjustsFontSizeToFitWidth = true
-        new_reason.sizeToFit()
-        new_reason.adjustsFontSizeToFitWidth = true
+        print("Thank you! \(amount.text!) has been posted to your Venmo account.")
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

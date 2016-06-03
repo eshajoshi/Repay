@@ -39,6 +39,49 @@ class DisputeReimbursementTableViewController: UITableViewController, UITextFiel
     
     @IBAction func handleRequest(sender: AnyObject) {
         print("User is requesting a new reimbursement...")
+        
+        //let receiptsRef = ref.childByAppendingPath("receipts")
+        
+//        if (newPasswordTextField.hasText() && confirmPasswordTextField.hasText()) {
+//            if (newPasswordTextField.text! == confirmPasswordTextField.text!) {
+//                
+//                // Updating User data to Firebase
+//                let tupleRef = usersRef.childByAppendingPath(userToValidate?.uid)
+//                let passwords = ["new_password": newPasswordTextField.text!,
+//                                 "confirm_password": confirmPasswordTextField.text!]
+//                
+//                tupleRef.updateChildValues(passwords)
+//                
+//                userToValidate?.new_password = newPasswordTextField.text!
+//                userToValidate?.confirm_password = confirmPasswordTextField.text!
+//                
+//                // Add new user object to Realm
+//                try! realm.write {
+//                    let user = User(uid: (userToValidate?.uid)!,
+//                        email: (userToValidate?.email)!,
+//                        first_name: (userToValidate?.first_name)!,
+//                        last_name: (userToValidate?.last_name)!,
+//                        temp_password: (userToValidate?.temp_password)!,
+//                        new_password: newPasswordTextField.text!,
+//                        confirm_password: confirmPasswordTextField.text!)
+//                    
+//                    // let registeredUsers = RegisteredAppUsers()          // Is this always going to create new RegisteredAppUsers() instances?
+//                    //  registeredUsers.users.append(user)
+//                    //  registeredUsers.loggedInUser = user
+//                    
+//                    print("Adding User # \(user.uid) with name \(user.first_name) to RealmObject")
+//                    realm.add(user)
+//                }
+//                
+//                print("User changed password successfully.")
+//                performSegueWithIdentifier("homeViewSegue", sender: self)
+//            } else {
+//                print("Password fields do not match.")
+//                // TODO: Modal for password fields do not match
+//            }
+//        } else {
+//            print("User has not entered new password or confirm password.")
+//        }
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -90,7 +133,11 @@ class DisputeReimbursementTableViewController: UITableViewController, UITextFiel
         // Labels
         let clearColor: UIColor = UIColor(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
         new_requested_amt.layer.borderColor = clearColor.CGColor
+        new_requested_amt.layer.borderWidth = 0;
+        new_requested_amt.layer.cornerRadius = 5.0;
         new_reason.layer.borderColor = clearColor.CGColor
+        new_reason.layer.borderWidth = 0;
+        new_reason.layer.cornerRadius = 5.0;
         
         date_requested.sizeToFit()
         date_requested.adjustsFontSizeToFitWidth = true

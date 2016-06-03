@@ -20,6 +20,7 @@
 		62974D9E1CF56F02008204F6 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62974D9D1CF56F02008204F6 /* Image.swift */; };
 		6297B9711CD7CE4C00D8A1BC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6297B9701CD7CE4C00D8A1BC /* LoginViewController.swift */; };
 		629B4EF01CE0637E00CFDD94 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629B4EEF1CE0637E00CFDD94 /* ChangePasswordViewController.swift */; };
+		62AA2E041D018BCF00F6F146 /* AcceptReimbursementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AA2E031D018BCF00F6F146 /* AcceptReimbursementViewController.swift */; };
 		62B0E5AF1CD996FD0043670E /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0E5AE1CD996FD0043670E /* Receipt.swift */; };
 		62B0E5B11CD999330043670E /* RegisteredAppUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B0E5B01CD999330043670E /* RegisteredAppUsers.swift */; };
 		62B197C41CB9A3F200421FB9 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62B197C31CB9A3F200421FB9 /* Category.storyboard */; };
@@ -70,6 +71,7 @@
 		62974D9D1CF56F02008204F6 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		6297B9701CD7CE4C00D8A1BC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		629B4EEF1CE0637E00CFDD94 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		62AA2E031D018BCF00F6F146 /* AcceptReimbursementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceptReimbursementViewController.swift; sourceTree = "<group>"; };
 		62B0E5AE1CD996FD0043670E /* Receipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
 		62B0E5B01CD999330043670E /* RegisteredAppUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisteredAppUsers.swift; sourceTree = "<group>"; };
 		62B197C31CB9A3F200421FB9 /* Category.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Category.storyboard; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				629B4EEF1CE0637E00CFDD94 /* ChangePasswordViewController.swift */,
+				62AA2E031D018BCF00F6F146 /* AcceptReimbursementViewController.swift */,
 				625664CF1D015582005A742C /* DisputeReimbursementTableViewController.swift */,
 				62C0781C1CB8BB8F0084B1E9 /* AppDelegate.swift */,
 				62C0781E1CB8BB8F0084B1E9 /* ViewController.swift */,
@@ -421,6 +424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6259F9DC1CF4610C00E6BE84 /* ReimbursementTableViewController.swift in Sources */,
+				62AA2E041D018BCF00F6F146 /* AcceptReimbursementViewController.swift in Sources */,
 				62B0E5AF1CD996FD0043670E /* Receipt.swift in Sources */,
 				62B0E5B11CD999330043670E /* RegisteredAppUsers.swift in Sources */,
 				0AA720E31CB96A5400BC3B47 /* HomeViewController.swift in Sources */,
