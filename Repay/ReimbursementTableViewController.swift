@@ -40,8 +40,8 @@ class ReimbursementTableViewController: UITableViewController {
     func retrieveReceiptImage(encodedImageData: String) -> UIImage {
         print("Retrieving UIImage from encoded image data...")
         
-        let imageData = NSData(base64EncodedString: encodedImageData, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)!
-        let decodedimage = UIImage(data: imageData)!
+        let imageData = NSData(base64EncodedString: encodedImageData, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
+        let decodedimage = UIImage(data: imageData!)!
         
         return decodedimage
     }
@@ -52,7 +52,9 @@ class ReimbursementTableViewController: UITableViewController {
         // Load image
         ref.childByAppendingPath("images").observeEventType(.ChildAdded, withBlock: { snapshot in
             if self.receiptCell?.receipt_id == snapshot.value["receipt_id"] as? String {
-                self.receiptImage.image = self.retrieveReceiptImage((snapshot.value["imageStr"] as? String)!)
+                print("id: ", self.receiptCell?.receipt_id)
+                
+                self.receiptImage.image = self.retrieveReceiptImage(snapshot.value["imageStr"] as! String)
             }
         })
         
