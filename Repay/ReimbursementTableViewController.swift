@@ -27,10 +27,12 @@ class ReimbursementTableViewController: UITableViewController {
     
     @IBAction func handleAcceptBtn(sender: AnyObject) {
         print("Pressed the 'Accept' btn.")
+        performSegueWithIdentifier("acceptReimbursementSegue", sender: self)
     }
     
     @IBAction func handleDisputeBtn(sender: AnyObject) {
         print("Pressed the 'Dispute' btn.")
+        performSegueWithIdentifier("disputeReimbursementSegue", sender: self)
     }
     
     @IBAction func handleBtnBack(sender: AnyObject) {
@@ -51,9 +53,7 @@ class ReimbursementTableViewController: UITableViewController {
         
         // Load image
         ref.childByAppendingPath("images").observeEventType(.ChildAdded, withBlock: { snapshot in
-            if self.receiptCell?.receipt_id == snapshot.value["receipt_id"] as? String {
-                print("id: ", self.receiptCell?.receipt_id)
-                
+            if self.receiptCell?.receipt_id == snapshot.value["receipt_id"] as? String {                
                 self.receiptImage.image = self.retrieveReceiptImage(snapshot.value["imageStr"] as! String)
             }
         })
@@ -101,6 +101,22 @@ class ReimbursementTableViewController: UITableViewController {
 
             acceptBtn.tintColor = UIColor.init(red: 0/255, green: 94/255, blue: 43/255, alpha: 1)
             disputeBtn.tintColor = UIColor.init(red: 0/255, green: 94/255, blue: 43/255, alpha: 1)
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "acceptReimbursementSegue") {
+//            let navVC = segue.destinationViewController as! UINavigationController
+            //let acceptReimbursementVC = navVC.viewControllers.first as! AcceptReimbursementViewController
+            
+            //acceptReimbursementVC.receiptCell = receiptCell
+        } else if (segue.identifier == "disputeReimbursementSegue") {            
+            let navVC = segue.destinationViewController as! UINavigationController
+            let disputeReimbursementTVC = navVC.topViewController as! DisputeReimbursementTableViewController
+            
+            disputeReimbursementTVC.image = receiptImage.image
+            disputeReimbursementTVC.approved_amt_str = approved_amt.text
+            disputeReimbursementTVC.receiptCell = receiptCell
         }
     }
     
